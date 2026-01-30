@@ -40,7 +40,7 @@ const FinalCTASection = () => {
         className="absolute inset-0 bg-cover bg-center sm:bg-fixed"
         style={{ backgroundImage: `url(${watercolorTexture})` }}
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-deep-brown/90 via-deep-brown/85 to-deep-brown/95" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[hsl(20_45%_12%/0.90)] via-[hsl(20_45%_12%/0.85)] to-[hsl(20_45%_12%/0.95)] dark:from-black/90 dark:via-black/85 dark:to-black/95" />
 
       {/* Floating gold particles - fewer on mobile */}
       <div className="hidden sm:block absolute inset-0 overflow-hidden pointer-events-none">

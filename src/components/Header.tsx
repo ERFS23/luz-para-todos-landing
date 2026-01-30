@@ -82,6 +82,11 @@ const Header = () => {
               <X className="w-6 h-6 text-foreground" />
             </button>
 
+            {/* Theme Toggle */}
+            <div className="mb-4">
+              <ThemeToggle />
+            </div>
+
             {/* Mobile nav links */}
             {navLinks.map(link => <a key={link.href} href={link.href} onClick={handleLinkClick} className="text-2xl font-serif text-foreground hover:text-gold transition-colors">
                 {link.label}

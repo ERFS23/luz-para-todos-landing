@@ -20,16 +20,16 @@ const CTABox = () => {
 
         {/* Price */}
         <div className="space-y-1">
-          <p className="text-xs sm:text-sm uppercase tracking-wider font-medium text-primary-foreground">
+          <p className="text-xs sm:text-sm uppercase tracking-wider font-medium text-foreground/80">
             A partir de apenas
           </p>
           <div className="flex items-baseline gap-2">
             <span className="text-4xl sm:text-5xl font-serif font-bold text-gradient-gold">
               R$ 1,41
             </span>
-            <span className="text-base sm:text-lg text-primary">/dia</span>
+            <span className="text-base sm:text-lg text-gold">/dia</span>
           </div>
-          <p className="text-xs sm:text-sm text-secondary-foreground">
+          <p className="text-xs sm:text-sm text-muted-foreground">
             Menos que um café para transformar uma vida
           </p>
         </div>

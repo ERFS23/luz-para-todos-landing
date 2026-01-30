@@ -161,7 +161,7 @@ const DonationForm = () => {
   ];
 
   return (
-    <section id="donation-form" className="py-12 sm:py-20 bg-cream-light relative overflow-hidden">
+    <section id="donation-form" className="py-12 sm:py-20 bg-card relative overflow-hidden">
       {/* Confetti effect */}
       {showConfetti && (
         <div className="fixed inset-0 z-50 pointer-events-none">
@@ -194,7 +194,7 @@ const DonationForm = () => {
             <span className="inline-block px-3 py-1 sm:px-4 sm:py-1.5 rounded-full bg-gold/20 text-amber text-xs sm:text-sm font-medium mb-3 sm:mb-4">
               Seja um padrinho
             </span>
-            <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl text-deep-brown mb-2 sm:mb-3">
+            <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl text-foreground mb-2 sm:mb-3">
               Complete seu <span className="text-gradient-gold">apadrinhamento</span>
             </h2>
             <p className="text-muted-foreground text-sm sm:text-base">
@@ -232,7 +232,7 @@ const DonationForm = () => {
             {/* Step 1: Personal Info */}
             {step === 1 && (
               <div className="space-y-4 sm:space-y-5 animate-fade-in">
-                <h3 className="font-serif text-lg sm:text-xl text-deep-brown mb-4 sm:mb-6">
+                <h3 className="font-serif text-lg sm:text-xl text-foreground mb-4 sm:mb-6">
                   Seus dados pessoais
                 </h3>
 
@@ -294,7 +294,7 @@ const DonationForm = () => {
             {step === 2 && (
               <div className="space-y-6 sm:space-y-8 animate-fade-in">
                 <div>
-                  <h3 className="font-serif text-lg sm:text-xl text-deep-brown mb-3 sm:mb-4">
+                  <h3 className="font-serif text-lg sm:text-xl text-foreground mb-3 sm:mb-4">
                     Preferência de gênero
                   </h3>
                   <div className="grid grid-cols-1 gap-2 sm:grid-cols-3 sm:gap-3">
@@ -312,14 +312,14 @@ const DonationForm = () => {
                         )}
                       >
                         <div className="radio-indicator" />
-                        <span className="font-medium text-deep-brown text-sm sm:text-base">{option.label}</span>
+                        <span className="font-medium text-foreground text-sm sm:text-base">{option.label}</span>
                       </div>
                     ))}
                   </div>
                 </div>
 
                 <div>
-                  <h3 className="font-serif text-lg sm:text-xl text-deep-brown mb-3 sm:mb-4">
+                  <h3 className="font-serif text-lg sm:text-xl text-foreground mb-3 sm:mb-4">
                     Faixa etária
                   </h3>
                   <div className="grid grid-cols-2 gap-2 sm:grid-cols-4 sm:gap-3">
@@ -338,7 +338,7 @@ const DonationForm = () => {
                         )}
                       >
                         <div className="radio-indicator" />
-                        <span className="font-medium text-deep-brown text-xs sm:text-sm">{option.label}</span>
+                        <span className="font-medium text-foreground text-xs sm:text-sm">{option.label}</span>
                       </div>
                     ))}
                   </div>
@@ -350,7 +350,7 @@ const DonationForm = () => {
             {step === 3 && (
               <div className="space-y-6 sm:space-y-8 animate-fade-in">
                 <div>
-                  <h3 className="font-serif text-lg sm:text-xl text-deep-brown mb-3 sm:mb-4">
+                  <h3 className="font-serif text-lg sm:text-xl text-foreground mb-3 sm:mb-4">
                     Método de pagamento
                   </h3>
                   <div className="grid grid-cols-3 gap-2 sm:gap-3">
@@ -371,7 +371,7 @@ const DonationForm = () => {
                           "w-6 h-6 sm:w-8 sm:h-8",
                           formData.metodo === option.value ? "text-gold" : "text-muted-foreground"
                         )} />
-                        <span className="font-medium text-deep-brown text-xs sm:text-sm">{option.label}</span>
+                        <span className="font-medium text-foreground text-xs sm:text-sm">{option.label}</span>
                       </div>
                     ))}
                   </div>
@@ -381,7 +381,7 @@ const DonationForm = () => {
                 </div>
 
                 <div>
-                  <h3 className="font-serif text-lg sm:text-xl text-deep-brown mb-3 sm:mb-4">
+                  <h3 className="font-serif text-lg sm:text-xl text-foreground mb-3 sm:mb-4">
                     Valor mensal
                   </h3>
                   <div className="grid grid-cols-2 gap-2 sm:grid-cols-4 sm:gap-3">
@@ -397,7 +397,7 @@ const DonationForm = () => {
                           formData.valor === option.value && !formData.valorCustom && "selected"
                         )}
                       >
-                        <span className="font-bold text-sm sm:text-lg text-deep-brown">{option.label}</span>
+                        <span className="font-bold text-sm sm:text-lg text-foreground">{option.label}</span>
                         <span className="text-[10px] sm:text-xs text-muted-foreground">{option.description}</span>
                       </div>
                     ))}
@@ -411,7 +411,7 @@ const DonationForm = () => {
                         formData.valorCustom && "selected"
                       )}
                     >
-                      <span className="font-bold text-sm sm:text-base text-deep-brown">Outro</span>
+                      <span className="font-bold text-sm sm:text-base text-foreground">Outro</span>
                       <span className="text-[10px] sm:text-xs text-muted-foreground">valor</span>
                     </div>
                   </div>
@@ -437,7 +437,7 @@ const DonationForm = () => {
               {step > 1 && (
                 <button
                   onClick={prevStep}
-                  className="flex-1 py-3 sm:py-4 px-4 sm:px-6 rounded-xl border-2 border-border text-deep-brown font-semibold hover:bg-muted/50 transition-all duration-300 flex items-center justify-center gap-2 text-sm sm:text-base min-h-[52px]"
+                  className="flex-1 py-3 sm:py-4 px-4 sm:px-6 rounded-xl border-2 border-border text-foreground font-semibold hover:bg-muted/50 transition-all duration-300 flex items-center justify-center gap-2 text-sm sm:text-base min-h-[52px]"
                 >
                   <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
                   Voltar

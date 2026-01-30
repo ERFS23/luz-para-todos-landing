@@ -64,23 +64,60 @@
   }
 
   .dark {
-    --background: 20 45% 8%;
+    /* Cores base */
+    --background: 20 45% 6%;
     --foreground: 36 100% 96%;
-    --card: 20 45% 12%;
+    
+    /* Cards e popovers */
+    --card: 20 45% 10%;
     --card-foreground: 36 100% 96%;
-    --popover: 20 45% 12%;
+    --popover: 20 45% 10%;
     --popover-foreground: 36 100% 96%;
-    --primary: 36 100% 65%;
-    --primary-foreground: 20 45% 12%;
-    --secondary: 33 100% 50%;
+    
+    /* Primarias e secundarias */
+    --primary: 36 100% 60%;
+    --primary-foreground: 20 45% 8%;
+    --secondary: 33 100% 55%;
     --secondary-foreground: 0 0% 100%;
-    --muted: 20 30% 20%;
-    --muted-foreground: 36 40% 70%;
-    --accent: 33 100% 50%;
+    
+    /* Muted e accent */
+    --muted: 20 30% 18%;
+    --muted-foreground: 36 40% 65%;
+    --accent: 33 100% 55%;
     --accent-foreground: 0 0% 100%;
-    --border: 20 30% 25%;
-    --input: 20 30% 25%;
-    --ring: 36 100% 65%;
+    
+    /* Bordas e inputs */
+    --border: 20 30% 22%;
+    --input: 20 30% 22%;
+    --ring: 36 100% 60%;
+    
+    /* Tokens LUMINIS adaptativos */
+    --gold: 36 100% 60%;
+    --gold-glow: 36 100% 50%;
+    --amber: 33 100% 55%;
+    --cream: 20 45% 10%;
+    --cream-light: 20 45% 14%;
+    --deep-brown: 36 100% 90%;
+    --warm-brown: 36 50% 70%;
+    
+    /* Glassmorphism dark */
+    --glass-bg: 20 45% 10% / 0.9;
+    --glass-border: 36 100% 60% / 0.15;
+    --glass-shadow: 0 0% 0% / 0.4;
+    
+    /* Glows dark */
+    --glow-gold: 0 0 40px hsl(36 100% 55% / 0.25);
+    --glow-amber: 0 0 60px hsl(33 100% 55% / 0.15);
+    
+    /* Sidebar */
+    --sidebar-background: 20 45% 8%;
+    --sidebar-foreground: 36 100% 90%;
+    --sidebar-primary: 36 100% 60%;
+    --sidebar-primary-foreground: 20 45% 8%;
+    --sidebar-accent: 20 30% 15%;
+    --sidebar-accent-foreground: 36 100% 90%;
+    --sidebar-border: 20 30% 20%;
+    --sidebar-ring: 36 100% 60%;
   }
 }
 
@@ -245,7 +282,7 @@
   /* Floating label input */
   .input-luminis {
     @apply w-full px-4 py-4 text-base rounded-xl transition-all duration-300;
-    background: hsl(var(--cream-light));
+    background: hsl(var(--card));
     border: 2px solid hsl(var(--border));
     color: hsl(var(--foreground));
     min-height: 56px;
@@ -259,6 +296,10 @@
 
   .input-luminis::placeholder {
     color: hsl(var(--muted-foreground));
+  }
+
+  .dark .input-luminis:focus {
+    box-shadow: 0 0 0 4px hsl(var(--primary) / 0.2);
   }
 
   .floating-label-group {
@@ -278,8 +319,8 @@
     transform: translateY(0);
     font-size: 0.75rem;
     padding: 0 4px;
-    background: hsl(var(--cream-light));
-    color: hsl(var(--gold));
+    background: hsl(var(--card));
+    color: hsl(var(--primary));
   }
 
   /* Mobile hamburger menu */
@@ -311,7 +352,7 @@
   /* Radio card styles */
   .radio-card {
     @apply relative flex items-center gap-3 p-4 rounded-xl cursor-pointer transition-all duration-200;
-    background: hsl(var(--cream-light));
+    background: hsl(var(--card));
     border: 2px solid hsl(var(--border));
   }
 
@@ -343,7 +384,7 @@
   /* Payment method cards */
   .payment-card {
     @apply flex flex-col items-center justify-center gap-2 p-6 rounded-xl cursor-pointer transition-all duration-200;
-    background: hsl(var(--cream-light));
+    background: hsl(var(--card));
     border: 2px solid hsl(var(--border));
     min-height: 120px;
   }
@@ -362,7 +403,7 @@
   /* Amount selector */
   .amount-card {
     @apply flex flex-col items-center justify-center p-4 rounded-xl cursor-pointer transition-all duration-200;
-    background: hsl(var(--cream-light));
+    background: hsl(var(--card));
     border: 2px solid hsl(var(--border));
   }
 

@@ -59,7 +59,7 @@ const MariaStorySection = () => {
       }}
     >
       {/* Overlay for better readability */}
-      <div className="absolute inset-0 bg-cream/80" />
+      <div className="absolute inset-0 bg-background/80 dark:bg-background/90" />
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Section header */}
