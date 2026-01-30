@@ -1,146 +1,87 @@
 
-# Plan: Final Hero CTA Section, Multi-Step Form & Page Optimizations
 
-## Summary
-Add two final sections to complete the landing page: an emotional Hero CTA with a powerful quote and trust badges, and a 3-step multi-step donation form. Also implement smooth scrolling and performance optimizations across the entire page.
+# Plano: Tornar a Animação de Shader Visível no Hero
 
----
-
-## Section 1: Hero CTA Section (FinalCTASection)
-
-### Design
-- Full-width section with a warm, emotional background (gradient overlay on textured image)
-- Large centered quote in Playfair Display italic: "Porque no final, a gente não lembra do dinheiro..."
-- Two action buttons side-by-side:
-  - Primary: "SIM, QUERO SER LUZ" (gold gradient, glow effect)
-  - Secondary: "FALAR COM ALISSA" (outlined, subtle hover)
-- Trust badges row: Lock icon + "Seguro", Lightning icon + "Instantâneo"
-- Final urgency text: "23 crianças esperam" with pulsing animation
-- Fade-in animations triggered on scroll
-
-### Visual Effects
-- Subtle parallax on background
-- Glassmorphism container for the quote
-- Gold glow accents
+## Problema Identificado
+A animação WebGL do shader está praticamente invisível porque:
+1. A opacidade está muito baixa (25%)
+2. O fundo cream sólido da página cobre a animação
+3. Existem decorações de gradiente por cima do shader
+4. Os elementos do hero têm fundos opacos
 
 ---
 
-## Section 2: Multi-Step Form (DonationForm)
+## Solução
 
-### Step 1: Personal Information
-- Nome (full name) - floating label input
-- Email - email validation
-- WhatsApp - phone mask format
-- CPF - Brazilian CPF mask with validation
-- All fields with gold border on focus state
+### 1. Aumentar a Opacidade do Shader
+- Mudar a opacidade de `0.25` para `0.6` ou `0.7` para tornar a animação bem visível
+- Ajustar o z-index para garantir que fique visível mas atrás do conteúdo
 
-### Step 2: Child Preferences  
-- Gênero da criança (Radio buttons: Menino / Menina / Sem preferência)
-- Faixa etária (Radio buttons: 0-3 anos / 4-7 anos / 8-12 anos / Sem preferência)
+### 2. Tornar o Fundo do Hero Transparente
+- Remover o fundo sólido cream da seção hero
+- Aplicar um fundo escuro/transparente que permita ver o shader
+- Usar `bg-transparent` ou `bg-black/10` no hero
 
-### Step 3: Payment Method
-- Payment method cards (Cartão de Crédito, PIX, Boleto)
-- Monthly amount selection (R$ 42,30 / R$ 84,60 / R$ 127,00 / Outro valor)
+### 3. Remover Decorações que Obstruem
+- Remover ou reduzir drasticamente os gradientes decorativos
+- Eliminar os círculos blur que cobrem o shader
 
-### Form UX Features
-- Top progress indicator with 3 steps (gold filled for completed/current)
-- Floating labels that animate up on focus/filled
-- Gold border glow on input focus
-- "Próximo" / "Voltar" navigation buttons
-- Final "Confirmar Apadrinhamento" button with confetti trigger
-- Form validation with error messages (using existing zod patterns)
-- Mobile-friendly vertical layout
+### 4. Adaptar Elementos para Transparência
+- Usar glassmorphism nos cards de estatísticas (backdrop-blur)
+- Tornar o CTABox semi-transparente
+- Manter legibilidade do texto com sombras sutis
 
 ---
 
-## Section 3: Page-Wide Optimizations
+## Alterações Técnicas
 
-### Smooth Scrolling
-- Add `scroll-behavior: smooth` to html element in CSS
-- Implement smooth scroll for all anchor links in Header
+### Arquivo: `src/components/HeroSection.tsx`
 
-### Mobile-First Enhancements
-- Review all sections for proper mobile stacking
-- Ensure form inputs are at least 44px touch targets
-- Add mobile hamburger menu to Header
+**Linha 9 - Aumentar opacidade:**
+```tsx
+// De:
+<AnimatedShaderBackground opacity={0.25} className="z-0" />
 
-### Performance Optimizations
-- Add `loading="lazy"` to images below the fold
-- Use CSS `will-change` for animated elements
-- Implement `prefers-reduced-motion` media query fallbacks
-- Add intersection observer-based lazy animations
-
----
-
-## Technical Details
-
-### New Files to Create
-1. `src/components/FinalCTASection.tsx` - Emotional hero CTA section
-2. `src/components/DonationForm.tsx` - Multi-step form component
-
-### Files to Modify
-1. `src/pages/Index.tsx` - Add new sections after FAQ
-2. `src/index.css` - Add smooth scroll, floating label styles, mobile menu styles
-3. `src/components/Header.tsx` - Add mobile hamburger menu
-
-### Component Architecture
-
-```text
-DonationForm
-├── Progress Indicator (3 dots/bars)
-├── Step 1: PersonalInfoStep
-│   ├── FloatingLabelInput (Nome)
-│   ├── FloatingLabelInput (Email)
-│   ├── FloatingLabelInput (WhatsApp)
-│   └── FloatingLabelInput (CPF)
-├── Step 2: PreferencesStep
-│   ├── RadioGroup (Gênero)
-│   └── RadioGroup (Idade)
-├── Step 3: PaymentStep
-│   ├── PaymentMethodCards
-│   └── AmountSelector
-└── Navigation Buttons
+// Para:
+<AnimatedShaderBackground opacity={0.7} className="z-0" />
 ```
 
-### Validation Schema (Zod)
-- Name: required, min 3 chars, max 100 chars
-- Email: valid email format
-- WhatsApp: valid Brazilian phone
-- CPF: valid CPF format (11 digits)
-- Preferences: optional
-- Payment: required selection
-
-### CSS Additions
-- `.floating-label` class for animated labels
-- `.input-luminis` class for gold-bordered inputs
-- `@media (prefers-reduced-motion)` for accessibility
-- Mobile hamburger menu styles
-- `.scroll-smooth` behavior on html
-
----
-
-## Implementation Order
-1. Add smooth scroll and floating label CSS utilities
-2. Create FinalCTASection component
-3. Create DonationForm component with all 3 steps
-4. Update Header with mobile menu
-5. Integrate new sections into Index.tsx
-6. Add lazy loading and performance attributes
-
----
-
-## Page Structure After Implementation
-
-```text
-Header (fixed, with mobile menu)
-├── Hero Section
-├── Offerings Section  
-├── Math Section
-├── Maria Story Section
-├── Alissa Section
-├── Testimonial Carousel
-├── Urgency Section
-├── FAQ Section
-├── Final CTA Section (NEW)
-└── Donation Form (NEW)
+**Linhas 11-14 - Remover/reduzir decorações:**
+```tsx
+// Remover completamente ou reduzir drasticamente a opacidade:
+{/* Decorações removidas para não cobrir o shader */}
 ```
+
+**Linha 7 - Tornar seção transparente:**
+```tsx
+// De:
+<section className="relative min-h-screen pt-20 pb-12 px-4 sm:px-6 overflow-hidden">
+
+// Para:
+<section className="relative min-h-screen pt-20 pb-12 px-4 sm:px-6 overflow-hidden bg-transparent">
+```
+
+**Linhas 51, 59, 67 - Cards de estatísticas com glassmorphism:**
+```tsx
+// De:
+<div className="text-center p-2 sm:p-4 rounded-xl sm:rounded-2xl bg-cream-light/50">
+
+// Para:
+<div className="text-center p-2 sm:p-4 rounded-xl sm:rounded-2xl bg-white/20 backdrop-blur-md border border-white/30">
+```
+
+### Arquivo: `src/components/CTABox.tsx`
+- Adicionar `backdrop-blur` e reduzir opacidade do fundo
+- Usar glassmorphism para manter legibilidade
+
+### Arquivo: `src/index.css` (opcional)
+- Criar classe utilitária para overlay escuro sutil no hero
+- Garantir contraste do texto sobre o shader
+
+---
+
+## Resultado Esperado
+- Animação de shader claramente visível como fundo do hero
+- Conteúdo (texto, vídeo, CTA) continua legível com efeito glassmorphism
+- Visual moderno e impactante com o shader em destaque
+
