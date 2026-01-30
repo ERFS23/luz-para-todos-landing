@@ -24,7 +24,7 @@ const HeroSection = () => {
             <br />
             <span className="text-gradient-gold">brilhar</span>
           </h1>
-          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto px-2">
+          <p className="text-base sm:text-lg md:text-xl text-white/90 drop-shadow-md max-w-2xl mx-auto px-2">
             O Projeto LUMINIS leva luz, esperança e oportunidades para crianças
             órfãs em situação de vulnerabilidade em todo o Brasil.
           </p>
@@ -47,7 +47,7 @@ const HeroSection = () => {
                 <p className="font-serif text-xl sm:text-3xl md:text-4xl font-bold text-gradient-gold">
                   2.847
                 </p>
-                <p className="text-[10px] sm:text-sm text-muted-foreground mt-0.5 sm:mt-1">
+                <p className="text-[10px] sm:text-sm text-white/80 mt-0.5 sm:mt-1">
                   Crianças atendidas
                 </p>
               </div>
@@ -55,7 +55,7 @@ const HeroSection = () => {
                 <p className="font-serif text-xl sm:text-3xl md:text-4xl font-bold text-gradient-gold">
                   156
                 </p>
-                <p className="text-[10px] sm:text-sm text-muted-foreground mt-0.5 sm:mt-1">
+                <p className="text-[10px] sm:text-sm text-white/80 mt-0.5 sm:mt-1">
                   Abrigos parceiros
                 </p>
               </div>
@@ -63,7 +63,7 @@ const HeroSection = () => {
                 <p className="font-serif text-xl sm:text-3xl md:text-4xl font-bold text-gradient-gold">
                   98%
                 </p>
-                <p className="text-[10px] sm:text-sm text-muted-foreground mt-0.5 sm:mt-1">
+                <p className="text-[10px] sm:text-sm text-white/80 mt-0.5 sm:mt-1">
                   Vai direto às crianças
                 </p>
               </div>
@@ -79,7 +79,7 @@ const HeroSection = () => {
 
       {/* Scroll indicator - hidden on mobile */}
       <div className="hidden sm:flex absolute bottom-8 left-1/2 -translate-x-1/2 flex-col items-center gap-2 animate-bounce">
-        <span className="text-xs text-muted-foreground">Role para ver mais</span>
+        <span className="text-xs text-white/70">Role para ver mais</span>
         <svg
           className="w-5 h-5 text-gold"
           fill="none"
