@@ -2,10 +2,7 @@ import { Heart, Users, Sparkles } from "lucide-react";
 
 const CTABox = () => {
   return (
-    <div className="glass-card rounded-2xl sm:rounded-3xl p-5 sm:p-8 lg:animate-float">
-      {/* Decorative glow - hidden on mobile for performance */}
-      <div className="hidden sm:block absolute -top-10 -right-10 w-32 h-32 bg-gold/20 rounded-full blur-3xl" />
-      <div className="hidden sm:block absolute -bottom-10 -left-10 w-24 h-24 bg-amber/20 rounded-full blur-3xl" />
+    <div className="relative rounded-2xl sm:rounded-3xl p-5 sm:p-8 lg:animate-float bg-white/10 backdrop-blur-xl border border-white/20 shadow-2xl">
 
       {/* Content */}
       <div className="relative z-10 space-y-4 sm:space-y-6">
