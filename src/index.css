@@ -89,6 +89,21 @@
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
   body {
     @apply bg-background text-foreground antialiased;
     font-family: 'Inter', sans-serif;
@@ -190,6 +205,167 @@
 
   .btn-luminis:active {
     transform: translateY(0);
+  }
+
+  /* Floating label input */
+  .input-luminis {
+    @apply w-full px-4 py-4 text-base rounded-xl transition-all duration-300;
+    background: hsl(var(--cream-light));
+    border: 2px solid hsl(var(--border));
+    color: hsl(var(--foreground));
+    min-height: 56px;
+  }
+
+  .input-luminis:focus {
+    outline: none;
+    border-color: hsl(var(--gold));
+    box-shadow: 0 0 0 4px hsl(var(--gold) / 0.15);
+  }
+
+  .input-luminis::placeholder {
+    color: hsl(var(--muted-foreground));
+  }
+
+  .floating-label-group {
+    @apply relative;
+  }
+
+  .floating-label {
+    @apply absolute left-4 text-muted-foreground transition-all duration-200 pointer-events-none;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .floating-label-group:focus-within .floating-label,
+  .floating-label.active {
+    top: -8px;
+    left: 12px;
+    transform: translateY(0);
+    font-size: 0.75rem;
+    padding: 0 4px;
+    background: hsl(var(--cream-light));
+    color: hsl(var(--gold));
+  }
+
+  /* Mobile hamburger menu */
+  .hamburger-line {
+    @apply block w-6 h-0.5 rounded-full transition-all duration-300;
+    background: hsl(var(--foreground));
+  }
+
+  .hamburger-open .hamburger-line:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  .hamburger-open .hamburger-line:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger-open .hamburger-line:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+
+  /* Mobile menu overlay */
+  .mobile-menu {
+    @apply fixed inset-0 z-40;
+    background: hsl(var(--background) / 0.98);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
+  /* Radio card styles */
+  .radio-card {
+    @apply relative flex items-center gap-3 p-4 rounded-xl cursor-pointer transition-all duration-200;
+    background: hsl(var(--cream-light));
+    border: 2px solid hsl(var(--border));
+  }
+
+  .radio-card:hover {
+    border-color: hsl(var(--gold) / 0.5);
+  }
+
+  .radio-card.selected {
+    border-color: hsl(var(--gold));
+    background: hsl(var(--gold) / 0.1);
+  }
+
+  .radio-card .radio-indicator {
+    @apply w-5 h-5 rounded-full flex items-center justify-center;
+    border: 2px solid hsl(var(--border));
+  }
+
+  .radio-card.selected .radio-indicator {
+    border-color: hsl(var(--gold));
+    background: hsl(var(--gold));
+  }
+
+  .radio-card.selected .radio-indicator::after {
+    content: '';
+    @apply w-2 h-2 rounded-full;
+    background: hsl(var(--cream));
+  }
+
+  /* Payment method cards */
+  .payment-card {
+    @apply flex flex-col items-center justify-center gap-2 p-6 rounded-xl cursor-pointer transition-all duration-200;
+    background: hsl(var(--cream-light));
+    border: 2px solid hsl(var(--border));
+    min-height: 120px;
+  }
+
+  .payment-card:hover {
+    border-color: hsl(var(--gold) / 0.5);
+    transform: translateY(-2px);
+  }
+
+  .payment-card.selected {
+    border-color: hsl(var(--gold));
+    background: hsl(var(--gold) / 0.1);
+    box-shadow: 0 4px 20px hsl(var(--gold) / 0.2);
+  }
+
+  /* Amount selector */
+  .amount-card {
+    @apply flex flex-col items-center justify-center p-4 rounded-xl cursor-pointer transition-all duration-200;
+    background: hsl(var(--cream-light));
+    border: 2px solid hsl(var(--border));
+  }
+
+  .amount-card:hover {
+    border-color: hsl(var(--gold) / 0.5);
+  }
+
+  .amount-card.selected {
+    border-color: hsl(var(--gold));
+    background: hsl(var(--gold) / 0.1);
+    box-shadow: 0 4px 20px hsl(var(--gold) / 0.2);
+  }
+
+  /* Progress step indicator */
+  .progress-step {
+    @apply w-10 h-10 rounded-full flex items-center justify-center font-semibold transition-all duration-300;
+    background: hsl(var(--muted));
+    color: hsl(var(--muted-foreground));
+  }
+
+  .progress-step.active {
+    background: hsl(var(--gold));
+    color: hsl(var(--deep-brown));
+    box-shadow: 0 0 20px hsl(var(--gold) / 0.4);
+  }
+
+  .progress-step.completed {
+    background: hsl(var(--gold));
+    color: hsl(var(--deep-brown));
+  }
+
+  .progress-line {
+    @apply h-1 flex-1 rounded-full transition-all duration-500;
+    background: hsl(var(--muted));
+  }
+
+  .progress-line.filled {
+    background: hsl(var(--gold));
   }
 }
 

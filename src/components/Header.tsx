@@ -1,58 +1,127 @@
-import { Sun } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Sun, X } from "lucide-react";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const Header = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const isMobile = useIsMobile();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Close menu when clicking a link
+  const handleLinkClick = () => {
+    setIsMenuOpen(false);
+  };
+
+  const navLinks = [
+    { href: "#sobre", label: "Sobre" },
+    { href: "#impacto", label: "Nosso Impacto" },
+    { href: "#historias", label: "Histórias" },
+    { href: "#faq", label: "FAQ" },
+  ];
+
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 px-6 py-4">
-      <nav className="max-w-7xl mx-auto flex items-center justify-between">
-        {/* Logo */}
-        <a href="/" className="flex items-center gap-3 group">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-gold to-amber flex items-center justify-center glow-gold transition-all duration-300 group-hover:scale-105">
-            <Sun className="w-5 h-5 text-deep-brown" />
-          </div>
-          <div className="flex flex-col">
-            <span className="font-serif text-lg font-semibold text-foreground tracking-wide">
-              LUMINIS
-            </span>
-            <span className="text-xs text-muted-foreground -mt-0.5">
-              Projeto Social
-            </span>
-          </div>
-        </a>
+    <>
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 px-6 py-4 transition-all duration-300 ${
+          isScrolled ? "bg-background/95 backdrop-blur-md shadow-sm" : ""
+        }`}
+      >
+        <nav className="max-w-7xl mx-auto flex items-center justify-between">
+          {/* Logo */}
+          <a href="/" className="flex items-center gap-3 group">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-gold to-amber flex items-center justify-center glow-gold transition-all duration-300 group-hover:scale-105">
+              <Sun className="w-5 h-5 text-deep-brown" />
+            </div>
+            <div className="flex flex-col">
+              <span className="font-serif text-lg font-semibold text-foreground tracking-wide">
+                LUMINIS
+              </span>
+              <span className="text-xs text-muted-foreground -mt-0.5">
+                Projeto Social
+              </span>
+            </div>
+          </a>
 
-        {/* Navigation links */}
-        <div className="hidden md:flex items-center gap-8">
+          {/* Desktop Navigation links */}
+          <div className="hidden md:flex items-center gap-8">
+            {navLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+
+          {/* Desktop CTA */}
           <a
-            href="#sobre"
-            className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+            href="#donation-form"
+            className="hidden md:inline-flex btn-luminis py-2.5 px-5 text-sm"
           >
-            Sobre
+            Doar Agora
           </a>
-          <a
-            href="#impacto"
-            className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+
+          {/* Mobile Hamburger Button */}
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className={`md:hidden p-2 flex flex-col gap-1.5 ${isMenuOpen ? "hamburger-open" : ""}`}
+            aria-label="Toggle menu"
           >
-            Nosso Impacto
-          </a>
-          <a
-            href="#historias"
-            className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-          >
-            Histórias
-          </a>
-          <a
-            href="#faq"
-            className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-          >
-            FAQ
-          </a>
+            <span className="hamburger-line" />
+            <span className="hamburger-line" />
+            <span className="hamburger-line" />
+          </button>
+        </nav>
+      </header>
+
+      {/* Mobile Menu Overlay */}
+      {isMobile && isMenuOpen && (
+        <div className="mobile-menu animate-fade-in">
+          <div className="flex flex-col items-center justify-center h-full gap-8">
+            {/* Close button */}
+            <button
+              onClick={() => setIsMenuOpen(false)}
+              className="absolute top-6 right-6 p-2"
+              aria-label="Close menu"
+            >
+              <X className="w-6 h-6 text-foreground" />
+            </button>
+
+            {/* Mobile nav links */}
+            {navLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={handleLinkClick}
+                className="text-2xl font-serif text-foreground hover:text-gold transition-colors"
+              >
+                {link.label}
+              </a>
+            ))}
+
+            {/* Mobile CTA */}
+            <a
+              href="#donation-form"
+              onClick={handleLinkClick}
+              className="btn-luminis py-4 px-8 text-lg mt-4"
+            >
+              Doar Agora
+            </a>
+          </div>
         </div>
-
-        {/* CTA */}
-        <button className="btn-luminis py-2.5 px-5 text-sm">
-          Doar Agora
-        </button>
-      </nav>
-    </header>
+      )}
+    </>
   );
 };
 
