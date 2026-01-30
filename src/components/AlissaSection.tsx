@@ -56,7 +56,7 @@ const AlissaSection = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative py-12 sm:py-24 px-4 sm:px-6 bg-gradient-to-b from-background via-cream-light to-background overflow-hidden"
+      className="relative py-12 sm:py-24 px-4 sm:px-6 bg-gradient-to-b from-background via-muted/30 to-background overflow-hidden"
     >
       {/* Decorative elements - hidden on mobile */}
       <div className="hidden sm:block absolute top-20 left-1/4 w-64 h-64 bg-gold/10 rounded-full blur-3xl" />
@@ -111,7 +111,7 @@ const AlissaSection = () => {
           {stats.map((stat, index) => (
             <div
               key={index}
-              className={`text-center p-3 sm:p-6 rounded-xl sm:rounded-2xl bg-cream-light/80 backdrop-blur-sm border border-gold/10 transition-all duration-700 ${
+              className={`text-center p-3 sm:p-6 rounded-xl sm:rounded-2xl bg-card/80 backdrop-blur-sm border border-gold/10 transition-all duration-700 ${
                 isVisible
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-8"
