@@ -1,87 +1,38 @@
 
 
-# Plano: Tornar a Animação de Shader Visível no Hero
+# Plano: Melhorar Legibilidade dos Textos Pequenos no Hero
 
 ## Problema Identificado
-A animação WebGL do shader está praticamente invisível porque:
-1. A opacidade está muito baixa (25%)
-2. O fundo cream sólido da página cobre a animação
-3. Existem decorações de gradiente por cima do shader
-4. Os elementos do hero têm fundos opacos
+Os textos pequenos no Hero estão usando `text-muted-foreground` que tem baixo contraste sobre o fundo animado do shader. Os textos afetados são:
+
+1. **Subtítulo principal** (linha 27): "O Projeto LUMINIS leva luz..."
+2. **Labels das estatísticas** (linhas 50, 58, 66): "Crianças atendidas", "Abrigos parceiros", "Vai direto às crianças"
+3. **Indicador de scroll** (linha 82): "Role para ver mais"
 
 ---
 
 ## Solução
 
-### 1. Aumentar a Opacidade do Shader
-- Mudar a opacidade de `0.25` para `0.6` ou `0.7` para tornar a animação bem visível
-- Ajustar o z-index para garantir que fique visível mas atrás do conteúdo
-
-### 2. Tornar o Fundo do Hero Transparente
-- Remover o fundo sólido cream da seção hero
-- Aplicar um fundo escuro/transparente que permita ver o shader
-- Usar `bg-transparent` ou `bg-black/10` no hero
-
-### 3. Remover Decorações que Obstruem
-- Remover ou reduzir drasticamente os gradientes decorativos
-- Eliminar os círculos blur que cobrem o shader
-
-### 4. Adaptar Elementos para Transparência
-- Usar glassmorphism nos cards de estatísticas (backdrop-blur)
-- Tornar o CTABox semi-transparente
-- Manter legibilidade do texto com sombras sutis
+Trocar `text-muted-foreground` por cores mais visíveis com melhor contraste:
+- Usar `text-white` ou `text-white/90` para máximo contraste
+- Adicionar `drop-shadow` sutil para destacar do fundo animado
 
 ---
 
-## Alterações Técnicas
+## Alterações no Arquivo: `src/components/HeroSection.tsx`
 
-### Arquivo: `src/components/HeroSection.tsx`
-
-**Linha 9 - Aumentar opacidade:**
-```tsx
-// De:
-<AnimatedShaderBackground opacity={0.25} className="z-0" />
-
-// Para:
-<AnimatedShaderBackground opacity={0.7} className="z-0" />
-```
-
-**Linhas 11-14 - Remover/reduzir decorações:**
-```tsx
-// Remover completamente ou reduzir drasticamente a opacidade:
-{/* Decorações removidas para não cobrir o shader */}
-```
-
-**Linha 7 - Tornar seção transparente:**
-```tsx
-// De:
-<section className="relative min-h-screen pt-20 pb-12 px-4 sm:px-6 overflow-hidden">
-
-// Para:
-<section className="relative min-h-screen pt-20 pb-12 px-4 sm:px-6 overflow-hidden bg-transparent">
-```
-
-**Linhas 51, 59, 67 - Cards de estatísticas com glassmorphism:**
-```tsx
-// De:
-<div className="text-center p-2 sm:p-4 rounded-xl sm:rounded-2xl bg-cream-light/50">
-
-// Para:
-<div className="text-center p-2 sm:p-4 rounded-xl sm:rounded-2xl bg-white/20 backdrop-blur-md border border-white/30">
-```
-
-### Arquivo: `src/components/CTABox.tsx`
-- Adicionar `backdrop-blur` e reduzir opacidade do fundo
-- Usar glassmorphism para manter legibilidade
-
-### Arquivo: `src/index.css` (opcional)
-- Criar classe utilitária para overlay escuro sutil no hero
-- Garantir contraste do texto sobre o shader
+| Linha | De | Para |
+|-------|----|----|
+| 27 | `text-muted-foreground` | `text-white/90 drop-shadow-md` |
+| 50 | `text-muted-foreground` | `text-white/80` |
+| 58 | `text-muted-foreground` | `text-white/80` |
+| 66 | `text-muted-foreground` | `text-white/80` |
+| 82 | `text-muted-foreground` | `text-white/70` |
 
 ---
 
 ## Resultado Esperado
-- Animação de shader claramente visível como fundo do hero
-- Conteúdo (texto, vídeo, CTA) continua legível com efeito glassmorphism
-- Visual moderno e impactante com o shader em destaque
+- Todos os textos pequenos claramente legíveis sobre a animação de shader
+- Contraste adequado sem perder a elegância visual
+- Sombra sutil no subtítulo principal para garantir legibilidade
 
