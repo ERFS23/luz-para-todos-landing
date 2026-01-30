@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { Sun, X } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
+import ThemeToggle from "./ThemeToggle";
+
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -55,10 +57,13 @@ const Header = () => {
               </a>)}
           </div>
 
-          {/* Desktop CTA */}
-          <a href="#donation-form" className="hidden md:inline-flex btn-luminis py-2.5 px-5 text-sm">
-            Doar Agora
-          </a>
+          {/* Desktop CTA and Theme Toggle */}
+          <div className="hidden md:flex items-center gap-3">
+            <ThemeToggle />
+            <a href="#donation-form" className="btn-luminis py-2.5 px-5 text-sm">
+              Doar Agora
+            </a>
+          </div>
 
           {/* Mobile Hamburger Button */}
           <button onClick={() => setIsMenuOpen(!isMenuOpen)} className={`md:hidden p-2 flex flex-col gap-1.5 ${isMenuOpen ? "hamburger-open" : ""}`} aria-label="Toggle menu">
