@@ -1,17 +1,14 @@
 import { useState, useEffect } from "react";
 import { Sun, X } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
-
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const isMobile = useIsMobile();
-
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -20,21 +17,21 @@ const Header = () => {
   const handleLinkClick = () => {
     setIsMenuOpen(false);
   };
-
-  const navLinks = [
-    { href: "#sobre", label: "Sobre" },
-    { href: "#impacto", label: "Nosso Impacto" },
-    { href: "#historias", label: "Histórias" },
-    { href: "#faq", label: "FAQ" },
-  ];
-
-  return (
-    <>
-      <header
-        className={`fixed top-0 left-0 right-0 z-50 px-6 py-4 transition-all duration-300 ${
-          isScrolled ? "bg-background/95 backdrop-blur-md shadow-sm" : ""
-        }`}
-      >
+  const navLinks = [{
+    href: "#sobre",
+    label: "Sobre"
+  }, {
+    href: "#impacto",
+    label: "Nosso Impacto"
+  }, {
+    href: "#historias",
+    label: "Histórias"
+  }, {
+    href: "#faq",
+    label: "FAQ"
+  }];
+  return <>
+      <header className={`fixed top-0 left-0 right-0 z-50 px-6 py-4 transition-all duration-300 ${isScrolled ? "bg-background/95 backdrop-blur-md shadow-sm" : ""}`}>
         <nav className="max-w-7xl mx-auto flex items-center justify-between">
           {/* Logo */}
           <a href="/" className="flex items-center gap-3 group">
@@ -53,31 +50,18 @@ const Header = () => {
 
           {/* Desktop Navigation links */}
           <div className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-              >
+            {navLinks.map(link => <a key={link.href} href={link.href} className="text-sm font-medium transition-colors text-accent">
                 {link.label}
-              </a>
-            ))}
+              </a>)}
           </div>
 
           {/* Desktop CTA */}
-          <a
-            href="#donation-form"
-            className="hidden md:inline-flex btn-luminis py-2.5 px-5 text-sm"
-          >
+          <a href="#donation-form" className="hidden md:inline-flex btn-luminis py-2.5 px-5 text-sm">
             Doar Agora
           </a>
 
           {/* Mobile Hamburger Button */}
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className={`md:hidden p-2 flex flex-col gap-1.5 ${isMenuOpen ? "hamburger-open" : ""}`}
-            aria-label="Toggle menu"
-          >
+          <button onClick={() => setIsMenuOpen(!isMenuOpen)} className={`md:hidden p-2 flex flex-col gap-1.5 ${isMenuOpen ? "hamburger-open" : ""}`} aria-label="Toggle menu">
             <span className="hamburger-line" />
             <span className="hamburger-line" />
             <span className="hamburger-line" />
@@ -86,43 +70,24 @@ const Header = () => {
       </header>
 
       {/* Mobile Menu Overlay */}
-      {isMobile && isMenuOpen && (
-        <div className="mobile-menu animate-fade-in">
+      {isMobile && isMenuOpen && <div className="mobile-menu animate-fade-in">
           <div className="flex flex-col items-center justify-center h-full gap-8">
             {/* Close button */}
-            <button
-              onClick={() => setIsMenuOpen(false)}
-              className="absolute top-6 right-6 p-2"
-              aria-label="Close menu"
-            >
+            <button onClick={() => setIsMenuOpen(false)} className="absolute top-6 right-6 p-2" aria-label="Close menu">
               <X className="w-6 h-6 text-foreground" />
             </button>
 
             {/* Mobile nav links */}
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={handleLinkClick}
-                className="text-2xl font-serif text-foreground hover:text-gold transition-colors"
-              >
+            {navLinks.map(link => <a key={link.href} href={link.href} onClick={handleLinkClick} className="text-2xl font-serif text-foreground hover:text-gold transition-colors">
                 {link.label}
-              </a>
-            ))}
+              </a>)}
 
             {/* Mobile CTA */}
-            <a
-              href="#donation-form"
-              onClick={handleLinkClick}
-              className="btn-luminis py-4 px-8 text-lg mt-4"
-            >
+            <a href="#donation-form" onClick={handleLinkClick} className="btn-luminis py-4 px-8 text-lg mt-4">
               Doar Agora
             </a>
           </div>
-        </div>
-      )}
-    </>
-  );
+        </div>}
+    </>;
 };
-
 export default Header;

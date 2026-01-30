@@ -1,8 +1,6 @@
 import { Heart, Users, Sparkles } from "lucide-react";
-
 const CTABox = () => {
-  return (
-    <div className="relative rounded-2xl sm:rounded-3xl p-5 sm:p-8 lg:animate-float bg-white/10 backdrop-blur-xl border border-white/20 shadow-2xl">
+  return <div className="relative rounded-2xl sm:rounded-3xl p-5 sm:p-8 lg:animate-float bg-white/10 backdrop-blur-xl border border-white/20 shadow-2xl">
 
       {/* Content */}
       <div className="relative z-10 space-y-4 sm:space-y-6">
@@ -22,16 +20,16 @@ const CTABox = () => {
 
         {/* Price */}
         <div className="space-y-1">
-          <p className="text-muted-foreground text-xs sm:text-sm uppercase tracking-wider font-medium">
+          <p className="text-xs sm:text-sm uppercase tracking-wider font-medium text-primary-foreground">
             A partir de apenas
           </p>
           <div className="flex items-baseline gap-2">
             <span className="text-4xl sm:text-5xl font-serif font-bold text-gradient-gold">
               R$ 1,41
             </span>
-            <span className="text-muted-foreground text-base sm:text-lg">/dia</span>
+            <span className="text-base sm:text-lg text-primary">/dia</span>
           </div>
-          <p className="text-muted-foreground text-xs sm:text-sm">
+          <p className="text-xs sm:text-sm text-secondary-foreground">
             Menos que um café para transformar uma vida
           </p>
         </div>
@@ -50,13 +48,13 @@ const CTABox = () => {
 
         {/* Trust indicators */}
         <div className="flex items-center justify-center gap-4 sm:gap-6 pt-2 text-muted-foreground text-[10px] sm:text-xs">
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-1 text-accent">
             <svg className="w-3 h-3 sm:w-4 sm:h-4" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
             </svg>
             Pagamento seguro
           </div>
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-1 text-accent">
             <svg className="w-3 h-3 sm:w-4 sm:h-4" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
             </svg>
@@ -64,8 +62,6 @@ const CTABox = () => {
           </div>
         </div>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default CTABox;
