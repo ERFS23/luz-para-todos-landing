@@ -4,14 +4,9 @@ import AnimatedShaderBackground from "./ui/animated-shader-background";
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen pt-20 pb-12 px-4 sm:px-6 overflow-hidden">
-      {/* Animated shader background */}
-      <AnimatedShaderBackground opacity={0.25} className="z-0" />
-      
-      {/* Background decorations - hidden on mobile for performance */}
-      <div className="hidden sm:block absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-gold/5 to-transparent pointer-events-none z-[1]" />
-      <div className="hidden sm:block absolute top-20 left-10 w-72 h-72 bg-gold/10 rounded-full blur-3xl pointer-events-none z-[1]" />
-      <div className="hidden sm:block absolute bottom-20 right-20 w-96 h-96 bg-amber/10 rounded-full blur-3xl pointer-events-none z-[1]" />
+    <section className="relative min-h-screen pt-20 pb-12 px-4 sm:px-6 overflow-hidden bg-transparent">
+      {/* Animated shader background - high visibility */}
+      <AnimatedShaderBackground opacity={0.85} className="z-0" />
 
       <div className="max-w-7xl mx-auto">
         {/* Top tagline */}
@@ -48,7 +43,7 @@ const HeroSection = () => {
 
             {/* Stats below video */}
             <div className="grid grid-cols-3 gap-2 sm:gap-6 mt-4 sm:mt-8">
-              <div className="text-center p-2 sm:p-4 rounded-xl sm:rounded-2xl bg-cream-light/50">
+              <div className="text-center p-2 sm:p-4 rounded-xl sm:rounded-2xl bg-white/20 backdrop-blur-md border border-white/30">
                 <p className="font-serif text-xl sm:text-3xl md:text-4xl font-bold text-gradient-gold">
                   2.847
                 </p>
@@ -56,7 +51,7 @@ const HeroSection = () => {
                   Crianças atendidas
                 </p>
               </div>
-              <div className="text-center p-2 sm:p-4 rounded-xl sm:rounded-2xl bg-cream-light/50">
+              <div className="text-center p-2 sm:p-4 rounded-xl sm:rounded-2xl bg-white/20 backdrop-blur-md border border-white/30">
                 <p className="font-serif text-xl sm:text-3xl md:text-4xl font-bold text-gradient-gold">
                   156
                 </p>
@@ -64,7 +59,7 @@ const HeroSection = () => {
                   Abrigos parceiros
                 </p>
               </div>
-              <div className="text-center p-2 sm:p-4 rounded-xl sm:rounded-2xl bg-cream-light/50">
+              <div className="text-center p-2 sm:p-4 rounded-xl sm:rounded-2xl bg-white/20 backdrop-blur-md border border-white/30">
                 <p className="font-serif text-xl sm:text-3xl md:text-4xl font-bold text-gradient-gold">
                   98%
                 </p>
