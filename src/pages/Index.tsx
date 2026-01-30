@@ -7,6 +7,8 @@ import MathSection from "@/components/MathSection";
 import TestimonialCarousel from "@/components/TestimonialCarousel";
 import UrgencySection from "@/components/UrgencySection";
 import FAQSection from "@/components/FAQSection";
+import FinalCTASection from "@/components/FinalCTASection";
+import DonationForm from "@/components/DonationForm";
 
 const Index = () => {
   return (
@@ -21,6 +23,8 @@ const Index = () => {
         <TestimonialCarousel />
         <UrgencySection />
         <FAQSection />
+        <FinalCTASection />
+        <DonationForm />
       </main>
     </div>
   );
