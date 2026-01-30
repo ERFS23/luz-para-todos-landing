@@ -1,0 +1,137 @@
+import { useState } from 'react';
+import { Plus, Minus } from 'lucide-react';
+
+const faqs = [
+  {
+    question: 'Como funciona o apadrinhamento?',
+    answer: 'Ao se tornar padrinho ou madrinha, você contribui com R$ 21,20 por mês (apenas R$ 1,41 por dia). Esse valor é convertido em Bíblias ilustradas, cestas básicas e brinquedos que são entregues diretamente às crianças em abrigos parceiros. Você recebe atualizações mensais sobre o impacto da sua doação.',
+  },
+  {
+    question: 'Para onde vai minha doação?',
+    answer: 'Sua doação é 100% direcionada para a compra de materiais para as crianças. O Projeto LUMINIS opera com uma equipe 100% voluntária, garantindo que cada centavo chegue a quem mais precisa. Publicamos relatórios mensais de transparência em nosso site.',
+  },
+  {
+    question: 'Posso visitar os abrigos?',
+    answer: 'Sim! Organizamos visitas mensais aos abrigos parceiros para que padrinhos e madrinhas possam conhecer de perto o trabalho realizado. É uma experiência transformadora que fortalece ainda mais o vínculo com a causa.',
+  },
+  {
+    question: 'Posso cancelar a qualquer momento?',
+    answer: 'Absolutamente. Não há nenhum tipo de contrato ou compromisso de longo prazo. Você pode cancelar sua contribuição a qualquer momento, sem burocracia. Basta nos enviar uma mensagem.',
+  },
+  {
+    question: 'A doação é dedutível do Imposto de Renda?',
+    answer: 'Sim! O Projeto LUMINIS possui registro como OSCIP (Organização da Sociedade Civil de Interesse Público). Suas doações podem ser deduzidas do IR até o limite permitido por lei. Enviamos automaticamente o comprovante anual.',
+  },
+  {
+    question: 'Como sei que minha doação está chegando às crianças?',
+    answer: 'Enviamos relatórios mensais com fotos e vídeos das entregas. Além disso, você pode participar das visitas aos abrigos e ver pessoalmente o impacto. Nossa transparência é total: publicamos todas as notas fiscais e comprovantes de compra.',
+  },
+  {
+    question: 'Posso fazer uma doação única em vez de mensal?',
+    answer: 'Sim! Embora o apadrinhamento mensal nos ajude a planejar melhor as ações, aceitamos doações únicas de qualquer valor. Toda contribuição é bem-vinda e faz diferença na vida das crianças.',
+  },
+  {
+    question: 'Quais formas de pagamento são aceitas?',
+    answer: 'Aceitamos cartão de crédito (com opção de recorrência automática), PIX, boleto bancário e transferência bancária. Escolha a forma que for mais conveniente para você.',
+  },
+];
+
+const FAQSection = () => {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  const toggleFAQ = (index: number) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
+  return (
+    <section className="py-24 bg-background relative overflow-hidden">
+      {/* Background decorations */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 left-0 w-72 h-72 bg-secondary/5 rounded-full blur-3xl" />
+
+      <div className="container mx-auto px-4 relative z-10">
+        {/* Section Header */}
+        <div className="text-center mb-16">
+          <span className="text-secondary font-medium tracking-widest uppercase text-sm">
+            Tire Suas Dúvidas
+          </span>
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground mt-4 mb-6">
+            Perguntas <span className="text-gradient-gold">Frequentes</span>
+          </h2>
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+            Tudo que você precisa saber sobre o Projeto LUMINIS
+          </p>
+        </div>
+
+        {/* FAQ List */}
+        <div className="max-w-3xl mx-auto space-y-4">
+          {faqs.map((faq, index) => {
+            const isOpen = openIndex === index;
+            const isEven = index % 2 === 0;
+            
+            return (
+              <div
+                key={index}
+                className={`rounded-xl overflow-hidden border transition-all duration-300 ${
+                  isOpen 
+                    ? 'border-primary/30 shadow-lg shadow-primary/10' 
+                    : 'border-border/50'
+                } ${isEven ? 'bg-background' : 'bg-muted/30'}`}
+              >
+                <button
+                  onClick={() => toggleFAQ(index)}
+                  className="w-full flex items-center justify-between p-6 text-left"
+                >
+                  <span className={`font-semibold text-lg pr-4 transition-colors duration-300 ${
+                    isOpen ? 'text-primary' : 'text-foreground'
+                  }`}>
+                    {faq.question}
+                  </span>
+                  <div className={`
+                    w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0
+                    transition-all duration-300
+                    ${isOpen 
+                      ? 'bg-primary text-primary-foreground rotate-0' 
+                      : 'bg-primary/10 text-primary rotate-0'
+                    }
+                  `}>
+                    {isOpen ? (
+                      <Minus className="w-5 h-5" />
+                    ) : (
+                      <Plus className="w-5 h-5" />
+                    )}
+                  </div>
+                </button>
+                
+                <div 
+                  className={`overflow-hidden transition-all duration-300 ease-out ${
+                    isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+                  }`}
+                >
+                  <div className="px-6 pb-6">
+                    <div className="h-px bg-border/50 mb-4" />
+                    <p className="text-muted-foreground leading-relaxed">
+                      {faq.answer}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Contact CTA */}
+        <div className="text-center mt-12">
+          <p className="text-muted-foreground mb-4">
+            Ainda tem dúvidas? Fale com a gente!
+          </p>
+          <button className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-primary/30 text-primary hover:bg-primary/10 transition-all duration-300">
+            Entrar em Contato
+          </button>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default FAQSection;

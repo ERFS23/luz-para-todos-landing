@@ -4,6 +4,9 @@ import MariaStorySection from "@/components/MariaStorySection";
 import AlissaSection from "@/components/AlissaSection";
 import OfferingsSection from "@/components/OfferingsSection";
 import MathSection from "@/components/MathSection";
+import TestimonialCarousel from "@/components/TestimonialCarousel";
+import UrgencySection from "@/components/UrgencySection";
+import FAQSection from "@/components/FAQSection";
 
 const Index = () => {
   return (
@@ -15,6 +18,9 @@ const Index = () => {
         <MathSection />
         <MariaStorySection />
         <AlissaSection />
+        <TestimonialCarousel />
+        <UrgencySection />
+        <FAQSection />
       </main>
     </div>
   );
