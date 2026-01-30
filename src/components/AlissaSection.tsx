@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Calendar, GraduationCap, Home, Heart, Quote } from "lucide-react";
-import alissaPortrait from "@/assets/alissa-portrait.jpg";
+import eliasPortrait from "@/assets/elias-portrait.jpg";
 
 interface StatItem {
   icon: React.ReactNode;
@@ -73,7 +73,7 @@ const AlissaSection = () => {
             Conheça Nossa Equipe
           </span>
           <h2 className="font-serif text-4xl md:text-5xl font-semibold text-foreground">
-            Conheça <span className="text-gradient-gold">Alissa</span>
+            Conheça <span className="text-gradient-gold">Elias</span>
           </h2>
         </div>
 
@@ -91,8 +91,8 @@ const AlissaSection = () => {
             <div className="relative w-[300px] h-[300px] rounded-full p-1.5 bg-gradient-to-br from-gold via-amber to-gold">
               <div className="w-full h-full rounded-full overflow-hidden bg-cream">
                 <img
-                  src={alissaPortrait}
-                  alt="Alissa - Coordenadora de Voluntários"
+                  src={eliasPortrait}
+                  alt="Elias Serrano - Coordenador de Voluntários"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -100,7 +100,7 @@ const AlissaSection = () => {
 
             {/* Floating badge */}
             <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 px-6 py-2 rounded-full bg-gradient-to-r from-gold to-amber text-deep-brown font-semibold text-sm shadow-lg glow-gold whitespace-nowrap">
-              Coordenadora de Voluntários
+              Coordenador de Voluntários
             </div>
           </div>
         </div>
@@ -144,7 +144,7 @@ const AlissaSection = () => {
             <Quote className="absolute -bottom-6 -right-8 w-12 h-12 text-gold/30" />
           </div>
           <p className="mt-8 text-muted-foreground">
-            — Alissa Santos, estudante de Psicologia e voluntária desde 2020
+            — Elias Serrano, estudante de Psicologia e voluntário desde 2020
           </p>
         </div>
 
@@ -155,7 +155,7 @@ const AlissaSection = () => {
           }`}
         >
           <button className="btn-luminis">
-            Seja voluntário como a Alissa
+            Seja voluntário como o Elias
           </button>
         </div>
       </div>
