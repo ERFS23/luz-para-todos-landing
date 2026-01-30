@@ -44,27 +44,27 @@ const FAQSection = () => {
   };
 
   return (
-    <section className="py-24 bg-background relative overflow-hidden">
-      {/* Background decorations */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 left-0 w-72 h-72 bg-secondary/5 rounded-full blur-3xl" />
+    <section className="py-12 sm:py-24 bg-background relative overflow-hidden">
+      {/* Background decorations - hidden on mobile */}
+      <div className="hidden sm:block absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+      <div className="hidden sm:block absolute bottom-0 left-0 w-72 h-72 bg-secondary/5 rounded-full blur-3xl" />
 
       <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <span className="text-secondary font-medium tracking-widest uppercase text-sm">
+        <div className="text-center mb-8 sm:mb-16">
+          <span className="text-secondary font-medium tracking-widest uppercase text-xs sm:text-sm">
             Tire Suas Dúvidas
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mt-4 mb-6">
+          <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-foreground mt-3 sm:mt-4 mb-4 sm:mb-6">
             Perguntas <span className="text-gradient-gold">Frequentes</span>
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+          <p className="text-muted-foreground text-sm sm:text-lg max-w-2xl mx-auto px-2">
             Tudo que você precisa saber sobre o Projeto LUMINIS
           </p>
         </div>
 
         {/* FAQ List */}
-        <div className="max-w-3xl mx-auto space-y-4">
+        <div className="max-w-3xl mx-auto space-y-3 sm:space-y-4">
           {faqs.map((faq, index) => {
             const isOpen = openIndex === index;
             const isEven = index % 2 === 0;
@@ -72,7 +72,7 @@ const FAQSection = () => {
             return (
               <div
                 key={index}
-                className={`rounded-xl overflow-hidden border transition-all duration-300 ${
+                className={`rounded-lg sm:rounded-xl overflow-hidden border transition-all duration-300 ${
                   isOpen 
                     ? 'border-primary/30 shadow-lg shadow-primary/10' 
                     : 'border-border/50'
@@ -80,15 +80,15 @@ const FAQSection = () => {
               >
                 <button
                   onClick={() => toggleFAQ(index)}
-                  className="w-full flex items-center justify-between p-6 text-left"
+                  className="w-full flex items-center justify-between p-4 sm:p-6 text-left min-h-[56px]"
                 >
-                  <span className={`font-semibold text-lg pr-4 transition-colors duration-300 ${
+                  <span className={`font-semibold text-sm sm:text-lg pr-3 sm:pr-4 transition-colors duration-300 ${
                     isOpen ? 'text-primary' : 'text-foreground'
                   }`}>
                     {faq.question}
                   </span>
                   <div className={`
-                    w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0
+                    w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center flex-shrink-0
                     transition-all duration-300
                     ${isOpen 
                       ? 'bg-primary text-primary-foreground rotate-0' 
@@ -96,9 +96,9 @@ const FAQSection = () => {
                     }
                   `}>
                     {isOpen ? (
-                      <Minus className="w-5 h-5" />
+                      <Minus className="w-4 h-4 sm:w-5 sm:h-5" />
                     ) : (
-                      <Plus className="w-5 h-5" />
+                      <Plus className="w-4 h-4 sm:w-5 sm:h-5" />
                     )}
                   </div>
                 </button>
@@ -108,9 +108,9 @@ const FAQSection = () => {
                     isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
                   }`}
                 >
-                  <div className="px-6 pb-6">
-                    <div className="h-px bg-border/50 mb-4" />
-                    <p className="text-muted-foreground leading-relaxed">
+                  <div className="px-4 sm:px-6 pb-4 sm:pb-6">
+                    <div className="h-px bg-border/50 mb-3 sm:mb-4" />
+                    <p className="text-muted-foreground leading-relaxed text-sm sm:text-base">
                       {faq.answer}
                     </p>
                   </div>
@@ -121,11 +121,11 @@ const FAQSection = () => {
         </div>
 
         {/* Contact CTA */}
-        <div className="text-center mt-12">
-          <p className="text-muted-foreground mb-4">
+        <div className="text-center mt-8 sm:mt-12">
+          <p className="text-muted-foreground mb-3 sm:mb-4 text-sm sm:text-base">
             Ainda tem dúvidas? Fale com a gente!
           </p>
-          <button className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-primary/30 text-primary hover:bg-primary/10 transition-all duration-300">
+          <button className="inline-flex items-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 rounded-lg sm:rounded-xl border border-primary/30 text-primary hover:bg-primary/10 transition-all duration-300 text-sm sm:text-base min-h-[44px]">
             Entrar em Contato
           </button>
         </div>
