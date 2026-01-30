@@ -94,21 +94,21 @@ const TestimonialCarousel = () => {
   };
 
   return (
-    <section className="py-24 bg-gradient-to-b from-muted/30 to-background relative overflow-hidden">
-      {/* Background decorations */}
-      <div className="absolute top-1/4 left-0 w-72 h-72 bg-primary/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-secondary/5 rounded-full blur-3xl" />
+    <section className="py-12 sm:py-24 bg-gradient-to-b from-muted/30 to-background relative overflow-hidden">
+      {/* Background decorations - hidden on mobile */}
+      <div className="hidden sm:block absolute top-1/4 left-0 w-72 h-72 bg-primary/5 rounded-full blur-3xl" />
+      <div className="hidden sm:block absolute bottom-1/4 right-0 w-96 h-96 bg-secondary/5 rounded-full blur-3xl" />
 
       <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <span className="text-secondary font-medium tracking-widest uppercase text-sm">
+        <div className="text-center mb-8 sm:mb-16">
+          <span className="text-secondary font-medium tracking-widest uppercase text-xs sm:text-sm">
             Histórias Reais
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mt-4 mb-6">
+          <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-foreground mt-3 sm:mt-4 mb-4 sm:mb-6">
             Vozes que <span className="text-gradient-gold">Iluminam</span>
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+          <p className="text-muted-foreground text-sm sm:text-lg max-w-2xl mx-auto px-2">
             Conheça as pessoas que já fazem parte dessa corrente de luz
           </p>
         </div>
@@ -129,40 +129,41 @@ const TestimonialCarousel = () => {
               {testimonials.map((testimonial) => (
                 <div 
                   key={testimonial.id}
-                  className="w-full flex-shrink-0 px-4"
+                  className="w-full flex-shrink-0 px-2 sm:px-4"
                 >
-                  <div className="glass-card rounded-2xl p-8 md:p-12 text-center border border-primary/10">
+                  <div className="glass-card rounded-xl sm:rounded-2xl p-5 sm:p-8 md:p-12 text-center border border-primary/10">
                     {/* Photo */}
-                    <div className="relative inline-block mb-6">
-                      <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-primary/30 glow-gold">
+                    <div className="relative inline-block mb-4 sm:mb-6">
+                      <div className="w-16 h-16 sm:w-24 sm:h-24 rounded-full overflow-hidden border-2 sm:border-4 border-primary/30 glow-gold">
                         <img 
                           src={testimonial.image} 
                           alt={testimonial.name}
                           className="w-full h-full object-cover"
+                          loading="lazy"
                         />
                       </div>
                     </div>
 
                     {/* Stars */}
-                    <div className="flex justify-center gap-1 mb-6">
+                    <div className="flex justify-center gap-0.5 sm:gap-1 mb-4 sm:mb-6">
                       {[...Array(testimonial.rating)].map((_, i) => (
                         <Star 
                           key={i} 
-                          className="w-5 h-5 text-primary" 
+                          className="w-4 h-4 sm:w-5 sm:h-5 text-primary" 
                           fill="hsl(var(--primary))"
                         />
                       ))}
                     </div>
 
                     {/* Quote */}
-                    <blockquote className="text-xl md:text-2xl text-foreground leading-relaxed mb-6 italic">
+                    <blockquote className="text-base sm:text-xl md:text-2xl text-foreground leading-relaxed mb-4 sm:mb-6 italic px-2">
                       "{testimonial.quote}"
                     </blockquote>
 
                     {/* Attribution */}
                     <div>
-                      <p className="font-semibold text-foreground">{testimonial.name}</p>
-                      <p className="text-muted-foreground text-sm">{testimonial.role}</p>
+                      <p className="font-semibold text-foreground text-sm sm:text-base">{testimonial.name}</p>
+                      <p className="text-muted-foreground text-xs sm:text-sm">{testimonial.role}</p>
                     </div>
                   </div>
                 </div>
@@ -170,33 +171,33 @@ const TestimonialCarousel = () => {
             </div>
           </div>
 
-          {/* Navigation Arrows */}
+          {/* Navigation Arrows - Hidden on mobile, use swipe */}
           <button
             onClick={() => { prevSlide(); setIsAutoPlaying(false); }}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-12 w-12 h-12 rounded-full glass-card border border-primary/20 flex items-center justify-center text-primary hover:glow-gold transition-all duration-300"
+            className="hidden sm:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-12 w-10 h-10 sm:w-12 sm:h-12 rounded-full glass-card border border-primary/20 items-center justify-center text-primary hover:glow-gold transition-all duration-300"
             aria-label="Anterior"
           >
-            <ChevronLeft className="w-6 h-6" />
+            <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
           </button>
           <button
             onClick={() => { nextSlide(); setIsAutoPlaying(false); }}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-12 w-12 h-12 rounded-full glass-card border border-primary/20 flex items-center justify-center text-primary hover:glow-gold transition-all duration-300"
+            className="hidden sm:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-12 w-10 h-10 sm:w-12 sm:h-12 rounded-full glass-card border border-primary/20 items-center justify-center text-primary hover:glow-gold transition-all duration-300"
             aria-label="Próximo"
           >
-            <ChevronRight className="w-6 h-6" />
+            <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
           </button>
         </div>
 
         {/* Dots */}
-        <div className="flex justify-center gap-2 mt-8">
+        <div className="flex justify-center gap-1.5 sm:gap-2 mt-6 sm:mt-8">
           {testimonials.map((_, index) => (
             <button
               key={index}
               onClick={() => { setCurrentIndex(index); setIsAutoPlaying(false); }}
-              className={`w-2 h-2 rounded-full transition-all duration-300 ${
+              className={`h-2 rounded-full transition-all duration-300 ${
                 index === currentIndex 
-                  ? 'w-8 bg-primary' 
-                  : 'bg-primary/30 hover:bg-primary/50'
+                  ? 'w-6 sm:w-8 bg-primary' 
+                  : 'w-2 bg-primary/30 hover:bg-primary/50'
               }`}
               aria-label={`Ir para depoimento ${index + 1}`}
             />

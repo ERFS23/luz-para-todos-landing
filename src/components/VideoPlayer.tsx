@@ -72,23 +72,24 @@ const VideoPlayer = () => {
         {/* Decorative overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-deep-brown/60 via-transparent to-transparent pointer-events-none" />
 
-        {/* Center play button */}
+        {/* Center play button - larger touch target on mobile */}
         {!isPlaying && (
           <button
             onClick={togglePlay}
             className="absolute inset-0 flex items-center justify-center group/play"
+            aria-label="Reproduzir vídeo"
           >
-            <div className="w-24 h-24 rounded-full bg-gold/90 backdrop-blur-sm flex items-center justify-center transition-all duration-300 group-hover/play:scale-110 glow-gold animate-pulse-glow">
-              <Play className="w-10 h-10 text-deep-brown ml-1" fill="currentColor" />
+            <div className="w-16 h-16 sm:w-24 sm:h-24 rounded-full bg-gold/90 backdrop-blur-sm flex items-center justify-center transition-all duration-300 active:scale-95 sm:group-hover/play:scale-110 glow-gold sm:animate-pulse-glow">
+              <Play className="w-7 h-7 sm:w-10 sm:h-10 text-deep-brown ml-0.5 sm:ml-1" fill="currentColor" />
             </div>
           </button>
         )}
 
-        {/* Custom controls */}
-        <div className="video-controls opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          {/* Progress bar */}
+        {/* Custom controls - always visible on mobile when playing */}
+        <div className={`video-controls ${isPlaying ? 'opacity-100 sm:opacity-0 sm:group-hover:opacity-100' : 'opacity-0'} transition-opacity duration-300`}>
+          {/* Progress bar - taller on mobile for easier touch */}
           <div
-            className="w-full h-1 bg-cream/20 rounded-full mb-4 cursor-pointer overflow-hidden"
+            className="w-full h-2 sm:h-1 bg-cream/20 rounded-full mb-3 sm:mb-4 cursor-pointer overflow-hidden"
             onClick={handleProgressClick}
           >
             <div
@@ -97,12 +98,13 @@ const VideoPlayer = () => {
             />
           </div>
 
-          {/* Control buttons */}
+          {/* Control buttons - larger on mobile */}
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 sm:gap-3">
               <button
                 onClick={togglePlay}
-                className="w-10 h-10 rounded-full bg-gold/20 hover:bg-gold/40 flex items-center justify-center transition-colors"
+                className="w-11 h-11 sm:w-10 sm:h-10 rounded-full bg-gold/20 hover:bg-gold/40 active:bg-gold/50 flex items-center justify-center transition-colors"
+                aria-label={isPlaying ? "Pausar" : "Reproduzir"}
               >
                 {isPlaying ? (
                   <Pause className="w-5 h-5 text-cream" />
@@ -113,7 +115,8 @@ const VideoPlayer = () => {
 
               <button
                 onClick={toggleMute}
-                className="w-10 h-10 rounded-full bg-gold/20 hover:bg-gold/40 flex items-center justify-center transition-colors"
+                className="w-11 h-11 sm:w-10 sm:h-10 rounded-full bg-gold/20 hover:bg-gold/40 active:bg-gold/50 flex items-center justify-center transition-colors"
+                aria-label={isMuted ? "Ativar som" : "Silenciar"}
               >
                 {isMuted ? (
                   <VolumeX className="w-5 h-5 text-cream" />
@@ -125,7 +128,8 @@ const VideoPlayer = () => {
 
             <button
               onClick={toggleFullscreen}
-              className="w-10 h-10 rounded-full bg-gold/20 hover:bg-gold/40 flex items-center justify-center transition-colors"
+              className="w-11 h-11 sm:w-10 sm:h-10 rounded-full bg-gold/20 hover:bg-gold/40 active:bg-gold/50 flex items-center justify-center transition-colors"
+              aria-label="Tela cheia"
             >
               <Maximize className="w-5 h-5 text-cream" />
             </button>

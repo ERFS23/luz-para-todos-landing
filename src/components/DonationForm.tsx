@@ -161,11 +161,11 @@ const DonationForm = () => {
   ];
 
   return (
-    <section id="donation-form" className="py-20 bg-cream-light relative overflow-hidden">
+    <section id="donation-form" className="py-12 sm:py-20 bg-cream-light relative overflow-hidden">
       {/* Confetti effect */}
       {showConfetti && (
         <div className="fixed inset-0 z-50 pointer-events-none">
-          {[...Array(50)].map((_, i) => (
+          {[...Array(30)].map((_, i) => (
             <div
               key={i}
               className="absolute animate-bounce"
@@ -176,7 +176,7 @@ const DonationForm = () => {
                 animationDuration: `${2 + Math.random() * 2}s`,
               }}
             >
-              <Sparkles className="w-6 h-6 text-gold" />
+              <Sparkles className="w-4 h-4 sm:w-6 sm:h-6 text-gold" />
             </div>
           ))}
         </div>
@@ -190,35 +190,35 @@ const DonationForm = () => {
           }`}
         >
           {/* Header */}
-          <div className="text-center mb-10">
-            <span className="inline-block px-4 py-1.5 rounded-full bg-gold/20 text-amber text-sm font-medium mb-4">
+          <div className="text-center mb-6 sm:mb-10">
+            <span className="inline-block px-3 py-1 sm:px-4 sm:py-1.5 rounded-full bg-gold/20 text-amber text-xs sm:text-sm font-medium mb-3 sm:mb-4">
               Seja um padrinho
             </span>
-            <h2 className="font-serif text-3xl md:text-4xl text-deep-brown mb-3">
+            <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl text-deep-brown mb-2 sm:mb-3">
               Complete seu <span className="text-gradient-gold">apadrinhamento</span>
             </h2>
-            <p className="text-muted-foreground">
+            <p className="text-muted-foreground text-sm sm:text-base">
               Preencha os dados abaixo para transformar uma vida
             </p>
           </div>
 
           {/* Progress Indicator */}
-          <div className="flex items-center justify-center gap-2 mb-10">
+          <div className="flex items-center justify-center gap-1.5 sm:gap-2 mb-6 sm:mb-10">
             {[1, 2, 3].map((num, index) => (
               <div key={num} className="flex items-center">
                 <div
                   className={cn(
-                    "progress-step",
+                    "progress-step w-8 h-8 sm:w-10 sm:h-10 text-sm sm:text-base",
                     step === num && "active",
                     step > num && "completed"
                   )}
                 >
-                  {step > num ? <Check className="w-5 h-5" /> : num}
+                  {step > num ? <Check className="w-4 h-4 sm:w-5 sm:h-5" /> : num}
                 </div>
                 {index < 2 && (
                   <div
                     className={cn(
-                      "progress-line w-16 md:w-24 mx-2",
+                      "progress-line w-8 sm:w-16 md:w-24 mx-1 sm:mx-2",
                       step > num && "filled"
                     )}
                   />
@@ -228,11 +228,11 @@ const DonationForm = () => {
           </div>
 
           {/* Form Card */}
-          <div className="glass-card rounded-3xl p-6 md:p-10">
+          <div className="glass-card rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-10">
             {/* Step 1: Personal Info */}
             {step === 1 && (
-              <div className="space-y-5 animate-fade-in">
-                <h3 className="font-serif text-xl text-deep-brown mb-6">
+              <div className="space-y-4 sm:space-y-5 animate-fade-in">
+                <h3 className="font-serif text-lg sm:text-xl text-deep-brown mb-4 sm:mb-6">
                   Seus dados pessoais
                 </h3>
 
@@ -241,11 +241,11 @@ const DonationForm = () => {
                     type="text"
                     value={formData.nome}
                     onChange={(e) => handleInputChange("nome", e.target.value)}
-                    className={cn("input-luminis", errors.nome && "border-destructive")}
+                    className={cn("input-luminis text-base", errors.nome && "border-destructive")}
                     placeholder="Nome completo"
                   />
                   {errors.nome && (
-                    <p className="text-destructive text-sm mt-1">{errors.nome}</p>
+                    <p className="text-destructive text-xs sm:text-sm mt-1">{errors.nome}</p>
                   )}
                 </div>
 
@@ -254,11 +254,11 @@ const DonationForm = () => {
                     type="email"
                     value={formData.email}
                     onChange={(e) => handleInputChange("email", e.target.value)}
-                    className={cn("input-luminis", errors.email && "border-destructive")}
+                    className={cn("input-luminis text-base", errors.email && "border-destructive")}
                     placeholder="E-mail"
                   />
                   {errors.email && (
-                    <p className="text-destructive text-sm mt-1">{errors.email}</p>
+                    <p className="text-destructive text-xs sm:text-sm mt-1">{errors.email}</p>
                   )}
                 </div>
 
@@ -267,11 +267,11 @@ const DonationForm = () => {
                     type="tel"
                     value={formData.whatsapp}
                     onChange={(e) => handleInputChange("whatsapp", e.target.value)}
-                    className={cn("input-luminis", errors.whatsapp && "border-destructive")}
+                    className={cn("input-luminis text-base", errors.whatsapp && "border-destructive")}
                     placeholder="WhatsApp (00) 00000-0000"
                   />
                   {errors.whatsapp && (
-                    <p className="text-destructive text-sm mt-1">{errors.whatsapp}</p>
+                    <p className="text-destructive text-xs sm:text-sm mt-1">{errors.whatsapp}</p>
                   )}
                 </div>
 
@@ -280,11 +280,11 @@ const DonationForm = () => {
                     type="text"
                     value={formData.cpf}
                     onChange={(e) => handleInputChange("cpf", e.target.value)}
-                    className={cn("input-luminis", errors.cpf && "border-destructive")}
+                    className={cn("input-luminis text-base", errors.cpf && "border-destructive")}
                     placeholder="CPF 000.000.000-00"
                   />
                   {errors.cpf && (
-                    <p className="text-destructive text-sm mt-1">{errors.cpf}</p>
+                    <p className="text-destructive text-xs sm:text-sm mt-1">{errors.cpf}</p>
                   )}
                 </div>
               </div>
@@ -292,12 +292,12 @@ const DonationForm = () => {
 
             {/* Step 2: Preferences */}
             {step === 2 && (
-              <div className="space-y-8 animate-fade-in">
+              <div className="space-y-6 sm:space-y-8 animate-fade-in">
                 <div>
-                  <h3 className="font-serif text-xl text-deep-brown mb-4">
+                  <h3 className="font-serif text-lg sm:text-xl text-deep-brown mb-3 sm:mb-4">
                     Preferência de gênero
                   </h3>
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                  <div className="grid grid-cols-1 gap-2 sm:grid-cols-3 sm:gap-3">
                     {[
                       { value: "menino", label: "Menino" },
                       { value: "menina", label: "Menina" },
@@ -307,22 +307,22 @@ const DonationForm = () => {
                         key={option.value}
                         onClick={() => handleInputChange("genero", option.value)}
                         className={cn(
-                          "radio-card",
+                          "radio-card min-h-[52px]",
                           formData.genero === option.value && "selected"
                         )}
                       >
                         <div className="radio-indicator" />
-                        <span className="font-medium text-deep-brown">{option.label}</span>
+                        <span className="font-medium text-deep-brown text-sm sm:text-base">{option.label}</span>
                       </div>
                     ))}
                   </div>
                 </div>
 
                 <div>
-                  <h3 className="font-serif text-xl text-deep-brown mb-4">
+                  <h3 className="font-serif text-lg sm:text-xl text-deep-brown mb-3 sm:mb-4">
                     Faixa etária
                   </h3>
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                  <div className="grid grid-cols-2 gap-2 sm:grid-cols-4 sm:gap-3">
                     {[
                       { value: "0-3", label: "0-3 anos" },
                       { value: "4-7", label: "4-7 anos" },
@@ -333,12 +333,12 @@ const DonationForm = () => {
                         key={option.value}
                         onClick={() => handleInputChange("idade", option.value)}
                         className={cn(
-                          "radio-card",
+                          "radio-card min-h-[52px]",
                           formData.idade === option.value && "selected"
                         )}
                       >
                         <div className="radio-indicator" />
-                        <span className="font-medium text-deep-brown text-sm">{option.label}</span>
+                        <span className="font-medium text-deep-brown text-xs sm:text-sm">{option.label}</span>
                       </div>
                     ))}
                   </div>
@@ -348,12 +348,12 @@ const DonationForm = () => {
 
             {/* Step 3: Payment */}
             {step === 3 && (
-              <div className="space-y-8 animate-fade-in">
+              <div className="space-y-6 sm:space-y-8 animate-fade-in">
                 <div>
-                  <h3 className="font-serif text-xl text-deep-brown mb-4">
+                  <h3 className="font-serif text-lg sm:text-xl text-deep-brown mb-3 sm:mb-4">
                     Método de pagamento
                   </h3>
-                  <div className="grid grid-cols-3 gap-3">
+                  <div className="grid grid-cols-3 gap-2 sm:gap-3">
                     {[
                       { value: "cartao", label: "Cartão", icon: CreditCard },
                       { value: "pix", label: "PIX", icon: QrCode },
@@ -363,28 +363,28 @@ const DonationForm = () => {
                         key={option.value}
                         onClick={() => handleInputChange("metodo", option.value)}
                         className={cn(
-                          "payment-card",
+                          "payment-card min-h-[80px] sm:min-h-[120px] p-3 sm:p-6",
                           formData.metodo === option.value && "selected"
                         )}
                       >
                         <option.icon className={cn(
-                          "w-8 h-8",
+                          "w-6 h-6 sm:w-8 sm:h-8",
                           formData.metodo === option.value ? "text-gold" : "text-muted-foreground"
                         )} />
-                        <span className="font-medium text-deep-brown text-sm">{option.label}</span>
+                        <span className="font-medium text-deep-brown text-xs sm:text-sm">{option.label}</span>
                       </div>
                     ))}
                   </div>
                   {errors.metodo && (
-                    <p className="text-destructive text-sm mt-2">{errors.metodo}</p>
+                    <p className="text-destructive text-xs sm:text-sm mt-2">{errors.metodo}</p>
                   )}
                 </div>
 
                 <div>
-                  <h3 className="font-serif text-xl text-deep-brown mb-4">
+                  <h3 className="font-serif text-lg sm:text-xl text-deep-brown mb-3 sm:mb-4">
                     Valor mensal
                   </h3>
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                  <div className="grid grid-cols-2 gap-2 sm:grid-cols-4 sm:gap-3">
                     {amountOptions.map((option) => (
                       <div
                         key={option.value}
@@ -393,12 +393,12 @@ const DonationForm = () => {
                           handleInputChange("valorCustom", "");
                         }}
                         className={cn(
-                          "amount-card",
+                          "amount-card min-h-[60px] sm:min-h-[auto]",
                           formData.valor === option.value && !formData.valorCustom && "selected"
                         )}
                       >
-                        <span className="font-bold text-lg text-deep-brown">{option.label}</span>
-                        <span className="text-xs text-muted-foreground">{option.description}</span>
+                        <span className="font-bold text-sm sm:text-lg text-deep-brown">{option.label}</span>
+                        <span className="text-[10px] sm:text-xs text-muted-foreground">{option.description}</span>
                       </div>
                     ))}
                     <div
@@ -407,22 +407,22 @@ const DonationForm = () => {
                         handleInputChange("valorCustom", "1");
                       }}
                       className={cn(
-                        "amount-card",
+                        "amount-card min-h-[60px] sm:min-h-[auto]",
                         formData.valorCustom && "selected"
                       )}
                     >
-                      <span className="font-bold text-deep-brown">Outro</span>
-                      <span className="text-xs text-muted-foreground">valor</span>
+                      <span className="font-bold text-sm sm:text-base text-deep-brown">Outro</span>
+                      <span className="text-[10px] sm:text-xs text-muted-foreground">valor</span>
                     </div>
                   </div>
                   
                   {formData.valorCustom && (
-                    <div className="mt-4">
+                    <div className="mt-3 sm:mt-4">
                       <input
                         type="number"
                         value={formData.valor || ""}
                         onChange={(e) => handleInputChange("valor", parseFloat(e.target.value) || 0)}
-                        className="input-luminis"
+                        className="input-luminis text-base"
                         placeholder="Digite o valor desejado"
                         min="1"
                       />
@@ -433,13 +433,13 @@ const DonationForm = () => {
             )}
 
             {/* Navigation Buttons */}
-            <div className="flex gap-4 mt-10">
+            <div className="flex gap-3 sm:gap-4 mt-6 sm:mt-10">
               {step > 1 && (
                 <button
                   onClick={prevStep}
-                  className="flex-1 py-4 px-6 rounded-xl border-2 border-border text-deep-brown font-semibold hover:bg-muted/50 transition-all duration-300 flex items-center justify-center gap-2"
+                  className="flex-1 py-3 sm:py-4 px-4 sm:px-6 rounded-xl border-2 border-border text-deep-brown font-semibold hover:bg-muted/50 transition-all duration-300 flex items-center justify-center gap-2 text-sm sm:text-base min-h-[52px]"
                 >
-                  <ChevronLeft className="w-5 h-5" />
+                  <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
                   Voltar
                 </button>
               )}
@@ -447,25 +447,25 @@ const DonationForm = () => {
               {step < 3 ? (
                 <button
                   onClick={nextStep}
-                  className="flex-1 btn-luminis py-4"
+                  className="flex-1 btn-luminis py-3 sm:py-4 text-sm sm:text-base min-h-[52px]"
                 >
                   Próximo
-                  <ChevronRight className="w-5 h-5 ml-2" />
+                  <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
                 </button>
               ) : (
                 <button
                   onClick={handleSubmit}
-                  className="flex-1 btn-luminis py-4 group"
+                  className="flex-1 btn-luminis py-3 sm:py-4 group text-sm sm:text-base min-h-[52px]"
                 >
-                  <Heart className="w-5 h-5 mr-2 transition-transform group-hover:scale-110" />
-                  Confirmar Apadrinhamento
+                  <Heart className="w-4 h-4 sm:w-5 sm:h-5 mr-2 transition-transform group-hover:scale-110" />
+                  Confirmar
                 </button>
               )}
             </div>
           </div>
 
           {/* Security note */}
-          <p className="text-center text-sm text-muted-foreground mt-6">
+          <p className="text-center text-xs sm:text-sm text-muted-foreground mt-4 sm:mt-6">
             🔒 Seus dados estão protegidos e nunca serão compartilhados
           </p>
         </div>

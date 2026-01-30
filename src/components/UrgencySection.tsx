@@ -50,12 +50,12 @@ const UrgencySection = () => {
   return (
     <section 
       ref={sectionRef}
-      className="py-20 relative overflow-hidden"
+      className="py-12 sm:py-20 relative overflow-hidden"
       style={{ background: 'linear-gradient(135deg, hsl(20 45% 10%) 0%, hsl(20 45% 6%) 100%)' }}
     >
-      {/* Animated background particles */}
+      {/* Animated background particles - fewer on mobile */}
       <div className="absolute inset-0 overflow-hidden">
-        {[...Array(20)].map((_, i) => (
+        {[...Array(10)].map((_, i) => (
           <div
             key={i}
             className="absolute w-1 h-1 bg-primary/20 rounded-full animate-pulse"
@@ -71,18 +71,18 @@ const UrgencySection = () => {
 
       <div className="container mx-auto px-4 relative z-10">
         {/* Main Content */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-8 sm:mb-12">
           <div 
-            className={`inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/20 border border-secondary/30 text-secondary mb-6 transition-all duration-700 ${
+            className={`inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-secondary/20 border border-secondary/30 text-secondary mb-4 sm:mb-6 transition-all duration-700 ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'
             }`}
           >
-            <Clock className="w-4 h-4 animate-pulse" />
-            <span className="text-sm font-medium">Vagas limitadas este mês</span>
+            <Clock className="w-3 h-3 sm:w-4 sm:h-4 animate-pulse" />
+            <span className="text-xs sm:text-sm font-medium">Vagas limitadas este mês</span>
           </div>
 
           <h2 
-            className={`text-4xl md:text-6xl font-bold mb-6 transition-all duration-700 delay-100 ${
+            className={`text-2xl sm:text-4xl md:text-6xl font-bold mb-4 sm:mb-6 transition-all duration-700 delay-100 ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
             }`}
             style={{ color: 'hsl(36 100% 96%)' }}
@@ -93,7 +93,7 @@ const UrgencySection = () => {
           </h2>
 
           <p 
-            className={`text-lg md:text-xl max-w-2xl mx-auto mb-12 transition-all duration-700 delay-200 ${
+            className={`text-sm sm:text-lg md:text-xl max-w-2xl mx-auto mb-8 sm:mb-12 px-2 transition-all duration-700 delay-200 ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
             }`}
             style={{ color: 'hsl(36 40% 70%)' }}
@@ -104,21 +104,21 @@ const UrgencySection = () => {
 
         {/* Progress Bar */}
         <div 
-          className={`max-w-3xl mx-auto mb-12 transition-all duration-700 delay-300 ${
+          className={`max-w-3xl mx-auto mb-8 sm:mb-12 transition-all duration-700 delay-300 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
           }`}
         >
-          <div className="flex justify-between items-center mb-3">
-            <span style={{ color: 'hsl(36 40% 70%)' }} className="text-sm">
+          <div className="flex justify-between items-center mb-2 sm:mb-3">
+            <span style={{ color: 'hsl(36 40% 70%)' }} className="text-xs sm:text-sm">
               Crianças apadrinhadas
             </span>
-            <span className="text-primary font-semibold">
+            <span className="text-primary font-semibold text-xs sm:text-base">
               77 de 100
             </span>
           </div>
           
           <div 
-            className="h-4 rounded-full overflow-hidden"
+            className="h-3 sm:h-4 rounded-full overflow-hidden"
             style={{ background: 'hsl(20 30% 20%)' }}
           >
             <div 
@@ -139,14 +139,14 @@ const UrgencySection = () => {
             </div>
           </div>
 
-          <div className="flex justify-between items-center mt-3">
-            <div className="flex items-center gap-2">
-              <Users className="w-4 h-4 text-primary" />
-              <span style={{ color: 'hsl(36 40% 70%)' }} className="text-sm">
+          <div className="flex justify-between items-center mt-2 sm:mt-3">
+            <div className="flex items-center gap-1.5 sm:gap-2">
+              <Users className="w-3 h-3 sm:w-4 sm:h-4 text-primary" />
+              <span style={{ color: 'hsl(36 40% 70%)' }} className="text-xs sm:text-sm">
                 23 vagas restantes
               </span>
             </div>
-            <span className="text-secondary text-sm font-medium animate-pulse">
+            <span className="text-secondary text-xs sm:text-sm font-medium animate-pulse">
               Esgotando rápido!
             </span>
           </div>
@@ -154,33 +154,33 @@ const UrgencySection = () => {
 
         {/* Live Notification Ticker */}
         <div 
-          className={`max-w-md mx-auto mb-12 transition-all duration-700 delay-400 ${
+          className={`max-w-md mx-auto mb-8 sm:mb-12 transition-all duration-700 delay-400 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
           }`}
         >
           <div 
-            className="rounded-xl p-4 border flex items-center gap-4 overflow-hidden"
+            className="rounded-lg sm:rounded-xl p-3 sm:p-4 border flex items-center gap-3 sm:gap-4 overflow-hidden"
             style={{ 
               background: 'hsl(20 30% 15% / 0.8)',
               borderColor: 'hsl(var(--primary) / 0.3)',
             }}
           >
-            <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
-              <Heart className="w-5 h-5 text-primary" fill="hsl(var(--primary))" />
+            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+              <Heart className="w-4 h-4 sm:w-5 sm:h-5 text-primary" fill="hsl(var(--primary))" />
             </div>
-            <div className="overflow-hidden flex-1">
+            <div className="overflow-hidden flex-1 min-w-0">
               <div 
                 className="transition-all duration-500"
                 key={currentNotification}
                 style={{ animation: 'slideIn 0.5s ease-out' }}
               >
-                <p style={{ color: 'hsl(36 100% 96%)' }} className="font-medium">
+                <p style={{ color: 'hsl(36 100% 96%)' }} className="font-medium text-sm sm:text-base truncate">
                   {notifications[currentNotification].name}{' '}
                   <span style={{ color: 'hsl(36 40% 70%)' }}>
                     {notifications[currentNotification].action}
                   </span>
                 </p>
-                <p className="text-sm text-primary">
+                <p className="text-xs sm:text-sm text-primary">
                   há {notifications[currentNotification].time}
                 </p>
               </div>
@@ -195,10 +195,10 @@ const UrgencySection = () => {
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
           }`}
         >
-          <button className="btn-luminis text-lg px-12 py-5">
+          <a href="#donation-form" className="btn-luminis text-sm sm:text-lg px-8 sm:px-12 py-4 sm:py-5">
             Garantir Minha Vaga Agora
-          </button>
-          <p style={{ color: 'hsl(36 40% 60%)' }} className="text-sm mt-4">
+          </a>
+          <p style={{ color: 'hsl(36 40% 60%)' }} className="text-xs sm:text-sm mt-3 sm:mt-4">
             Cancele quando quiser • Sem compromisso
           </p>
         </div>

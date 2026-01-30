@@ -56,74 +56,75 @@ const AlissaSection = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative py-24 px-6 bg-gradient-to-b from-background via-cream-light to-background overflow-hidden"
+      className="relative py-12 sm:py-24 px-4 sm:px-6 bg-gradient-to-b from-background via-cream-light to-background overflow-hidden"
     >
-      {/* Decorative elements */}
-      <div className="absolute top-20 left-1/4 w-64 h-64 bg-gold/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-20 right-1/4 w-80 h-80 bg-amber/10 rounded-full blur-3xl" />
+      {/* Decorative elements - hidden on mobile */}
+      <div className="hidden sm:block absolute top-20 left-1/4 w-64 h-64 bg-gold/10 rounded-full blur-3xl" />
+      <div className="hidden sm:block absolute bottom-20 right-1/4 w-80 h-80 bg-amber/10 rounded-full blur-3xl" />
 
       <div className="max-w-4xl mx-auto relative z-10">
         {/* Section header */}
         <div
-          className={`text-center mb-12 transition-all duration-700 ${
+          className={`text-center mb-8 sm:mb-12 transition-all duration-700 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
-          <span className="inline-block px-4 py-2 rounded-full bg-gold/10 text-amber text-sm font-medium border border-gold/20 mb-4">
+          <span className="inline-block px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-gold/10 text-amber text-xs sm:text-sm font-medium border border-gold/20 mb-3 sm:mb-4">
             Conheça Nossa Equipe
           </span>
-          <h2 className="font-serif text-4xl md:text-5xl font-semibold text-foreground">
+          <h2 className="font-serif text-2xl sm:text-4xl md:text-5xl font-semibold text-foreground">
             Conheça <span className="text-gradient-gold">Elias</span>
           </h2>
         </div>
 
         {/* Circular photo with gold glow */}
         <div
-          className={`flex justify-center mb-12 transition-all duration-700 delay-100 ${
+          className={`flex justify-center mb-8 sm:mb-12 transition-all duration-700 delay-100 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
           <div className="relative">
-            {/* Outer glow ring */}
-            <div className="absolute inset-0 rounded-full bg-gradient-to-br from-gold to-amber blur-xl opacity-50 animate-pulse-glow" />
+            {/* Outer glow ring - reduced on mobile */}
+            <div className="absolute inset-0 rounded-full bg-gradient-to-br from-gold to-amber blur-xl opacity-40 sm:opacity-50 sm:animate-pulse-glow" />
             
             {/* Gold border ring */}
-            <div className="relative w-[300px] h-[300px] rounded-full p-1.5 bg-gradient-to-br from-gold via-amber to-gold">
+            <div className="relative w-[200px] h-[200px] sm:w-[300px] sm:h-[300px] rounded-full p-1 sm:p-1.5 bg-gradient-to-br from-gold via-amber to-gold">
               <div className="w-full h-full rounded-full overflow-hidden bg-cream">
                 <img
                   src={eliasPortrait}
                   alt="Elias Serrano - Coordenador de Voluntários"
                   className="w-full h-full object-cover"
+                  loading="lazy"
                 />
               </div>
             </div>
 
             {/* Floating badge */}
-            <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 px-6 py-2 rounded-full bg-gradient-to-r from-gold to-amber text-deep-brown font-semibold text-sm shadow-lg glow-gold whitespace-nowrap">
+            <div className="absolute -bottom-3 sm:-bottom-4 left-1/2 -translate-x-1/2 px-4 py-1.5 sm:px-6 sm:py-2 rounded-full bg-gradient-to-r from-gold to-amber text-deep-brown font-semibold text-xs sm:text-sm shadow-lg glow-gold whitespace-nowrap">
               Coordenador de Voluntários
             </div>
           </div>
         </div>
 
         {/* Stats grid with stagger animation */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-6 mb-8 sm:mb-12">
           {stats.map((stat, index) => (
             <div
               key={index}
-              className={`text-center p-6 rounded-2xl bg-cream-light/80 backdrop-blur-sm border border-gold/10 transition-all duration-700 ${
+              className={`text-center p-3 sm:p-6 rounded-xl sm:rounded-2xl bg-cream-light/80 backdrop-blur-sm border border-gold/10 transition-all duration-700 ${
                 isVisible
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-8"
               }`}
               style={{ transitionDelay: `${200 + index * 100}ms` }}
             >
-              <div className="w-12 h-12 mx-auto mb-3 rounded-xl bg-gradient-to-br from-gold/20 to-amber/20 flex items-center justify-center text-amber">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-2 sm:mb-3 rounded-lg sm:rounded-xl bg-gradient-to-br from-gold/20 to-amber/20 flex items-center justify-center text-amber">
                 {stat.icon}
               </div>
-              <p className="font-serif text-2xl md:text-3xl font-bold text-gradient-gold">
+              <p className="font-serif text-xl sm:text-2xl md:text-3xl font-bold text-gradient-gold">
                 {stat.value}
               </p>
-              <p className="text-sm text-muted-foreground mt-1">{stat.label}</p>
+              <p className="text-xs sm:text-sm text-muted-foreground mt-0.5 sm:mt-1">{stat.label}</p>
             </div>
           ))}
         </div>
@@ -135,28 +136,28 @@ const AlissaSection = () => {
           }`}
         >
           <div className="relative inline-block">
-            <Quote className="absolute -top-6 -left-8 w-12 h-12 text-gold/30 rotate-180" />
-            <blockquote className="font-serif text-xl md:text-2xl italic text-foreground leading-relaxed max-w-2xl mx-auto px-8">
+            <Quote className="absolute -top-4 -left-4 sm:-top-6 sm:-left-8 w-8 h-8 sm:w-12 sm:h-12 text-gold/30 rotate-180" />
+            <blockquote className="font-serif text-base sm:text-xl md:text-2xl italic text-foreground leading-relaxed max-w-2xl mx-auto px-6 sm:px-8">
               Cada vez que entro em um abrigo, vejo olhos cheios de esperança me
               pedindo uma chance. Minha missão é garantir que nenhuma criança
               seja esquecida.
             </blockquote>
-            <Quote className="absolute -bottom-6 -right-8 w-12 h-12 text-gold/30" />
+            <Quote className="absolute -bottom-4 -right-4 sm:-bottom-6 sm:-right-8 w-8 h-8 sm:w-12 sm:h-12 text-gold/30" />
           </div>
-          <p className="mt-8 text-muted-foreground">
+          <p className="mt-6 sm:mt-8 text-muted-foreground text-sm sm:text-base">
             — Elias Serrano, estudante de Psicologia e voluntário desde 2020
           </p>
         </div>
 
         {/* CTA */}
         <div
-          className={`text-center mt-12 transition-all duration-700 delay-900 ${
+          className={`text-center mt-8 sm:mt-12 transition-all duration-700 delay-900 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
-          <button className="btn-luminis">
+          <a href="#donation-form" className="btn-luminis text-sm sm:text-base py-3 sm:py-4">
             Seja voluntário como o Elias
-          </button>
+          </a>
         </div>
       </div>
     </section>
