@@ -174,13 +174,19 @@ const UrgencySection = () => {
                 key={currentNotification}
                 style={{ animation: 'slideIn 0.5s ease-out' }}
               >
-                <p style={{ color: 'hsl(36 100% 96%)' }} className="font-medium text-sm sm:text-base truncate">
+                <p
+                  style={{ color: 'hsl(36 100% 96%)', textShadow: '0 2px 10px hsl(20 45% 6% / 0.6)' }}
+                  className="font-medium text-sm sm:text-base truncate"
+                >
                   {notifications[currentNotification].name}{' '}
-                  <span style={{ color: 'hsl(36 40% 70%)' }}>
+                  <span style={{ color: 'hsl(36 60% 82%)' }}>
                     {notifications[currentNotification].action}
                   </span>
                 </p>
-                <p className="text-xs sm:text-sm text-primary">
+                <p
+                  className="text-xs sm:text-sm"
+                  style={{ color: 'hsl(36 100% 92%)', textShadow: '0 2px 10px hsl(20 45% 6% / 0.6)' }}
+                >
                   há {notifications[currentNotification].time}
                 </p>
               </div>
