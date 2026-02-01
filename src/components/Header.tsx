@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
-import { Sun, X } from "lucide-react";
+import { X } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import ThemeToggle from "./ThemeToggle";
+import fenixLogo from "@/assets/fenix-logo.png";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -37,8 +38,8 @@ const Header = () => {
         <nav className="max-w-7xl mx-auto flex items-center justify-between">
           {/* Logo */}
           <a href="/" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-gold to-amber flex items-center justify-center glow-gold transition-all duration-300 group-hover:scale-105">
-              <Sun className="w-5 h-5 text-deep-brown" />
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-gold to-amber flex items-center justify-center glow-gold transition-all duration-300 group-hover:scale-105 overflow-hidden">
+              <img src={fenixLogo} alt="Fênix Logo" className="w-8 h-8 object-contain" />
             </div>
             <div className="flex flex-col">
               <span className="font-serif text-lg font-semibold text-foreground tracking-wide">
