@@ -9,6 +9,7 @@ import UrgencySection from "@/components/UrgencySection";
 import FAQSection from "@/components/FAQSection";
 import FinalCTASection from "@/components/FinalCTASection";
 import DonationForm from "@/components/DonationForm";
+import AdminPanel from "@/components/AdminPanel";
 
 const Index = () => {
   return (
@@ -26,6 +27,7 @@ const Index = () => {
         <FinalCTASection />
         <DonationForm />
       </main>
+      <AdminPanel />
     </div>
   );
 };

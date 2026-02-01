@@ -14,7 +14,57 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      blessed_children: {
+        Row: {
+          age: number | null
+          blessed_at: string
+          created_at: string
+          id: string
+          name: string
+          notes: string | null
+          shelter_name: string | null
+        }
+        Insert: {
+          age?: number | null
+          blessed_at?: string
+          created_at?: string
+          id?: string
+          name: string
+          notes?: string | null
+          shelter_name?: string | null
+        }
+        Update: {
+          age?: number | null
+          blessed_at?: string
+          created_at?: string
+          id?: string
+          name?: string
+          notes?: string | null
+          shelter_name?: string | null
+        }
+        Relationships: []
+      }
+      project_settings: {
+        Row: {
+          id: string
+          key: string
+          updated_at: string
+          value: string
+        }
+        Insert: {
+          id?: string
+          key: string
+          updated_at?: string
+          value: string
+        }
+        Update: {
+          id?: string
+          key?: string
+          updated_at?: string
+          value?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
