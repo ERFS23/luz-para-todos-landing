@@ -44,25 +44,25 @@ const OfferingsSection = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-12 sm:py-24 bg-background relative overflow-hidden">
+    <section ref={sectionRef} className="py-10 sm:py-24 bg-background relative overflow-hidden">
       {/* Decorative elements - hidden on mobile */}
       <div className="hidden sm:block absolute top-0 left-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
       <div className="hidden sm:block absolute bottom-0 right-0 w-96 h-96 bg-secondary/5 rounded-full blur-3xl" />
 
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto px-3 sm:px-4 relative z-10">
         {/* Section Header */}
         <div 
-          className={`text-center mb-8 sm:mb-16 transition-all duration-700 ${
+          className={`text-center mb-6 sm:mb-16 transition-all duration-700 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
         >
-          <span className="text-secondary font-medium tracking-widest uppercase text-xs sm:text-sm">
+          <span className="text-secondary font-medium tracking-widest uppercase text-[10px] sm:text-sm">
             Sua Doação em Ação
           </span>
-          <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-foreground mt-3 sm:mt-4 mb-4 sm:mb-6">
+          <h2 className="text-[1.5rem] sm:text-4xl md:text-5xl font-bold text-foreground mt-2 sm:mt-4 mb-3 sm:mb-6 leading-tight">
             O Que Você <span className="text-gradient-gold">Oferece</span>
           </h2>
-          <p className="text-muted-foreground text-sm sm:text-lg max-w-2xl mx-auto px-2">
+          <p className="text-muted-foreground text-[13px] sm:text-lg max-w-2xl mx-auto leading-relaxed">
             Com apenas R$ 1,41 por dia, você proporciona três presentes que transformam vidas
           </p>
         </div>

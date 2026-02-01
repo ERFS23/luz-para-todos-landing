@@ -44,21 +44,21 @@ const FAQSection = () => {
   };
 
   return (
-    <section className="py-12 sm:py-24 bg-background relative overflow-hidden">
+    <section id="faq" className="py-10 sm:py-24 bg-background relative overflow-hidden">
       {/* Background decorations - hidden on mobile */}
       <div className="hidden sm:block absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
       <div className="hidden sm:block absolute bottom-0 left-0 w-72 h-72 bg-secondary/5 rounded-full blur-3xl" />
 
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto px-3 sm:px-4 relative z-10">
         {/* Section Header */}
-        <div className="text-center mb-8 sm:mb-16">
-          <span className="text-secondary font-medium tracking-widest uppercase text-xs sm:text-sm">
+        <div className="text-center mb-6 sm:mb-16">
+          <span className="text-secondary font-medium tracking-widest uppercase text-[10px] sm:text-sm">
             Tire Suas Dúvidas
           </span>
-          <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-foreground mt-3 sm:mt-4 mb-4 sm:mb-6">
+          <h2 className="text-[1.5rem] sm:text-4xl md:text-5xl font-bold text-foreground mt-2 sm:mt-4 mb-3 sm:mb-6 leading-tight">
             Perguntas <span className="text-gradient-gold">Frequentes</span>
           </h2>
-          <p className="text-muted-foreground text-sm sm:text-lg max-w-2xl mx-auto px-2">
+          <p className="text-muted-foreground text-[13px] sm:text-lg max-w-2xl mx-auto leading-relaxed">
             Tudo que você precisa saber sobre o Projeto FÊNIX
           </p>
         </div>

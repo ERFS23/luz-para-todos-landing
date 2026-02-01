@@ -50,11 +50,11 @@ const UrgencySection = () => {
   return (
     <section 
       ref={sectionRef}
-      className="py-12 sm:py-20 relative overflow-hidden"
+      className="py-10 sm:py-20 relative overflow-hidden"
       style={{ background: 'linear-gradient(135deg, hsl(20 45% 10%) 0%, hsl(20 45% 6%) 100%)' }}
     >
       {/* Animated background particles - fewer on mobile */}
-      <div className="absolute inset-0 overflow-hidden">
+      <div className="absolute inset-0 overflow-hidden hidden sm:block">
         {[...Array(10)].map((_, i) => (
           <div
             key={i}
@@ -69,20 +69,20 @@ const UrgencySection = () => {
         ))}
       </div>
 
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto px-3 sm:px-4 relative z-10">
         {/* Main Content */}
-        <div className="text-center mb-8 sm:mb-12">
+        <div className="text-center mb-6 sm:mb-12">
           <div 
-            className={`inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-secondary/20 border border-secondary/30 text-secondary mb-4 sm:mb-6 transition-all duration-700 ${
+            className={`inline-flex items-center gap-1.5 sm:gap-2 px-2.5 py-1.5 sm:px-4 sm:py-2 rounded-full bg-secondary/20 border border-secondary/30 text-secondary mb-3 sm:mb-6 transition-all duration-700 ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'
             }`}
           >
-            <Clock className="w-3 h-3 sm:w-4 sm:h-4 animate-pulse" />
-            <span className="text-xs sm:text-sm font-medium">Vagas limitadas este mês</span>
+            <Clock className="w-3 h-3 sm:w-4 sm:h-4 animate-pulse flex-shrink-0" />
+            <span className="text-[10px] sm:text-sm font-medium">Vagas limitadas este mês</span>
           </div>
 
           <h2 
-            className={`text-2xl sm:text-4xl md:text-6xl font-bold mb-4 sm:mb-6 transition-all duration-700 delay-100 ${
+            className={`text-[1.5rem] sm:text-4xl md:text-6xl font-bold mb-3 sm:mb-6 leading-tight transition-all duration-700 delay-100 ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
             }`}
             style={{ color: 'hsl(36 100% 96%)' }}
@@ -93,7 +93,7 @@ const UrgencySection = () => {
           </h2>
 
           <p 
-            className={`text-sm sm:text-lg md:text-xl max-w-2xl mx-auto mb-8 sm:mb-12 px-2 transition-all duration-700 delay-200 ${
+            className={`text-[13px] sm:text-lg md:text-xl max-w-2xl mx-auto mb-6 sm:mb-12 leading-relaxed transition-all duration-700 delay-200 ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
             }`}
             style={{ color: 'hsl(36 40% 70%)' }}
@@ -201,10 +201,10 @@ const UrgencySection = () => {
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
           }`}
         >
-          <a href="#donation-form" className="btn-luminis text-sm sm:text-lg px-8 sm:px-12 py-4 sm:py-5">
+          <a href="#donation-form" className="btn-luminis text-sm sm:text-lg px-6 sm:px-12 py-3.5 sm:py-5 min-h-[52px]">
             Garantir Minha Vaga Agora
           </a>
-          <p style={{ color: 'hsl(36 40% 60%)' }} className="text-xs sm:text-sm mt-3 sm:mt-4">
+          <p style={{ color: 'hsl(36 40% 60%)' }} className="text-[10px] sm:text-sm mt-2.5 sm:mt-4">
             Cancele quando quiser • Sem compromisso
           </p>
         </div>
