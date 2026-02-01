@@ -34,18 +34,17 @@ const notifications = [{
   time: '25 min'
 }];
 const UrgencySection = () => {
-  const [progressWidth, setProgressWidth] = useState(0);
+  const [sponsoredCount, setSponsoredCount] = useState(7);
   const [currentNotification, setCurrentNotification] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
+  const maxChildren = 100;
 
   // Intersection observer for animation trigger
   useEffect(() => {
     const observer = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting) {
         setIsVisible(true);
-        // Animate progress bar
-        setTimeout(() => setProgressWidth(77), 300);
       }
     }, {
       threshold: 0.3
@@ -55,6 +54,30 @@ const UrgencySection = () => {
     }
     return () => observer.disconnect();
   }, []);
+
+  // Simulate new sponsorships at random intervals
+  useEffect(() => {
+    if (!isVisible) return;
+    
+    const intervals = [10000, 3000, 5000, 15000, 8000, 12000, 4000, 7000];
+    let intervalIndex = 0;
+    
+    const scheduleNextIncrement = () => {
+      const delay = intervals[intervalIndex % intervals.length];
+      intervalIndex++;
+      
+      return setTimeout(() => {
+        setSponsoredCount(prev => {
+          if (prev >= maxChildren - 5) return prev; // Keep some spots available
+          return prev + 1;
+        });
+        scheduleNextIncrement();
+      }, delay);
+    };
+    
+    const timeoutId = scheduleNextIncrement();
+    return () => clearTimeout(timeoutId);
+  }, [isVisible]);
 
   // Rotate notifications
   useEffect(() => {
@@ -107,14 +130,14 @@ const UrgencySection = () => {
           }} className="text-xs sm:text-sm">
               Crianças apadrinhadas
             </span>
-            <span className="text-primary font-semibold text-xs sm:text-base">7 de 100</span>
+            <span className="text-primary font-semibold text-xs sm:text-base">{sponsoredCount} de {maxChildren}</span>
           </div>
           
           <div className="h-3 sm:h-4 rounded-full overflow-hidden" style={{
           background: 'hsl(20 30% 20%)'
         }}>
-            <div className="h-full rounded-full transition-all duration-1500 ease-out relative overflow-hidden" style={{
-            width: `${progressWidth}%`,
+            <div className="h-full rounded-full transition-all duration-1000 ease-out relative overflow-hidden" style={{
+            width: `${sponsoredCount}%`,
             background: 'linear-gradient(90deg, hsl(var(--gold)) 0%, hsl(var(--amber)) 100%)'
           }}>
               {/* Shimmer effect */}
@@ -131,7 +154,7 @@ const UrgencySection = () => {
               <span style={{
               color: 'hsl(36 40% 70%)'
             }} className="text-xs sm:text-sm">
-                23 vagas restantes
+                {maxChildren - sponsoredCount} vagas restantes
               </span>
             </div>
             <span className="text-secondary text-xs sm:text-sm font-medium animate-pulse">
