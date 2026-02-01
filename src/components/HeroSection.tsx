@@ -4,34 +4,34 @@ import AnimatedShaderBackground from "./ui/animated-shader-background";
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen pt-20 pb-12 px-4 sm:px-6 overflow-hidden bg-transparent">
+    <section className="relative min-h-screen pt-20 pb-12 px-3 sm:px-6 overflow-hidden bg-transparent">
       {/* Animated shader background - high visibility */}
       <AnimatedShaderBackground opacity={0.85} className="z-0" />
 
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-auto w-full">
         {/* Top tagline */}
-        <div className="text-center mb-6 sm:mb-12 animate-fade-in-up">
-          <span className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-gold/10 text-amber text-xs sm:text-sm font-medium border border-gold/20">
-            <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-amber animate-pulse" />
-            Transformando vidas desde 2018
+        <div className="text-center mb-4 sm:mb-12 animate-fade-in-up">
+          <span className="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 py-1.5 sm:px-4 sm:py-2 rounded-full bg-gold/10 text-amber text-[11px] sm:text-sm font-medium border border-gold/20 max-w-[95%]">
+            <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-amber animate-pulse flex-shrink-0" />
+            <span className="truncate">Transformando vidas desde 2018</span>
           </span>
         </div>
 
         {/* Main headline */}
-        <div className="text-center mb-8 sm:mb-16 animate-fade-in-up-delay-1">
-          <h1 className="font-serif text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-semibold text-foreground leading-tight mb-4 sm:mb-6">
+        <div className="text-center mb-6 sm:mb-16 animate-fade-in-up-delay-1 px-1">
+          <h1 className="font-serif text-[1.75rem] sm:text-4xl md:text-6xl lg:text-7xl font-semibold text-foreground leading-[1.2] sm:leading-tight mb-3 sm:mb-6">
             Cada criança merece
             <br />
             <span className="text-gradient-gold">brilhar</span>
           </h1>
-          <p className="text-base sm:text-lg md:text-xl text-white/90 drop-shadow-md max-w-2xl mx-auto px-2">
+          <p className="text-sm sm:text-lg md:text-xl text-white/90 drop-shadow-md max-w-2xl mx-auto leading-relaxed">
             O Projeto FÊNIX leva luz, esperança e oportunidades para crianças
             órfãs em situação de vulnerabilidade em todo o Brasil.
           </p>
         </div>
 
         {/* Mobile-first layout: CTA first on mobile, then video */}
-        <div className="flex flex-col lg:grid lg:grid-cols-[70%_30%] gap-6 lg:gap-8 items-start animate-fade-in-up-delay-2">
+        <div className="flex flex-col lg:grid lg:grid-cols-[70%_30%] gap-4 sm:gap-6 lg:gap-8 items-start animate-fade-in-up-delay-2">
           {/* CTA Box - First on mobile */}
           <div className="w-full lg:hidden order-1">
             <CTABox />
@@ -42,28 +42,28 @@ const HeroSection = () => {
             <VideoPlayer />
 
             {/* Stats below video */}
-            <div className="grid grid-cols-3 gap-2 sm:gap-6 mt-4 sm:mt-8">
-              <div className="text-center p-2 sm:p-4 rounded-xl sm:rounded-2xl bg-white/20 backdrop-blur-md border border-white/30">
-                <p className="font-serif text-xl sm:text-3xl md:text-4xl font-bold text-gradient-gold">
+            <div className="grid grid-cols-3 gap-1.5 sm:gap-6 mt-3 sm:mt-8">
+              <div className="text-center p-1.5 sm:p-4 rounded-lg sm:rounded-2xl bg-white/20 backdrop-blur-md border border-white/30">
+                <p className="font-serif text-lg sm:text-3xl md:text-4xl font-bold text-gradient-gold">
                   2.847
                 </p>
-                <p className="text-[10px] sm:text-sm text-white/80 mt-0.5 sm:mt-1">
+                <p className="text-[9px] sm:text-sm text-white/80 mt-0.5 sm:mt-1 leading-tight">
                   Crianças atendidas
                 </p>
               </div>
-              <div className="text-center p-2 sm:p-4 rounded-xl sm:rounded-2xl bg-white/20 backdrop-blur-md border border-white/30">
-                <p className="font-serif text-xl sm:text-3xl md:text-4xl font-bold text-gradient-gold">
+              <div className="text-center p-1.5 sm:p-4 rounded-lg sm:rounded-2xl bg-white/20 backdrop-blur-md border border-white/30">
+                <p className="font-serif text-lg sm:text-3xl md:text-4xl font-bold text-gradient-gold">
                   156
                 </p>
-                <p className="text-[10px] sm:text-sm text-white/80 mt-0.5 sm:mt-1">
+                <p className="text-[9px] sm:text-sm text-white/80 mt-0.5 sm:mt-1 leading-tight">
                   Abrigos parceiros
                 </p>
               </div>
-              <div className="text-center p-2 sm:p-4 rounded-xl sm:rounded-2xl bg-white/20 backdrop-blur-md border border-white/30">
-                <p className="font-serif text-xl sm:text-3xl md:text-4xl font-bold text-gradient-gold">
+              <div className="text-center p-1.5 sm:p-4 rounded-lg sm:rounded-2xl bg-white/20 backdrop-blur-md border border-white/30">
+                <p className="font-serif text-lg sm:text-3xl md:text-4xl font-bold text-gradient-gold">
                   98%
                 </p>
-                <p className="text-[10px] sm:text-sm text-white/80 mt-0.5 sm:mt-1">
+                <p className="text-[9px] sm:text-sm text-white/80 mt-0.5 sm:mt-1 leading-tight">
                   Vai direto às crianças
                 </p>
               </div>

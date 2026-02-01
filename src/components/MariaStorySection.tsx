@@ -51,7 +51,7 @@ const MariaStorySection = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative py-12 sm:py-24 px-4 sm:px-6 overflow-hidden"
+      className="relative py-10 sm:py-24 px-3 sm:px-6 overflow-hidden"
       style={{
         backgroundImage: `url(${watercolorTexture})`,
         backgroundSize: "cover",
@@ -61,32 +61,32 @@ const MariaStorySection = () => {
       {/* Overlay for better readability */}
       <div className="absolute inset-0 bg-background/80 dark:bg-background/90" />
 
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="max-w-7xl mx-auto relative z-10 w-full">
         {/* Section header */}
-        <div className="text-center mb-8 sm:mb-16 animate-fade-in-up">
-          <span className="inline-block px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-gold/10 text-amber text-xs sm:text-sm font-medium border border-gold/20 mb-3 sm:mb-4">
+        <div className="text-center mb-6 sm:mb-16 animate-fade-in-up">
+          <span className="inline-block px-2.5 py-1.5 sm:px-4 sm:py-2 rounded-full bg-gold/10 text-amber text-[11px] sm:text-sm font-medium border border-gold/20 mb-2 sm:mb-4">
             História Real
           </span>
-          <h2 className="font-serif text-2xl sm:text-4xl md:text-5xl font-semibold text-foreground">
+          <h2 className="font-serif text-[1.5rem] sm:text-4xl md:text-5xl font-semibold text-foreground leading-tight">
             A História da <span className="text-gradient-gold">Maria</span>
           </h2>
         </div>
 
         {/* Mobile-first layout: Narrative first, then slider */}
-        <div className="flex flex-col lg:grid lg:grid-cols-[40%_60%] gap-8 lg:gap-16 items-center">
+        <div className="flex flex-col lg:grid lg:grid-cols-[40%_60%] gap-6 lg:gap-16 items-center">
           {/* Emotional narrative - First on mobile */}
-          <div className="order-1 lg:order-2 space-y-6 sm:space-y-8">
+          <div className="order-1 lg:order-2 space-y-4 sm:space-y-8">
             {/* Large quote */}
             <div className="relative">
-              <Quote className="absolute -top-2 -left-2 sm:-top-4 sm:-left-4 w-10 h-10 sm:w-16 sm:h-16 text-gold/30" />
-              <blockquote className="font-serif text-xl sm:text-3xl md:text-4xl lg:text-5xl font-medium text-foreground leading-tight pl-6 sm:pl-8">
+              <Quote className="absolute -top-1 -left-1 sm:-top-4 sm:-left-4 w-8 h-8 sm:w-16 sm:h-16 text-gold/30" />
+              <blockquote className="font-serif text-lg sm:text-3xl md:text-4xl lg:text-5xl font-medium text-foreground leading-snug sm:leading-tight pl-5 sm:pl-8">
                 Tia, eu não sei o que é{" "}
                 <span className="text-gradient-gold italic">sonhar</span>...
               </blockquote>
             </div>
 
             {/* Narrative text */}
-            <div className="space-y-4 sm:space-y-6 text-sm sm:text-lg text-muted-foreground leading-relaxed">
+            <div className="space-y-3 sm:space-y-6 text-[13px] sm:text-lg text-muted-foreground leading-relaxed">
               <p>
                 Maria tinha 8 anos quando disse essa frase para uma de nossas
                 voluntárias. Abandonada aos 3 anos, ela nunca tinha recebido um

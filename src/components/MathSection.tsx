@@ -47,7 +47,7 @@ const MathSection = () => {
   return (
     <section 
       ref={sectionRef} 
-      className="py-12 sm:py-24 bg-gradient-to-b from-background to-muted/30 relative overflow-hidden"
+      className="py-10 sm:py-24 bg-gradient-to-b from-background to-muted/30 relative overflow-hidden"
     >
       {/* Background decorations - hidden on mobile */}
       <div className="hidden sm:block absolute inset-0 opacity-30">
@@ -56,26 +56,26 @@ const MathSection = () => {
         <div className="absolute bottom-1/4 left-1/3 w-2 h-2 bg-primary rounded-full animate-pulse" style={{ animationDelay: '1s' }} />
       </div>
 
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto px-3 sm:px-4 relative z-10">
         {/* Section Header */}
         <div 
-          className={`text-center mb-8 sm:mb-16 transition-all duration-700 ${
+          className={`text-center mb-6 sm:mb-16 transition-all duration-700 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
         >
-          <span className="text-secondary font-medium tracking-widest uppercase text-xs sm:text-sm">
+          <span className="text-secondary font-medium tracking-widest uppercase text-[10px] sm:text-sm">
             Transparência Total
           </span>
-          <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-foreground mt-3 sm:mt-4 mb-4 sm:mb-6">
+          <h2 className="text-[1.5rem] sm:text-4xl md:text-5xl font-bold text-foreground mt-2 sm:mt-4 mb-3 sm:mb-6 leading-tight">
             Matemática do <span className="text-gradient-gold">Coração</span>
           </h2>
-          <p className="text-muted-foreground text-sm sm:text-lg max-w-2xl mx-auto px-2">
+          <p className="text-muted-foreground text-[13px] sm:text-lg max-w-2xl mx-auto leading-relaxed">
             Veja como sua contribuição se multiplica quando doada com propósito
           </p>
         </div>
 
         {/* Comparison Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-8 max-w-5xl mx-auto mb-8 sm:mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-8 max-w-5xl mx-auto mb-6 sm:mb-16">
           {/* Left Card - Normal Purchase */}
           <div 
             className={`transition-all duration-700 delay-200 ${
@@ -171,27 +171,27 @@ const MathSection = () => {
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
         >
-          <div className="glass-card rounded-xl sm:rounded-2xl p-5 sm:p-8 md:p-12 text-center border border-primary/20">
-            <div className="flex flex-col items-center justify-center gap-2 sm:gap-4 md:gap-8 text-lg sm:text-2xl md:text-4xl font-bold">
-              <div className="flex items-center gap-2 sm:gap-4">
+          <div className="glass-card rounded-xl sm:rounded-2xl p-4 sm:p-8 md:p-12 text-center border border-primary/20">
+            <div className="flex flex-col items-center justify-center gap-1.5 sm:gap-4 md:gap-8 text-base sm:text-2xl md:text-4xl font-bold">
+              <div className="flex items-center gap-1.5 sm:gap-4 flex-wrap justify-center">
                 <span className="text-foreground">R$ 21,20</span>
                 <span className="text-primary">÷</span>
                 <span className="text-foreground">30 dias</span>
               </div>
-              <span className="text-primary text-2xl sm:text-4xl">=</span>
-              <div className="flex items-baseline gap-2">
-                <span className="text-4xl sm:text-5xl md:text-7xl text-gradient-gold tabular-nums">
+              <span className="text-primary text-xl sm:text-4xl">=</span>
+              <div className="flex items-baseline gap-1.5 sm:gap-2">
+                <span className="text-3xl sm:text-5xl md:text-7xl text-gradient-gold tabular-nums">
                   R$ {counterValue.toFixed(2).replace('.', ',')}
                 </span>
-                <span className="text-base sm:text-xl text-muted-foreground font-normal">/dia</span>
+                <span className="text-sm sm:text-xl text-muted-foreground font-normal">/dia</span>
               </div>
             </div>
 
-            <p className="text-muted-foreground mt-6 sm:mt-8 text-sm sm:text-lg px-2">
+            <p className="text-muted-foreground mt-4 sm:mt-8 text-[13px] sm:text-lg leading-relaxed">
               Menos que um cafezinho. <span className="text-primary font-semibold">Uma vida inteira de impacto.</span>
             </p>
 
-            <a href="#donation-form" className="btn-luminis mt-6 sm:mt-8 text-sm sm:text-base py-3 sm:py-4">
+            <a href="#donation-form" className="btn-luminis mt-5 sm:mt-8 text-sm sm:text-base py-3 sm:py-4 min-h-[48px]">
               Quero Transformar Vidas
             </a>
           </div>

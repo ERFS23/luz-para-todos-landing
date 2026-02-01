@@ -33,7 +33,7 @@ const FinalCTASection = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative py-12 sm:py-24 md:py-32 overflow-hidden"
+      className="relative py-10 sm:py-24 md:py-32 overflow-hidden"
     >
       {/* Background with parallax effect */}
       <div
@@ -58,41 +58,41 @@ const FinalCTASection = () => {
         ))}
       </div>
 
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto px-3 sm:px-4 relative z-10">
         <div
           className={`max-w-4xl mx-auto text-center transition-all duration-1000 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
           {/* Glassmorphism quote container */}
-          <div className="glass-card rounded-2xl sm:rounded-3xl p-5 sm:p-8 md:p-12 mb-6 sm:mb-10">
-            <blockquote className="font-serif text-lg sm:text-2xl md:text-4xl lg:text-5xl text-cream italic leading-relaxed mb-4 sm:mb-6">
+          <div className="glass-card rounded-xl sm:rounded-3xl p-4 sm:p-8 md:p-12 mb-5 sm:mb-10">
+            <blockquote className="font-serif text-base sm:text-2xl md:text-4xl lg:text-5xl text-cream italic leading-relaxed mb-3 sm:mb-6">
               "Porque no final, a gente não lembra do dinheiro que juntou...
               <span className="block mt-2 sm:mt-4 text-gold">
                 mas sim das vidas que tocamos."
               </span>
             </blockquote>
-            <p className="text-cream/70 text-xs sm:text-sm">— Alissa, Fundadora do Fênix</p>
+            <p className="text-cream/70 text-[10px] sm:text-sm">— Alissa, Fundadora do Fênix</p>
           </div>
 
           {/* CTA Buttons */}
           <div
-            className={`flex flex-col gap-3 sm:gap-4 justify-center mb-6 sm:mb-10 transition-all duration-1000 delay-300 ${
+            className={`flex flex-col gap-2.5 sm:gap-4 justify-center mb-5 sm:mb-10 transition-all duration-1000 delay-300 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
             }`}
           >
             <button
               onClick={scrollToForm}
-              className="btn-luminis text-sm sm:text-lg px-6 sm:px-10 py-4 sm:py-5 group w-full sm:w-auto"
+              className="btn-luminis text-sm sm:text-lg px-5 sm:px-10 py-3.5 sm:py-5 group w-full min-h-[52px]"
             >
-              <Heart className="w-4 h-4 sm:w-5 sm:h-5 mr-2 transition-transform group-hover:scale-110" />
+              <Heart className="w-4 h-4 sm:w-5 sm:h-5 mr-1.5 sm:mr-2 transition-transform group-hover:scale-110 flex-shrink-0" />
               SIM, QUERO SER LUZ
             </button>
             <a
               href="https://wa.me/5500000000000?text=Olá%20Alissa,%20quero%20saber%20mais%20sobre%20o%20Fênix"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center px-6 sm:px-10 py-4 sm:py-5 text-sm sm:text-lg font-semibold rounded-xl border-2 border-cream/30 text-cream hover:bg-cream/10 hover:border-cream/50 transition-all duration-300 min-h-[56px]"
+              className="inline-flex items-center justify-center px-5 sm:px-10 py-3.5 sm:py-5 text-sm sm:text-lg font-semibold rounded-xl border-2 border-cream/30 text-cream hover:bg-cream/10 hover:border-cream/50 transition-all duration-300 min-h-[52px]"
             >
               FALAR COM ALISSA
             </a>

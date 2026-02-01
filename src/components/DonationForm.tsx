@@ -161,7 +161,7 @@ const DonationForm = () => {
   ];
 
   return (
-    <section id="donation-form" className="py-12 sm:py-20 bg-card relative overflow-hidden">
+    <section id="donation-form" className="py-10 sm:py-20 bg-card relative overflow-hidden">
       {/* Confetti effect */}
       {showConfetti && (
         <div className="fixed inset-0 z-50 pointer-events-none">
@@ -182,7 +182,7 @@ const DonationForm = () => {
         </div>
       )}
 
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-3 sm:px-4">
         <div
           ref={formRef}
           className={`max-w-2xl mx-auto transition-all duration-1000 ${
@@ -190,14 +190,14 @@ const DonationForm = () => {
           }`}
         >
           {/* Header */}
-          <div className="text-center mb-6 sm:mb-10">
-            <span className="inline-block px-3 py-1 sm:px-4 sm:py-1.5 rounded-full bg-gold/20 text-amber text-xs sm:text-sm font-medium mb-3 sm:mb-4">
+          <div className="text-center mb-5 sm:mb-10">
+            <span className="inline-block px-2.5 py-1 sm:px-4 sm:py-1.5 rounded-full bg-gold/20 text-amber text-[10px] sm:text-sm font-medium mb-2 sm:mb-4">
               Seja um padrinho
             </span>
-            <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl text-foreground mb-2 sm:mb-3">
+            <h2 className="font-serif text-[1.5rem] sm:text-3xl md:text-4xl text-foreground mb-2 sm:mb-3 leading-tight">
               Complete seu <span className="text-gradient-gold">apadrinhamento</span>
             </h2>
-            <p className="text-muted-foreground text-sm sm:text-base">
+            <p className="text-muted-foreground text-[13px] sm:text-base">
               Preencha os dados abaixo para transformar uma vida
             </p>
           </div>
