@@ -72,7 +72,7 @@ const FinalCTASection = () => {
                 mas sim das vidas que tocamos."
               </span>
             </blockquote>
-            <p className="text-cream/70 text-xs sm:text-sm">— Alissa, Fundadora do Luminis</p>
+            <p className="text-cream/70 text-xs sm:text-sm">— Alissa, Fundadora do Fênix</p>
           </div>
 
           {/* CTA Buttons */}
@@ -89,7 +89,7 @@ const FinalCTASection = () => {
               SIM, QUERO SER LUZ
             </button>
             <a
-              href="https://wa.me/5500000000000?text=Olá%20Alissa,%20quero%20saber%20mais%20sobre%20o%20Luminis"
+              href="https://wa.me/5500000000000?text=Olá%20Alissa,%20quero%20saber%20mais%20sobre%20o%20Fênix"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center px-6 sm:px-10 py-4 sm:py-5 text-sm sm:text-lg font-semibold rounded-xl border-2 border-cream/30 text-cream hover:bg-cream/10 hover:border-cream/50 transition-all duration-300 min-h-[56px]"

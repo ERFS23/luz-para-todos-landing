@@ -8,7 +8,7 @@ const faqs = [
   },
   {
     question: 'Para onde vai minha doação?',
-    answer: 'Sua doação é 100% direcionada para a compra de materiais para as crianças. O Projeto LUMINIS opera com uma equipe 100% voluntária, garantindo que cada centavo chegue a quem mais precisa. Publicamos relatórios mensais de transparência em nosso site.',
+    answer: 'Sua doação é 100% direcionada para a compra de materiais para as crianças. O Projeto FÊNIX opera com uma equipe 100% voluntária, garantindo que cada centavo chegue a quem mais precisa. Publicamos relatórios mensais de transparência em nosso site.',
   },
   {
     question: 'Posso visitar os abrigos?',
@@ -20,7 +20,7 @@ const faqs = [
   },
   {
     question: 'A doação é dedutível do Imposto de Renda?',
-    answer: 'Sim! O Projeto LUMINIS possui registro como OSCIP (Organização da Sociedade Civil de Interesse Público). Suas doações podem ser deduzidas do IR até o limite permitido por lei. Enviamos automaticamente o comprovante anual.',
+    answer: 'Sim! O Projeto FÊNIX possui registro como OSCIP (Organização da Sociedade Civil de Interesse Público). Suas doações podem ser deduzidas do IR até o limite permitido por lei. Enviamos automaticamente o comprovante anual.',
   },
   {
     question: 'Como sei que minha doação está chegando às crianças?',
@@ -59,7 +59,7 @@ const FAQSection = () => {
             Perguntas <span className="text-gradient-gold">Frequentes</span>
           </h2>
           <p className="text-muted-foreground text-sm sm:text-lg max-w-2xl mx-auto px-2">
-            Tudo que você precisa saber sobre o Projeto LUMINIS
+            Tudo que você precisa saber sobre o Projeto FÊNIX
           </p>
         </div>
 

@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    /* LUMINIS Color Palette */
+    /* FÊNIX Color Palette */
     --background: 36 100% 96%; /* Cream #FFF4E6 */
     --foreground: 20 45% 12%; /* Deep Brown #2C1810 */
 
@@ -35,7 +35,7 @@
 
     --radius: 0.75rem;
 
-    /* Custom LUMINIS tokens */
+    /* Custom FÊNIX tokens */
     --gold: 36 100% 65%;
     --gold-glow: 36 100% 75%;
     --amber: 33 100% 50%;
@@ -91,7 +91,7 @@
     --input: 20 30% 22%;
     --ring: 36 100% 60%;
     
-    /* Tokens LUMINIS adaptativos */
+    /* Tokens FÊNIX adaptativos */
     --gold: 36 100% 60%;
     --gold-glow: 36 100% 50%;
     --amber: 33 100% 55%;

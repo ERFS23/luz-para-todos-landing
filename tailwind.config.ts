@@ -61,7 +61,7 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
-        // LUMINIS custom colors
+        // FÊNIX custom colors
         gold: "hsl(var(--gold))",
         amber: "hsl(var(--amber))",
         cream: "hsl(var(--cream))",

@@ -126,7 +126,7 @@ const MariaStorySection = () => {
                 <div>
                   <p className="text-[10px] sm:text-xs text-muted-foreground">2022</p>
                   <p className="text-xs sm:text-sm font-medium text-foreground whitespace-nowrap">
-                    Conheceu o LUMINIS
+                    Conheceu o FÊNIX
                   </p>
                 </div>
               </div>
