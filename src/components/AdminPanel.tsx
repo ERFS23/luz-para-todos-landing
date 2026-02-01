@@ -20,6 +20,8 @@ const AdminPanel = () => {
   const [isAdding, setIsAdding] = useState(false);
   const [blessedChildren, setBlessedChildren] = useState<BlessedChild[]>([]);
   const [loadingChildren, setLoadingChildren] = useState(false);
+  const [isSaving, setIsSaving] = useState(false);
+  const [deletingId, setDeletingId] = useState<string | null>(null);
   
   const [newChild, setNewChild] = useState({
     name: "",
@@ -50,11 +52,9 @@ const AdminPanel = () => {
   };
 
   const handleAddChild = async () => {
-    if (!newChild.name.trim()) {
-      toast.error("Nome é obrigatório");
-      return;
-    }
-
+    if (!newChild.name.trim() || isSaving) return;
+    
+    setIsSaving(true);
     const { error } = await supabase.from("blessed_children").insert({
       name: newChild.name.trim(),
       age: newChild.age ? parseInt(newChild.age) : null,
@@ -63,17 +63,23 @@ const AdminPanel = () => {
 
     if (error) {
       toast.error("Erro ao adicionar criança");
-      console.error(error);
     } else {
       toast.success(`${newChild.name} foi abençoada! 🌟`);
       setNewChild({ name: "", age: "", shelter_name: "" });
       setIsAdding(false);
-      fetchBlessedChildren();
+      await fetchBlessedChildren();
       refetch();
     }
+    setIsSaving(false);
   };
 
   const handleDeleteChild = async (id: string, name: string) => {
+    if (deletingId) return;
+    
+    setDeletingId(id);
+    // Optimistic update
+    setBlessedChildren(prev => prev.filter(c => c.id !== id));
+    
     const { error } = await supabase
       .from("blessed_children")
       .delete()
@@ -81,12 +87,12 @@ const AdminPanel = () => {
 
     if (error) {
       toast.error("Erro ao remover criança");
-      console.error(error);
+      await fetchBlessedChildren();
     } else {
       toast.success(`${name} foi removida da lista`);
-      fetchBlessedChildren();
       refetch();
     }
+    setDeletingId(null);
   };
 
   return (
@@ -156,14 +162,16 @@ const AdminPanel = () => {
                 <div className="flex gap-2">
                   <Button
                     onClick={handleAddChild}
+                    disabled={isSaving}
                     className="flex-1 bg-gradient-to-r from-gold to-amber text-deep-brown hover:opacity-90"
                   >
                     <Check className="w-4 h-4 mr-1" />
-                    Salvar
+                    {isSaving ? "Salvando..." : "Salvar"}
                   </Button>
                   <Button
                     variant="outline"
                     onClick={() => setIsAdding(false)}
+                    disabled={isSaving}
                   >
                     <X className="w-4 h-4" />
                   </Button>
@@ -210,10 +218,11 @@ const AdminPanel = () => {
                     </div>
                     <button
                       onClick={() => handleDeleteChild(child.id, child.name)}
-                      className="opacity-0 group-hover:opacity-100 p-1.5 rounded-full hover:bg-destructive/20 text-muted-foreground hover:text-destructive transition-all"
+                      disabled={deletingId === child.id}
+                      className="opacity-0 group-hover:opacity-100 p-1.5 rounded-full hover:bg-destructive/20 text-muted-foreground hover:text-destructive transition-all disabled:opacity-50"
                       title="Remover"
                     >
-                      <X className="w-4 h-4" />
+                      <X className={`w-4 h-4 ${deletingId === child.id ? 'animate-spin' : ''}`} />
                     </button>
                   </div>
                 ))}
