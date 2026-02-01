@@ -59,23 +59,24 @@ const UrgencySection = () => {
   useEffect(() => {
     if (!isVisible) return;
     
-    const intervals = [10000, 3000, 5000, 15000, 8000, 12000, 4000, 7000];
+    const intervals = [3000, 10000, 3000, 5000, 15000, 10000, 3000, 5000, 15000];
     let intervalIndex = 0;
+    let timeoutId: ReturnType<typeof setTimeout>;
     
     const scheduleNextIncrement = () => {
       const delay = intervals[intervalIndex % intervals.length];
       intervalIndex++;
       
-      return setTimeout(() => {
+      timeoutId = setTimeout(() => {
         setSponsoredCount(prev => {
-          if (prev >= maxChildren - 5) return prev; // Keep some spots available
+          if (prev >= maxChildren - 5) return prev;
           return prev + 1;
         });
         scheduleNextIncrement();
       }, delay);
     };
     
-    const timeoutId = scheduleNextIncrement();
+    scheduleNextIncrement();
     return () => clearTimeout(timeoutId);
   }, [isVisible]);
 
