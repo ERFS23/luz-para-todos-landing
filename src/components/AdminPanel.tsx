@@ -73,6 +73,22 @@ const AdminPanel = () => {
     }
   };
 
+  const handleDeleteChild = async (id: string, name: string) => {
+    const { error } = await supabase
+      .from("blessed_children")
+      .delete()
+      .eq("id", id);
+
+    if (error) {
+      toast.error("Erro ao remover criança");
+      console.error(error);
+    } else {
+      toast.success(`${name} foi removida da lista`);
+      fetchBlessedChildren();
+      refetch();
+    }
+  };
+
   return (
     <div className="fixed bottom-4 right-4 z-50">
       {/* Floating button with stats */}
@@ -177,7 +193,7 @@ const AdminPanel = () => {
                 {blessedChildren.map((child) => (
                   <div
                     key={child.id}
-                    className="flex items-center gap-3 p-2 rounded-lg bg-muted/50 hover:bg-muted transition-colors"
+                    className="flex items-center gap-3 p-2 rounded-lg bg-muted/50 hover:bg-muted transition-colors group"
                   >
                     <div className="w-8 h-8 rounded-full bg-gradient-to-br from-gold/30 to-amber/30 flex items-center justify-center">
                       <Check className="w-4 h-4 text-gold" />
@@ -192,6 +208,13 @@ const AdminPanel = () => {
                         {child.shelter_name}
                       </p>
                     </div>
+                    <button
+                      onClick={() => handleDeleteChild(child.id, child.name)}
+                      className="opacity-0 group-hover:opacity-100 p-1.5 rounded-full hover:bg-destructive/20 text-muted-foreground hover:text-destructive transition-all"
+                      title="Remover"
+                    >
+                      <X className="w-4 h-4" />
+                    </button>
                   </div>
                 ))}
               </div>
