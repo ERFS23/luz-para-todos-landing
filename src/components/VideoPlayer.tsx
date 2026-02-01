@@ -1,140 +1,37 @@
-import { useState, useRef } from "react";
-import { Play, Pause, Volume2, VolumeX, Maximize } from "lucide-react";
+import { useRef, useEffect } from "react";
 
 const VideoPlayer = () => {
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [isMuted, setIsMuted] = useState(true);
-  const [progress, setProgress] = useState(0);
   const videoRef = useRef<HTMLVideoElement>(null);
 
-  const togglePlay = () => {
+  useEffect(() => {
+    // Ensure video plays automatically when loaded
     if (videoRef.current) {
-      if (isPlaying) {
-        videoRef.current.pause();
-      } else {
-        videoRef.current.play();
-      }
-      setIsPlaying(!isPlaying);
+      videoRef.current.play().catch(() => {
+        // Autoplay might be blocked, that's okay
+      });
     }
-  };
-
-  const toggleMute = () => {
-    if (videoRef.current) {
-      videoRef.current.muted = !isMuted;
-      setIsMuted(!isMuted);
-    }
-  };
-
-  const handleTimeUpdate = () => {
-    if (videoRef.current) {
-      const progress = (videoRef.current.currentTime / videoRef.current.duration) * 100;
-      setProgress(progress);
-    }
-  };
-
-  const handleProgressClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (videoRef.current) {
-      const rect = e.currentTarget.getBoundingClientRect();
-      const clickPosition = (e.clientX - rect.left) / rect.width;
-      videoRef.current.currentTime = clickPosition * videoRef.current.duration;
-    }
-  };
-
-  const toggleFullscreen = () => {
-    if (videoRef.current) {
-      if (document.fullscreenElement) {
-        document.exitFullscreen();
-      } else {
-        videoRef.current.requestFullscreen();
-      }
-    }
-  };
+  }, []);
 
   return (
-    <div className="video-container group">
-      {/* Video placeholder with gradient overlay */}
-      <div className="relative aspect-video bg-gradient-to-br from-deep-brown via-warm-brown to-deep-brown">
+    <div className="video-container">
+      <div className="relative aspect-video bg-gradient-to-br from-deep-brown via-warm-brown to-deep-brown rounded-xl sm:rounded-2xl overflow-hidden">
         <video
           ref={videoRef}
           className="w-full h-full object-cover"
-          onTimeUpdate={handleTimeUpdate}
-          muted={isMuted}
+          muted
           loop
+          autoPlay
           playsInline
-          poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 1080'%3E%3Crect fill='%232C1810' width='1920' height='1080'/%3E%3C/svg%3E"
+          preload="metadata"
         >
           <source
-            src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4"
+            src="/videos/hero-video.mp4"
             type="video/mp4"
           />
         </video>
 
-        {/* Decorative overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-deep-brown/60 via-transparent to-transparent pointer-events-none" />
-
-        {/* Center play button - larger touch target on mobile */}
-        {!isPlaying && (
-          <button
-            onClick={togglePlay}
-            className="absolute inset-0 flex items-center justify-center group/play"
-            aria-label="Reproduzir vídeo"
-          >
-            <div className="w-16 h-16 sm:w-24 sm:h-24 rounded-full bg-gold/90 backdrop-blur-sm flex items-center justify-center transition-all duration-300 active:scale-95 sm:group-hover/play:scale-110 glow-gold sm:animate-pulse-glow">
-              <Play className="w-7 h-7 sm:w-10 sm:h-10 text-deep-brown ml-0.5 sm:ml-1" fill="currentColor" />
-            </div>
-          </button>
-        )}
-
-        {/* Custom controls - always visible on mobile when playing */}
-        <div className={`video-controls ${isPlaying ? 'opacity-100 sm:opacity-0 sm:group-hover:opacity-100' : 'opacity-0'} transition-opacity duration-300`}>
-          {/* Progress bar - taller on mobile for easier touch */}
-          <div
-            className="w-full h-2 sm:h-1 bg-cream/20 rounded-full mb-3 sm:mb-4 cursor-pointer overflow-hidden"
-            onClick={handleProgressClick}
-          >
-            <div
-              className="h-full bg-gradient-to-r from-gold to-amber rounded-full transition-all duration-100"
-              style={{ width: `${progress}%` }}
-            />
-          </div>
-
-          {/* Control buttons - larger on mobile */}
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2 sm:gap-3">
-              <button
-                onClick={togglePlay}
-                className="w-11 h-11 sm:w-10 sm:h-10 rounded-full bg-gold/20 hover:bg-gold/40 active:bg-gold/50 flex items-center justify-center transition-colors"
-                aria-label={isPlaying ? "Pausar" : "Reproduzir"}
-              >
-                {isPlaying ? (
-                  <Pause className="w-5 h-5 text-cream" />
-                ) : (
-                  <Play className="w-5 h-5 text-cream ml-0.5" />
-                )}
-              </button>
-
-              <button
-                onClick={toggleMute}
-                className="w-11 h-11 sm:w-10 sm:h-10 rounded-full bg-gold/20 hover:bg-gold/40 active:bg-gold/50 flex items-center justify-center transition-colors"
-                aria-label={isMuted ? "Ativar som" : "Silenciar"}
-              >
-                {isMuted ? (
-                  <VolumeX className="w-5 h-5 text-cream" />
-                ) : (
-                  <Volume2 className="w-5 h-5 text-cream" />
-                )}
-              </button>
-            </div>
-
-            <button
-              onClick={toggleFullscreen}
-              className="w-11 h-11 sm:w-10 sm:h-10 rounded-full bg-gold/20 hover:bg-gold/40 active:bg-gold/50 flex items-center justify-center transition-colors"
-              aria-label="Tela cheia"
-            >
-              <Maximize className="w-5 h-5 text-cream" />
-            </button>
-          </div>
-        </div>
+        {/* Subtle decorative overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-deep-brown/30 via-transparent to-transparent pointer-events-none" />
       </div>
     </div>
   );
