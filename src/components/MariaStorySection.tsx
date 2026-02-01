@@ -61,7 +61,7 @@ const MariaStorySection = () => {
       {/* Overlay for better readability */}
       <div className="absolute inset-0 bg-background/80 dark:bg-background/90" />
 
-      <div className="max-w-7xl mx-auto relative z-10 w-full">
+      <div className="max-w-7xl mx-auto relative z-10 w-full overflow-hidden">
         {/* Section header */}
         <div className="text-center mb-6 sm:mb-16 animate-fade-in-up">
           <span className="inline-block px-2.5 py-1.5 sm:px-4 sm:py-2 rounded-full bg-gold/10 text-amber text-[11px] sm:text-sm font-medium border border-gold/20 mb-2 sm:mb-4">
@@ -75,24 +75,24 @@ const MariaStorySection = () => {
         {/* Mobile-first layout: Narrative first, then slider */}
         <div className="flex flex-col lg:grid lg:grid-cols-[40%_60%] gap-6 lg:gap-16 items-center">
           {/* Emotional narrative - First on mobile */}
-          <div className="order-1 lg:order-2 space-y-4 sm:space-y-8">
+          <div className="order-1 lg:order-2 space-y-4 sm:space-y-8 w-full overflow-hidden">
             {/* Large quote */}
-            <div className="relative">
+            <div className="relative pr-2">
               <Quote className="absolute -top-1 -left-1 sm:-top-4 sm:-left-4 w-8 h-8 sm:w-16 sm:h-16 text-gold/30" />
-              <blockquote className="font-serif text-lg sm:text-3xl md:text-4xl lg:text-5xl font-medium text-foreground leading-snug sm:leading-tight pl-5 sm:pl-8">
+              <blockquote className="font-serif text-lg sm:text-3xl md:text-4xl lg:text-5xl font-medium text-foreground leading-snug sm:leading-tight pl-5 sm:pl-8 break-words">
                 Tia, eu não sei o que é{" "}
                 <span className="text-gradient-gold italic">sonhar</span>...
               </blockquote>
             </div>
 
             {/* Narrative text */}
-            <div className="space-y-3 sm:space-y-6 text-[13px] sm:text-lg text-muted-foreground leading-relaxed">
-              <p>
+            <div className="space-y-3 sm:space-y-6 text-[13px] sm:text-lg text-muted-foreground leading-relaxed pr-1">
+              <p className="break-words">
                 Maria tinha 8 anos quando disse essa frase para uma de nossas
                 voluntárias. Abandonada aos 3 anos, ela nunca tinha recebido um
                 presente de aniversário ou ouvido alguém dizer "eu te amo".
               </p>
-              <p>
+              <p className="break-words">
                 Hoje, com 10 anos, Maria{" "}
                 <span className="text-foreground font-medium">
                   sonha em ser médica
@@ -101,42 +101,42 @@ const MariaStorySection = () => {
                 artísticas e, pela primeira vez, entende o que significa ter
                 alguém que se importa.
               </p>
-              <p className="text-foreground font-medium">
+              <p className="text-foreground font-medium break-words">
                 A transformação de Maria começou com alguém como você.
               </p>
             </div>
 
             {/* Timeline - Scrollable on mobile */}
-            <div className="flex gap-3 sm:gap-4 pt-2 sm:pt-4 overflow-x-auto pb-2 -mx-4 px-4 sm:mx-0 sm:px-0 sm:flex-wrap">
-              <div className="flex items-center gap-2 sm:gap-3 px-3 sm:px-5 py-2 sm:py-3 rounded-xl sm:rounded-2xl bg-gold/10 border border-gold/20 flex-shrink-0">
-                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gradient-to-br from-gold to-amber flex items-center justify-center text-deep-brown font-bold text-xs sm:text-sm">
+            <div className="flex gap-2 sm:gap-4 pt-2 sm:pt-4 overflow-x-auto pb-2 -mx-3 px-3 sm:mx-0 sm:px-0 sm:flex-wrap scrollbar-hide">
+              <div className="flex items-center gap-2 sm:gap-3 px-2.5 sm:px-5 py-2 sm:py-3 rounded-xl sm:rounded-2xl bg-gold/10 border border-gold/20 flex-shrink-0 min-w-0">
+                <div className="w-7 h-7 sm:w-10 sm:h-10 rounded-full bg-gradient-to-br from-gold to-amber flex items-center justify-center text-deep-brown font-bold text-[10px] sm:text-sm flex-shrink-0">
                   1
                 </div>
-                <div>
-                  <p className="text-[10px] sm:text-xs text-muted-foreground">2021</p>
-                  <p className="text-xs sm:text-sm font-medium text-foreground whitespace-nowrap">
+                <div className="min-w-0">
+                  <p className="text-[9px] sm:text-xs text-muted-foreground">2021</p>
+                  <p className="text-[11px] sm:text-sm font-medium text-foreground whitespace-nowrap">
                     Chegou ao abrigo
                   </p>
                 </div>
               </div>
-              <div className="flex items-center gap-2 sm:gap-3 px-3 sm:px-5 py-2 sm:py-3 rounded-xl sm:rounded-2xl bg-gold/10 border border-gold/20 flex-shrink-0">
-                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gradient-to-br from-gold to-amber flex items-center justify-center text-deep-brown font-bold text-xs sm:text-sm">
+              <div className="flex items-center gap-2 sm:gap-3 px-2.5 sm:px-5 py-2 sm:py-3 rounded-xl sm:rounded-2xl bg-gold/10 border border-gold/20 flex-shrink-0 min-w-0">
+                <div className="w-7 h-7 sm:w-10 sm:h-10 rounded-full bg-gradient-to-br from-gold to-amber flex items-center justify-center text-deep-brown font-bold text-[10px] sm:text-sm flex-shrink-0">
                   2
                 </div>
-                <div>
-                  <p className="text-[10px] sm:text-xs text-muted-foreground">2022</p>
-                  <p className="text-xs sm:text-sm font-medium text-foreground whitespace-nowrap">
+                <div className="min-w-0">
+                  <p className="text-[9px] sm:text-xs text-muted-foreground">2022</p>
+                  <p className="text-[11px] sm:text-sm font-medium text-foreground whitespace-nowrap">
                     Conheceu o FÊNIX
                   </p>
                 </div>
               </div>
-              <div className="flex items-center gap-2 sm:gap-3 px-3 sm:px-5 py-2 sm:py-3 rounded-xl sm:rounded-2xl bg-gold/10 border border-gold/20 flex-shrink-0">
-                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gradient-to-br from-gold to-amber flex items-center justify-center text-deep-brown font-bold text-xs sm:text-sm">
+              <div className="flex items-center gap-2 sm:gap-3 px-2.5 sm:px-5 py-2 sm:py-3 rounded-xl sm:rounded-2xl bg-gold/10 border border-gold/20 flex-shrink-0 min-w-0">
+                <div className="w-7 h-7 sm:w-10 sm:h-10 rounded-full bg-gradient-to-br from-gold to-amber flex items-center justify-center text-deep-brown font-bold text-[10px] sm:text-sm flex-shrink-0">
                   3
                 </div>
-                <div>
-                  <p className="text-[10px] sm:text-xs text-muted-foreground">Hoje</p>
-                  <p className="text-xs sm:text-sm font-medium text-foreground whitespace-nowrap">
+                <div className="min-w-0">
+                  <p className="text-[9px] sm:text-xs text-muted-foreground">Hoje</p>
+                  <p className="text-[11px] sm:text-sm font-medium text-foreground whitespace-nowrap">
                     Aprendendo a sonhar
                   </p>
                 </div>
