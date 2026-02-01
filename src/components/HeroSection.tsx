@@ -25,7 +25,7 @@ const HeroSection = () => {
             <span className="text-gradient-gold">brilhar</span>
           </h1>
           <p className="text-base sm:text-lg md:text-xl text-white/90 drop-shadow-md max-w-2xl mx-auto px-2">
-            O Projeto LUMINIS leva luz, esperança e oportunidades para crianças
+            O Projeto FÊNIX leva luz, esperança e oportunidades para crianças
             órfãs em situação de vulnerabilidade em todo o Brasil.
           </p>
         </div>

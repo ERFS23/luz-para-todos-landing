@@ -42,7 +42,7 @@ const Header = () => {
             </div>
             <div className="flex flex-col">
               <span className="font-serif text-lg font-semibold text-foreground tracking-wide">
-                LUMINIS
+                FÊNIX
               </span>
               <span className="text-xs text-muted-foreground -mt-0.5">
                 Projeto Social
