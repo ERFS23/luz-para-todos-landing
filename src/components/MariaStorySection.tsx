@@ -5,7 +5,7 @@ import mariaAfter from "@/assets/maria-after.jpg";
 import watercolorTexture from "@/assets/watercolor-texture.jpg";
 
 const MariaStorySection = () => {
-  const [sliderPosition, setSliderPosition] = useState(50);
+  const [sliderPosition, setSliderPosition] = useState(65.71);
   const [isDragging, setIsDragging] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
