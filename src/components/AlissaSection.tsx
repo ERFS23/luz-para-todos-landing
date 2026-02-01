@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Calendar, GraduationCap, Home, Heart, Quote } from "lucide-react";
 import eliasPortrait from "@/assets/elias-portrait.jpg";
+import { useProjectStats } from "@/hooks/useProjectStats";
 
 interface StatItem {
   icon: React.ReactNode;
@@ -11,6 +12,7 @@ interface StatItem {
 const AlissaSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
+  const { stats: projectStats } = useProjectStats();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -33,23 +35,23 @@ const AlissaSection = () => {
   const stats: StatItem[] = [
     {
       icon: <Calendar className="w-6 h-6" />,
-      value: "22",
+      value: "20",
       label: "anos",
     },
     {
       icon: <GraduationCap className="w-6 h-6" />,
-      value: "Psicologia",
-      label: "universitária",
+      value: "Teologia",
+      label: "iniciando em 2025",
     },
     {
       icon: <Home className="w-6 h-6" />,
-      value: "127",
-      label: "abrigos visitados",
+      value: String(projectStats.totalShelters),
+      label: "abrigos parceiros",
     },
     {
       icon: <Heart className="w-6 h-6" />,
-      value: "23",
-      label: "crianças esperando",
+      value: String(projectStats.childrenRemaining),
+      label: "crianças aguardando",
     },
   ];
 
@@ -145,7 +147,7 @@ const AlissaSection = () => {
             <Quote className="absolute -bottom-3 -right-2 sm:-bottom-6 sm:-right-8 w-6 h-6 sm:w-12 sm:h-12 text-gold/30" />
           </div>
           <p className="mt-4 sm:mt-8 text-muted-foreground text-[11px] sm:text-base">
-            — Elias Serrano, estudante de Psicologia e voluntário desde 2020
+            — Elias Serrano, ex-estudante de Direito, iniciando Teologia em 2025
           </p>
         </div>
 
