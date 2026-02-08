@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import { Calendar, GraduationCap, Home, Heart, Quote } from "lucide-react";
+import { Calendar, GraduationCap, Home, Heart, Quote, Users } from "lucide-react";
 import eliasPortrait from "@/assets/elias-portrait.jpg";
+import alissaPortrait from "@/assets/alissa-portrait.jpg";
 import { useProjectStats } from "@/hooks/useProjectStats";
 
 interface StatItem {
@@ -75,22 +76,20 @@ const AlissaSection = () => {
             Conheça Nossa Equipe
           </span>
           <h2 className="font-serif text-[1.5rem] sm:text-4xl md:text-5xl font-semibold text-foreground leading-tight">
-            Conheça <span className="text-gradient-gold">Elias</span>
+            Conheça <span className="text-gradient-gold">Elias</span> & <span className="text-gradient-gold">Alissa</span>
           </h2>
         </div>
 
-        {/* Circular photo with gold glow */}
+        {/* Two portraits side by side */}
         <div
-          className={`flex justify-center mb-6 sm:mb-12 transition-all duration-700 delay-100 ${
+          className={`flex justify-center items-end gap-4 sm:gap-10 mb-6 sm:mb-12 transition-all duration-700 delay-100 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
-          <div className="relative">
-            {/* Outer glow ring - reduced on mobile */}
-            <div className="absolute inset-0 rounded-full bg-gradient-to-br from-gold to-amber blur-xl opacity-40 sm:opacity-50 sm:animate-pulse-glow" />
-            
-            {/* Gold border ring */}
-            <div className="relative w-[160px] h-[160px] sm:w-[300px] sm:h-[300px] rounded-full p-1 sm:p-1.5 bg-gradient-to-br from-gold via-amber to-gold">
+          {/* Elias */}
+          <div className="relative flex flex-col items-center">
+            <div className="absolute inset-0 rounded-full bg-gradient-to-br from-gold to-amber blur-xl opacity-40 sm:opacity-50" />
+            <div className="relative w-[130px] h-[130px] sm:w-[240px] sm:h-[240px] rounded-full p-1 sm:p-1.5 bg-gradient-to-br from-gold via-amber to-gold">
               <div className="w-full h-full rounded-full overflow-hidden bg-cream">
                 <img
                   src={eliasPortrait}
@@ -100,12 +99,45 @@ const AlissaSection = () => {
                 />
               </div>
             </div>
-
-            {/* Floating badge */}
-            <div className="absolute -bottom-2 sm:-bottom-4 left-1/2 -translate-x-1/2 px-3 py-1 sm:px-6 sm:py-2 rounded-full bg-gradient-to-r from-gold to-amber text-deep-brown font-semibold text-[10px] sm:text-sm shadow-lg glow-gold whitespace-nowrap">
-              Coordenador de Voluntários
+            <div className="mt-2 sm:mt-4 px-3 py-1 sm:px-5 sm:py-1.5 rounded-full bg-gradient-to-r from-gold to-amber text-deep-brown font-semibold text-[9px] sm:text-xs shadow-lg whitespace-nowrap">
+              Coordenador
             </div>
           </div>
+
+          {/* Alissa */}
+          <div className="relative flex flex-col items-center">
+            <div className="absolute inset-0 rounded-full bg-gradient-to-br from-gold to-amber blur-xl opacity-40 sm:opacity-50" />
+            <div className="relative w-[130px] h-[130px] sm:w-[240px] sm:h-[240px] rounded-full p-1 sm:p-1.5 bg-gradient-to-br from-gold via-amber to-gold">
+              <div className="w-full h-full rounded-full overflow-hidden bg-cream">
+                <img
+                  src={alissaPortrait}
+                  alt="Alissa Serrano - Voluntária do Projeto FÊNIX"
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+            <div className="mt-2 sm:mt-4 px-3 py-1 sm:px-5 sm:py-1.5 rounded-full bg-gradient-to-r from-gold to-amber text-deep-brown font-semibold text-[9px] sm:text-xs shadow-lg whitespace-nowrap">
+              Voluntária
+            </div>
+          </div>
+        </div>
+
+        {/* Alissa intro text */}
+        <div
+          className={`text-center mb-6 sm:mb-10 transition-all duration-700 delay-200 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+        >
+          <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-gold/10 border border-gold/20 mb-3 sm:mb-4">
+            <Users className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber" />
+            <span className="text-[10px] sm:text-sm text-amber font-medium">Parceiros na missão</span>
+          </div>
+          <p className="font-serif text-sm sm:text-lg md:text-xl text-foreground/90 leading-relaxed max-w-2xl mx-auto px-2">
+            <span className="font-semibold text-gradient-gold">Alissa</span> é parceira do Elias e voluntária dedicada do Projeto FÊNIX. 
+            Juntos, eles trabalham incansavelmente para levar esperança e transformar 
+            a vida de crianças que mais precisam.
+          </p>
         </div>
 
         {/* Stats grid with stagger animation */}
@@ -118,7 +150,7 @@ const AlissaSection = () => {
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-8"
               }`}
-              style={{ transitionDelay: `${200 + index * 100}ms` }}
+              style={{ transitionDelay: `${300 + index * 100}ms` }}
             >
               <div className="w-8 h-8 sm:w-12 sm:h-12 mx-auto mb-1.5 sm:mb-3 rounded-lg sm:rounded-xl bg-gradient-to-br from-gold/20 to-amber/20 flex items-center justify-center text-amber">
                 {stat.icon}
@@ -158,7 +190,7 @@ const AlissaSection = () => {
           }`}
         >
           <a href="#donation-form" className="btn-luminis text-sm sm:text-base py-3 sm:py-4 min-h-[48px]">
-            Seja voluntário como o Elias
+            Apoie o trabalho do Elias e da Alissa
           </a>
         </div>
       </div>
