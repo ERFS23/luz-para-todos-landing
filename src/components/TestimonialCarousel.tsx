@@ -7,7 +7,7 @@ const testimonials = [
     name: 'Cláudia Mendes',
     role: 'Madrinha há 2 anos',
     image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop&crop=face',
-    quote: 'Nunca imaginei que R$ 1,41 por dia pudesse fazer tanta diferença. Receber as cartinhas da Juliana me emociona toda vez.',
+    quote: 'Nunca imaginei que R$ 0,70 por dia pudesse fazer tanta diferença. Receber as cartinhas da Juliana me emociona toda vez.',
     rating: 5,
   },
   {

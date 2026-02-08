@@ -63,7 +63,7 @@ const OfferingsSection = () => {
             O Que Você <span className="text-gradient-gold">Oferece</span>
           </h2>
           <p className="text-muted-foreground text-[13px] sm:text-lg max-w-2xl mx-auto leading-relaxed">
-            Com apenas R$ 1,41 por dia, você proporciona três presentes que transformam vidas
+            Com apenas R$ 0,70 por dia, você proporciona três presentes que transformam vidas
           </p>
         </div>
 
