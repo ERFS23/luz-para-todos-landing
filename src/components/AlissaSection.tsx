@@ -100,7 +100,7 @@ const AlissaSection = () => {
               </div>
             </div>
             <div className="mt-2 sm:mt-4 px-3 py-1 sm:px-5 sm:py-1.5 rounded-full bg-gradient-to-r from-gold to-amber text-deep-brown font-semibold text-[9px] sm:text-xs shadow-lg whitespace-nowrap">
-              Coordenador
+              Voluntário
             </div>
           </div>
 
