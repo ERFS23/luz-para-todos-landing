@@ -26,7 +26,7 @@ const CTABox = () => {
           </p>
           <div className="flex items-baseline gap-1.5 sm:gap-2 flex-wrap">
             <span className="text-3xl sm:text-5xl font-serif font-bold text-gradient-gold">
-              R$ 1,41
+              R$ 0,70
             </span>
             <span className="text-sm sm:text-lg text-gold">/dia</span>
           </div>

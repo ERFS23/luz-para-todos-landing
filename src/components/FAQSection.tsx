@@ -4,7 +4,7 @@ import { Plus, Minus } from 'lucide-react';
 const faqs = [
   {
     question: 'Como funciona o apadrinhamento?',
-    answer: 'Ao se tornar padrinho ou madrinha, você contribui com R$ 21,20 por mês (apenas R$ 1,41 por dia). Esse valor é convertido em Bíblias ilustradas, cestas básicas e brinquedos que são entregues diretamente às crianças em abrigos parceiros. Você recebe atualizações mensais sobre o impacto da sua doação.',
+    answer: 'Ao se tornar padrinho ou madrinha, você contribui com R$ 21,00 por mês (apenas R$ 0,70 por dia). Esse valor é convertido em Bíblias ilustradas, cestas básicas e brinquedos que são entregues diretamente às crianças em abrigos parceiros. Você recebe atualizações mensais sobre o impacto da sua doação.',
   },
   {
     question: 'Para onde vai minha doação?',
