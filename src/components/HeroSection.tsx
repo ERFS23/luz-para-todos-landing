@@ -45,7 +45,7 @@ const HeroSection = () => {
             <div className="grid grid-cols-3 gap-1.5 sm:gap-6 mt-3 sm:mt-8">
               <div className="text-center p-1.5 sm:p-4 rounded-lg sm:rounded-2xl bg-white/20 backdrop-blur-md border border-white/30">
                 <p className="font-serif text-lg sm:text-3xl md:text-4xl font-bold text-gradient-gold">
-                  2.847
+                  ​58
                 </p>
                 <p className="text-[9px] sm:text-sm text-white/80 mt-0.5 sm:mt-1 leading-tight">
                   Crianças atendidas
@@ -53,18 +53,18 @@ const HeroSection = () => {
               </div>
               <div className="text-center p-1.5 sm:p-4 rounded-lg sm:rounded-2xl bg-white/20 backdrop-blur-md border border-white/30">
                 <p className="font-serif text-lg sm:text-3xl md:text-4xl font-bold text-gradient-gold">
-                  156
+                  ​8
                 </p>
                 <p className="text-[9px] sm:text-sm text-white/80 mt-0.5 sm:mt-1 leading-tight">
-                  Abrigos parceiros
+                   casas de apoio parceiras
                 </p>
               </div>
               <div className="text-center p-1.5 sm:p-4 rounded-lg sm:rounded-2xl bg-white/20 backdrop-blur-md border border-white/30">
                 <p className="font-serif text-lg sm:text-3xl md:text-4xl font-bold text-gradient-gold">
-                  98%
+                  ​Bíblias
                 </p>
                 <p className="text-[9px] sm:text-sm text-white/80 mt-0.5 sm:mt-1 leading-tight">
-                  Vai direto às crianças
+                  ​e esperança para as crianças    
                 </p>
               </div>
             </div>
@@ -84,18 +84,18 @@ const HeroSection = () => {
           className="w-5 h-5 text-gold"
           fill="none"
           stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
+          viewBox="0 0 24 24">
+
           <path
             strokeLinecap="round"
             strokeLinejoin="round"
             strokeWidth={2}
-            d="M19 14l-7 7m0 0l-7-7m7 7V3"
-          />
+            d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+
         </svg>
       </div>
-    </section>
-  );
+    </section>);
+
 };
 
 export default HeroSection;

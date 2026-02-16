@@ -38,7 +38,7 @@ const CTABox = () => {
         {/* Urgency counter */}
         <div className="urgency-badge text-[10px] sm:text-sm py-1.5 sm:py-2 px-3 sm:px-4">
           <Users className="w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0" />
-          <span className="font-semibold">23 vagas restantes hoje</span>
+          <span className="font-semibold"> poucas vagas restantes hoje</span>
         </div>
 
         {/* CTA Button */}
@@ -63,8 +63,8 @@ const CTABox = () => {
           </div>
         </div>
       </div>
-    </div>
-  );
+    </div>);
+
 };
 
 export default CTABox;
