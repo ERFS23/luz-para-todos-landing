@@ -12,7 +12,7 @@ const offerings = [
     icon: ShoppingBasket,
     title: 'Alimento espiritual',
     subtitle: 'Luz que Alimenta',
-    description: 'Alimentos essenciais que nutrem o corpo e trazem dignidade para famílias em situação de vulnerabilidade.',
+    description: 'Ensinos sobre a maior esperança que já existiu, fornecendo uma nova perspectiva de futuro',
   },
   {
     icon: Gift,
