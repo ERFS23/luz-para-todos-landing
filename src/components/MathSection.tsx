@@ -17,7 +17,7 @@ const MathSection = () => {
           // Start counter animation after a delay
           setTimeout(() => {
             const duration = 2000;
-            const targetValue = 1.41;
+            const targetValue = 0.70;
             const steps = 60;
             const increment = targetValue / steps;
             let current = 0;
