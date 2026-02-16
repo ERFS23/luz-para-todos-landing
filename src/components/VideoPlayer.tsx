@@ -18,11 +18,10 @@ const VideoPlayer = () => {
         <video
           ref={videoRef}
           className="w-full h-full object-cover"
-          muted
           loop
-          autoPlay
           playsInline
           preload="metadata"
+          controls
         >
           <source
             src="/videos/hero-video.mp4"
