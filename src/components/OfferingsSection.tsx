@@ -16,7 +16,7 @@ const offerings = [
   },
   {
     icon: Gift,
-    title: 'Brinquedos',
+    title: 'Evento',
     subtitle: 'Luz que Brinca',
     description: 'Momentos de alegria e diversão que toda criança merece viver, independente de sua situação.',
   },
