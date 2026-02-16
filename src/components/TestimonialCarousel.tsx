@@ -132,18 +132,6 @@ const TestimonialCarousel = () => {
                   className="w-full flex-shrink-0 px-2 sm:px-4"
                 >
                   <div className="glass-card rounded-xl sm:rounded-2xl p-5 sm:p-8 md:p-12 text-center border border-primary/10">
-                    {/* Photo */}
-                    <div className="relative inline-block mb-4 sm:mb-6">
-                      <div className="w-16 h-16 sm:w-24 sm:h-24 rounded-full overflow-hidden border-2 sm:border-4 border-primary/30 glow-gold">
-                        <img 
-                          src={testimonial.image} 
-                          alt={testimonial.name}
-                          className="w-full h-full object-cover"
-                          loading="lazy"
-                        />
-                      </div>
-                    </div>
-
                     {/* Stars */}
                     <div className="flex justify-center gap-0.5 sm:gap-1 mb-4 sm:mb-6">
                       {[...Array(testimonial.rating)].map((_, i) => (
@@ -156,15 +144,9 @@ const TestimonialCarousel = () => {
                     </div>
 
                     {/* Quote */}
-                    <blockquote className="text-base sm:text-xl md:text-2xl text-foreground leading-relaxed mb-4 sm:mb-6 italic px-2">
+                    <blockquote className="text-base sm:text-xl md:text-2xl text-foreground leading-relaxed italic px-2">
                       "{testimonial.quote}"
                     </blockquote>
-
-                    {/* Attribution */}
-                    <div>
-                      <p className="font-semibold text-foreground text-sm sm:text-base">{testimonial.name}</p>
-                      <p className="text-muted-foreground text-xs sm:text-sm">{testimonial.role}</p>
-                    </div>
                   </div>
                 </div>
               ))}
