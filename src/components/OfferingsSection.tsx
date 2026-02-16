@@ -10,7 +10,7 @@ const offerings = [
   },
   {
     icon: ShoppingBasket,
-    title: 'Cesta Básica',
+    title: 'Alimento espiritual',
     subtitle: 'Luz que Alimenta',
     description: 'Alimentos essenciais que nutrem o corpo e trazem dignidade para famílias em situação de vulnerabilidade.',
   },
