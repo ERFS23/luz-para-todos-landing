@@ -18,7 +18,7 @@ const offerings = [
     icon: Gift,
     title: 'Evento',
     subtitle: 'Luz que Brinca',
-    description: 'Momentos de alegria e diversão que toda criança merece viver, independente de sua situação.',
+    description: 'Na entrega das bíblias, faremos um evento de confraternização e brincadeiras para mostras aos pequenos que a vida pode ser bela',
   },
 ];
 
