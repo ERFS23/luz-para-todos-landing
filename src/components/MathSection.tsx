@@ -67,7 +67,7 @@ const MathSection = () => {
             Transparência Total
           </span>
           <h2 className="text-[1.5rem] sm:text-4xl md:text-5xl font-bold text-foreground mt-2 sm:mt-4 mb-3 sm:mb-6 leading-tight">
-            Matemática do <span className="text-gradient-gold">Coração</span>
+            Decisões que <span className="text-gradient-gold">Fazem a Diferença</span>
           </h2>
           <p className="text-muted-foreground text-[13px] sm:text-lg max-w-2xl mx-auto leading-relaxed">
             Veja como sua contribuição se multiplica quando doada com propósito
@@ -144,15 +144,15 @@ const MathSection = () => {
               <ul className="space-y-2 sm:space-y-3 text-sm sm:text-base">
                 <li className="flex items-center gap-2 sm:gap-3 text-foreground">
                   <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-primary animate-pulse" />
-                  <span>1 Bíblia Ilustrada</span>
+                  <span>📖 1 Bíblia Ilustrada</span>
                 </li>
                 <li className="flex items-center gap-2 sm:gap-3 text-foreground">
                   <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-primary animate-pulse" style={{ animationDelay: '0.2s' }} />
-                  <span>1 Cesta Básica completa</span>
+                  <span>📰 Revista Nosso Amiguinho</span>
                 </li>
                 <li className="flex items-center gap-2 sm:gap-3 text-foreground">
                   <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-primary animate-pulse" style={{ animationDelay: '0.4s' }} />
-                  <span>Brinquedos para alegrar</span>
+                  <span>💌 Carta personalizada</span>
                 </li>
               </ul>
 

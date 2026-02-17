@@ -66,13 +66,13 @@ const FinalCTASection = () => {
         >
           {/* Glassmorphism quote container */}
           <div className="glass-card rounded-xl sm:rounded-3xl p-4 sm:p-8 md:p-12 mb-5 sm:mb-10">
-            <blockquote className="font-serif text-base sm:text-2xl md:text-4xl lg:text-5xl text-cream italic leading-relaxed mb-3 sm:mb-6">
+            <blockquote className="font-serif text-lg sm:text-3xl md:text-4xl lg:text-5xl text-cream italic leading-relaxed mb-3 sm:mb-6 font-semibold">
               "Porque no final, a gente não lembra do dinheiro que juntou...
-              <span className="block mt-2 sm:mt-4 text-gold">
+              <span className="block mt-2 sm:mt-4 text-gold font-bold">
                 mas sim das vidas que tocamos."
               </span>
             </blockquote>
-            <p className="text-cream/70 text-[10px] sm:text-sm">— Alissa, Fundadora do Fênix</p>
+            <p className="text-cream/70 text-[10px] sm:text-sm">— Alissa, Voluntária do Fênix • Curitiba</p>
           </div>
 
           {/* CTA Buttons */}
@@ -86,7 +86,7 @@ const FinalCTASection = () => {
               className="btn-luminis text-sm sm:text-lg px-5 sm:px-10 py-3.5 sm:py-5 group w-full min-h-[52px]"
             >
               <Heart className="w-4 h-4 sm:w-5 sm:h-5 mr-1.5 sm:mr-2 transition-transform group-hover:scale-110 flex-shrink-0" />
-              SIM, QUERO SER LUZ
+              APOIE NOSSO TRABALHO
             </button>
             <a
               href="https://wa.me/5500000000000?text=Olá%20Alissa,%20quero%20saber%20mais%20sobre%20o%20Fênix"
@@ -114,7 +114,13 @@ const FinalCTASection = () => {
               <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gold/20 flex items-center justify-center">
                 <Zap className="w-4 h-4 sm:w-5 sm:h-5 text-gold" />
               </div>
-              <span className="font-medium">Instantâneo</span>
+              <span className="font-medium">Transparência Total</span>
+            </div>
+            <div className="flex items-center gap-2 text-cream/80 text-sm sm:text-base">
+              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gold/20 flex items-center justify-center">
+                <Heart className="w-4 h-4 sm:w-5 sm:h-5 text-gold" />
+              </div>
+              <span className="font-medium">Curitiba, PR</span>
             </div>
           </div>
 
@@ -125,8 +131,8 @@ const FinalCTASection = () => {
             }`}
           >
             <p className="text-cream/60 text-sm sm:text-lg mb-2">Neste momento...</p>
-            <p className="text-lg sm:text-2xl md:text-3xl font-serif text-gold animate-pulse-glow inline-block px-4 sm:px-6 py-2 sm:py-3 rounded-full border border-gold/30">
-              23 crianças esperam por você 💛
+            <p className="text-lg sm:text-2xl md:text-3xl font-serif font-bold text-gold animate-pulse-glow inline-block px-4 sm:px-6 py-2 sm:py-3 rounded-full border border-gold/30">
+              52 crianças esperam por você 💛
             </p>
           </div>
         </div>

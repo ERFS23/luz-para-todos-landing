@@ -38,13 +38,13 @@ const CTABox = () => {
         {/* Urgency counter */}
         <div className="urgency-badge text-[10px] sm:text-sm py-1.5 sm:py-2 px-3 sm:px-4">
           <Users className="w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0" />
-          <span className="font-semibold"> poucas vagas restantes hoje</span>
+          <span className="font-semibold"> 52 crianças aguardando</span>
         </div>
 
         {/* CTA Button */}
         <a href="#donation-form" className="btn-luminis w-full group py-3 sm:py-4 text-sm sm:text-lg min-h-[48px]">
           <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 mr-1.5 sm:mr-2 transition-transform group-hover:rotate-12 flex-shrink-0" />
-          QUERO SER LUZ
+          QUERO FAZER PARTE
         </a>
 
         {/* Trust indicators */}
@@ -59,7 +59,7 @@ const CTABox = () => {
             <svg className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
             </svg>
-            <span>Cancele quando quiser</span>
+            <span>TEMPO LIMITADO</span>
           </div>
         </div>
       </div>
