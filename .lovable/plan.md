@@ -1,107 +1,108 @@
 
-# Plano: Renomear Projeto LUMINIS para FÊNIX
+# Plano de Otimização da Landing Page — Projeto FÊNIX
 
-## Resumo
+## Resumo das Mudanças
 
-Vou substituir todas as ocorrências de "LUMINIS", "Luminis" e "luminis" por "FÊNIX", "Fênix" e "fenix" respectivamente, mantendo a consistência de capitalização em cada contexto.
+São 8 componentes a serem modificados, agrupados por tema:
+
+---
+
+## 1. Localização Geográfica (HeroSection + UrgencySection + FinalCTASection)
+
+**HeroSection.tsx**
+- Alterar "em todo o Brasil" → "em Curitiba"
+- Inserir gatilho de urgência "decida fazer a diferença HOJE" no subtítulo ou abaixo do headline principal
+
+**UrgencySection.tsx**
+- Substituir badge "Vagas limitadas este mês" → "TEMPO LIMITADO"
+- Alterar CTA "Garantir Minha Vaga Agora" → "Garantir Minha Participação"
+- Ajustar contagem da barra de progresso para refletir 52 crianças aguardando (de 100 total, 48 apadrinhadas)
+- Remover "Cancele quando quiser" do rodapé do botão
+
+**FinalCTASection.tsx**
+- Atualizar "23 crianças esperam por você" → "52 crianças esperam por você"
+
+---
+
+## 2. Botões e Call-to-Actions (CTABox + UrgencySection + FinalCTASection)
+
+**CTABox.tsx**
+- Alterar badge de urgência para mostrar "52 crianças aguardando"
+- Alterar botão principal "QUERO SER LUZ" → "QUERO FAZER PARTE"
+- Remover "Cancele quando quiser" dos trust indicators
+
+**FinalCTASection.tsx**
+- Alterar botão "SIM, QUERO SER LUZ" → "APOIE NOSSO TRABALHO"
+
+---
+
+## 3. Seção da História (MariaStorySection.tsx)
+
+Substituir toda a narrativa fictícia da Maria por uma história real do abrigo:
+- Remover slider antes/depois com imagens (maria-before.jpg / maria-after.jpg)
+- Substituir por seção de narrativa com link para vídeo externo do abrigo
+- Manter o layout geral, mas usando um embed/link de vídeo e texto real sobre o trabalho no abrigo em Curitiba
+- Manter o badge "História Real"
+
+---
+
+## 4. Seção de "Matemática" (MathSection.tsx)
+
+- Renomear "Matemática do Coração" → "Decisões que Fazem a Diferença"
+- Na lista de itens do card de doação (lado direito), atualizar:
+  - Remover "1 Cesta Básica completa" e "Brinquedos para alegrar"
+  - Incluir: "1 Bíblia Ilustrada", "Revista Nosso Amiguinho", "Carta personalizada" como brindes
+- Manter a lógica de animação do contador em R$ 0,70/dia
+
+---
+
+## 5. Seção dos Voluntários (AlissaSection.tsx)
+
+- Alterar descrição para explicitar que são "universitários de Teologia e Medicina"
+- Deixar claro que as doações ajudam os voluntários a voltarem para a faculdade
+- Atualizar o stat "Teologia / iniciando em 2025" para refletir o curso atual
+- Atualizar a quote final para mencionar o retorno à faculdade
+- Atualizar "abençoadas" → "alcançadas" (caso exista no texto)
+
+---
+
+## 6. FAQ (FAQSection.tsx)
+
+Reformular 3–4 perguntas focando em antecipação de objeções reais:
+
+| Pergunta Atual | Nova Abordagem |
+|---|---|
+| "Como funciona o apadrinhamento?" | Mantida, mas atualizada com brindes (Bíblia, Nosso Amiguinho, carta) |
+| "Posso cancelar a qualquer momento?" | Transformada em objeção: "E se eu não puder continuar doando?" |
+| "A doação é dedutível do IR?" | Mantida |
+| Nova | "Minha doação realmente chega às crianças?" — reforça transparência |
+| Nova | "Por que devo confiar em dois universitários?" — humaniza e antecipa desconfiança |
+
+---
+
+## 7. Tipografia Pós-FAQ (FinalCTASection.tsx)
+
+- Melhorar hierarquia visual da seção final
+- Aumentar o peso e tamanho da citação principal
+- Refinar os trust badges para incluir menção a Curitiba/local
 
 ---
 
 ## Arquivos a Modificar
 
-### 1. index.html (Metadados e SEO)
-- Linha 10: `<title>Projeto LUMINIS` → `Projeto FÊNIX`
-- Linha 11: `Projeto LUMINIS` na meta description
-- Linha 12: `Projeto LUMINIS` no author
-- Linha 14: `Projeto LUMINIS` no og:title
-- Linha 20: `@ProjetoLuminis` → `@ProjetoFenix`
-
-**Novo conteudo do title:**
-```html
-<title>Projeto FÊNIX - Seja a Luz de uma Criança</title>
+```text
+src/components/HeroSection.tsx        — Curitiba + urgência "HOJE"
+src/components/MariaStorySection.tsx  — Substituir por história real + vídeo
+src/components/MathSection.tsx        — Renomear seção + atualizar brindes
+src/components/AlissaSection.tsx      — Universitários + faculdade + "alcançadas"
+src/components/CTABox.tsx             — "QUERO FAZER PARTE" + 52 crianças + remover cancelamento
+src/components/UrgencySection.tsx     — "TEMPO LIMITADO" + barra 52/100 + remover cancelamento
+src/components/FAQSection.tsx         — Reformular com foco em objeções
+src/components/FinalCTASection.tsx    — "APOIE NOSSO TRABALHO" + 52 crianças + tipografia
 ```
 
 ---
 
-### 2. src/index.css (Comentários CSS)
-- Linha 7: `/* LUMINIS Color Palette */` → `/* FÊNIX Color Palette */`
-- Linha 38: `/* Custom LUMINIS tokens */` → `/* Custom FÊNIX tokens */`
-- Linha 94: `/* Tokens LUMINIS adaptativos */` → `/* Tokens FÊNIX adaptativos */`
+## Nota sobre o Vídeo do Abrigo
 
----
-
-### 3. tailwind.config.ts (Comentário)
-- Linha 64: `// LUMINIS custom colors` → `// FÊNIX custom colors`
-
----
-
-### 4. src/components/Header.tsx (Logo e texto)
-- Linha 45: `LUMINIS` → `FÊNIX`
-
----
-
-### 5. src/components/HeroSection.tsx (Descrição principal)
-- Linha 28: `O Projeto LUMINIS leva luz...` → `O Projeto FÊNIX leva luz...`
-
----
-
-### 6. src/components/MariaStorySection.tsx (Timeline)
-- Linha 129: `Conheceu o LUMINIS` → `Conheceu o FÊNIX`
-
----
-
-### 7. src/components/FAQSection.tsx (Perguntas frequentes)
-- Linha 11: `O Projeto LUMINIS opera...` → `O Projeto FÊNIX opera...`
-- Linha 23: `O Projeto LUMINIS possui registro...` → `O Projeto FÊNIX possui registro...`
-- Linha 62: `Tudo que você precisa saber sobre o Projeto LUMINIS` → `Projeto FÊNIX`
-
----
-
-### 8. src/components/FinalCTASection.tsx (Rodapé)
-- Linha 75: `— Alissa, Fundadora do Luminis` → `— Alissa, Fundadora do Fênix`
-- Linha 92: URL WhatsApp: `sobre%20o%20Luminis` → `sobre%20o%20Fênix`
-
----
-
-### 9. .lovable/plan.md (Documentação interna)
-- Linha 6: `projeto LUMINIS` → `projeto FÊNIX`
-- Linha 37: `identidade visual LUMINIS` → `identidade visual FÊNIX`
-- Linha 87: `Adaptacoes ao Projeto LUMINIS` → `Adaptações ao Projeto FÊNIX`
-
----
-
-## Classes CSS que NÃO mudam
-
-As seguintes classes CSS usam "luminis" como identificador interno e serão mantidas para evitar quebrar estilos:
-- `.btn-luminis` (botão primário)
-- `.input-luminis` (campos de input)
-
-Essas são convenções de nomenclatura de código, não texto visível ao usuário.
-
----
-
-## Resumo das Mudanças
-
-| Arquivo | Ocorrências | Tipo de Mudança |
-|---------|-------------|-----------------|
-| index.html | 5 | Metadados SEO |
-| src/index.css | 3 | Comentários CSS |
-| tailwind.config.ts | 1 | Comentário |
-| src/components/Header.tsx | 1 | Logo visível |
-| src/components/HeroSection.tsx | 1 | Texto descritivo |
-| src/components/MariaStorySection.tsx | 1 | Timeline |
-| src/components/FAQSection.tsx | 3 | FAQ textos |
-| src/components/FinalCTASection.tsx | 2 | Citação + WhatsApp URL |
-| .lovable/plan.md | 3 | Documentação |
-
-**Total: 20 substituições de texto visível/metadados**
-
----
-
-## Resultado Final
-
-Após as mudanças:
-- O nome "FÊNIX" aparecerá no header, hero section, FAQ e rodapé
-- Os metadados SEO refletirão o novo nome
-- A identidade visual (cores douradas) permanece intacta
-- Nenhum estilo CSS será quebrado
+Para a seção da história real, será inserido um player de vídeo com link/URL a ser fornecido. Por enquanto, será adicionado um placeholder com campo de URL configurável, ou pode ser vinculado diretamente ao vídeo existente (`public/videos/hero-video.mp4`), caso seja o vídeo correto do abrigo.
