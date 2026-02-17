@@ -34,7 +34,7 @@ const notifications = [{
   time: '25 min'
 }];
 const UrgencySection = () => {
-  const [sponsoredCount, setSponsoredCount] = useState(7);
+  const [sponsoredCount, setSponsoredCount] = useState(48);
   const [currentNotification, setCurrentNotification] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
@@ -105,13 +105,13 @@ const UrgencySection = () => {
         <div className="text-center mb-6 sm:mb-12">
           <div className={`inline-flex items-center gap-1.5 sm:gap-2 px-2.5 py-1.5 sm:px-4 sm:py-2 rounded-full bg-secondary/20 border border-secondary/30 text-secondary mb-3 sm:mb-6 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'}`}>
             <Clock className="w-3 h-3 sm:w-4 sm:h-4 animate-pulse flex-shrink-0" />
-            <span className="text-[10px] sm:text-sm font-medium">Vagas limitadas este mês</span>
+            <span className="text-[10px] sm:text-sm font-semibold tracking-widest uppercase">⏰ TEMPO LIMITADO</span>
           </div>
 
           <h2 className={`text-[1.5rem] sm:text-4xl md:text-6xl font-bold mb-3 sm:mb-6 leading-tight transition-all duration-700 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`} style={{
           color: 'hsl(36 100% 96%)'
         }}>
-            Apenas <span className="text-gradient-gold">23 Crianças</span>
+            Ainda <span className="text-gradient-gold">52 Crianças</span>
             <br />
             Aguardam por Você
           </h2>
@@ -119,7 +119,7 @@ const UrgencySection = () => {
           <p className={`text-[13px] sm:text-lg md:text-xl max-w-2xl mx-auto mb-6 sm:mb-12 leading-relaxed transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`} style={{
           color: 'hsl(36 40% 70%)'
         }}>
-            77 crianças já foram apadrinhadas este mês. Não deixe as outras esperando.
+            48 crianças em Curitiba já foram alcançadas este mês. Não deixe as outras esperando.
           </p>
         </div>
 
@@ -203,12 +203,12 @@ const UrgencySection = () => {
         {/* CTA Button */}
         <div className={`text-center transition-all duration-700 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
           <a href="#donation-form" className="btn-luminis text-sm sm:text-lg px-6 sm:px-12 py-3.5 sm:py-5 min-h-[52px]">
-            Garantir Minha Vaga Agora
+            Garantir Minha Participação
           </a>
           <p style={{
           color: 'hsl(36 40% 60%)'
         }} className="text-[10px] sm:text-sm mt-2.5 sm:mt-4">
-            Cancele quando quiser • Sem compromisso
+            Sem compromisso • Decisão transformadora
           </p>
         </div>
       </div>

@@ -26,7 +26,10 @@ const HeroSection = () => {
           </h1>
           <p className="text-sm sm:text-lg md:text-xl text-white/90 drop-shadow-md max-w-2xl mx-auto leading-relaxed">
             O Projeto FÊNIX leva luz, esperança e oportunidades para crianças
-            órfãs em situação de vulnerabilidade em todo o Brasil.
+            órfãs em situação de vulnerabilidade em <span className="font-semibold text-gold">Curitiba</span>.
+          </p>
+          <p className="mt-3 sm:mt-4 text-sm sm:text-base font-semibold text-amber drop-shadow-md animate-pulse">
+            ✨ Decida fazer a diferença <span className="underline underline-offset-2">HOJE</span>
           </p>
         </div>
 

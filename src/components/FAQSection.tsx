@@ -4,31 +4,23 @@ import { Plus, Minus } from 'lucide-react';
 const faqs = [
   {
     question: 'Como funciona o apadrinhamento?',
-    answer: 'Ao se tornar padrinho ou madrinha, você contribui com R$ 21,00 por mês (apenas R$ 0,70 por dia). Esse valor é convertido em Bíblias ilustradas, cestas básicas e brinquedos que são entregues diretamente às crianças em abrigos parceiros. Você recebe atualizações mensais sobre o impacto da sua doação.',
+    answer: 'Ao se tornar padrinho ou madrinha, você contribui com R$ 21,00 por mês (apenas R$ 0,70 por dia). Esse valor é convertido em Bíblias Ilustradas, revistas "Nosso Amiguinho" e uma carta personalizada entregues diretamente às crianças em abrigos parceiros em Curitiba. Você recebe atualizações mensais sobre o impacto da sua doação.',
   },
   {
-    question: 'Para onde vai minha doação?',
-    answer: 'Sua doação é 100% direcionada para a compra de materiais para as crianças. O Projeto FÊNIX opera com uma equipe 100% voluntária, garantindo que cada centavo chegue a quem mais precisa. Publicamos relatórios mensais de transparência em nosso site.',
+    question: 'Minha doação realmente chega às crianças?',
+    answer: 'Sim, 100%. Somos uma equipe voluntária — nenhum salário é pago com sua doação. Publicamos mensalmente fotos, vídeos das entregas e notas fiscais de tudo que é comprado. Você pode inclusive nos visitar pessoalmente nos abrigos para ver com seus próprios olhos.',
   },
   {
-    question: 'Posso visitar os abrigos?',
-    answer: 'Sim! Organizamos visitas mensais aos abrigos parceiros para que padrinhos e madrinhas possam conhecer de perto o trabalho realizado. É uma experiência transformadora que fortalece ainda mais o vínculo com a causa.',
+    question: 'Por que devo confiar em dois universitários?',
+    answer: 'Entendemos a dúvida — e ela é legítima. Elias e Alissa são universitários de Teologia e Medicina que pausaram parte da rotina acadêmica para dedicar tempo às crianças. O projeto existe desde 2018, já alcançou dezenas de crianças em Curitiba e opera com total transparência. Você pode nos ligar, visitar e verificar tudo.',
   },
   {
-    question: 'Posso cancelar a qualquer momento?',
-    answer: 'Absolutamente. Não há nenhum tipo de contrato ou compromisso de longo prazo. Você pode cancelar sua contribuição a qualquer momento, sem burocracia. Basta nos enviar uma mensagem.',
+    question: 'E se eu não puder continuar doando?',
+    answer: 'Sem problema algum. Não há contrato, multa ou obrigação de permanência. Se um mês ficar difícil, basta nos avisar. O que importa é que HOJE você faça a diferença — mesmo que seja por um único mês. Uma Bíblia entregue já muda uma história.',
   },
   {
     question: 'A doação é dedutível do Imposto de Renda?',
     answer: 'Sim! O Projeto FÊNIX possui registro como OSCIP (Organização da Sociedade Civil de Interesse Público). Suas doações podem ser deduzidas do IR até o limite permitido por lei. Enviamos automaticamente o comprovante anual.',
-  },
-  {
-    question: 'Como sei que minha doação está chegando às crianças?',
-    answer: 'Enviamos relatórios mensais com fotos e vídeos das entregas. Além disso, você pode participar das visitas aos abrigos e ver pessoalmente o impacto. Nossa transparência é total: publicamos todas as notas fiscais e comprovantes de compra.',
-  },
-  {
-    question: 'Posso fazer uma doação única em vez de mensal?',
-    answer: 'Sim! Embora o apadrinhamento mensal nos ajude a planejar melhor as ações, aceitamos doações únicas de qualquer valor. Toda contribuição é bem-vinda e faz diferença na vida das crianças.',
   },
   {
     question: 'Quais formas de pagamento são aceitas?',

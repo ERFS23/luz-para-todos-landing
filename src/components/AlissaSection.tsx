@@ -42,7 +42,7 @@ const AlissaSection = () => {
     {
       icon: <GraduationCap className="w-6 h-6" />,
       value: "Teologia",
-      label: "iniciando em 2025",
+      label: "& Medicina",
     },
     {
       icon: <Home className="w-6 h-6" />,
@@ -52,7 +52,7 @@ const AlissaSection = () => {
     {
       icon: <Heart className="w-6 h-6" />,
       value: String(projectStats.childrenRemaining),
-      label: "crianças aguardando",
+      label: "crianças alcançadas",
     },
   ];
 
@@ -134,9 +134,10 @@ const AlissaSection = () => {
             <span className="text-[10px] sm:text-sm text-amber font-medium">Parceiros na missão</span>
           </div>
           <p className="font-serif text-sm sm:text-lg md:text-xl text-foreground/90 leading-relaxed max-w-2xl mx-auto px-2">
-            <span className="font-semibold text-gradient-gold">Alissa</span> é parceira do Elias e voluntária dedicada do Projeto FÊNIX. 
-            Juntos, eles trabalham incansavelmente para levar esperança e transformar 
-            a vida de crianças que mais precisam.
+            <span className="font-semibold text-gradient-gold">Elias e Alissa</span> são universitários de{" "}
+            <span className="font-semibold text-foreground">Teologia e Medicina</span> que pausaram a faculdade para se dedicar ao Projeto FÊNIX.
+            Sua doação ajuda esses voluntários a continuarem na faculdade{" "}
+            <span className="italic">enquanto transformam vidas</span> em Curitiba.
           </p>
         </div>
 
@@ -173,13 +174,14 @@ const AlissaSection = () => {
             <Quote className="absolute -top-3 -left-2 sm:-top-6 sm:-left-8 w-6 h-6 sm:w-12 sm:h-12 text-gold/30 rotate-180" />
             <blockquote className="font-serif text-[15px] sm:text-xl md:text-2xl italic text-foreground leading-relaxed max-w-2xl mx-auto px-4 sm:px-8">
               Cada vez que entro em um abrigo, vejo olhos cheios de esperança me
-              pedindo uma chance. Minha missão é garantir que nenhuma criança
-              seja esquecida.
+              pedindo uma chance. Cada doação nos permite voltar para a faculdade{" "}
+              <span className="text-gradient-gold not-italic font-semibold">e continuar alcançando</span>{" "}
+              essas crianças que ninguém quer esquecer.
             </blockquote>
             <Quote className="absolute -bottom-3 -right-2 sm:-bottom-6 sm:-right-8 w-6 h-6 sm:w-12 sm:h-12 text-gold/30" />
           </div>
           <p className="mt-4 sm:mt-8 text-muted-foreground text-[11px] sm:text-base">
-            — Elias Serrano, ex-estudante de Direito, iniciando Teologia em 2025
+            — Elias Serrano, universitário de Teologia • Alissa, universitária de Medicina
           </p>
         </div>
 
