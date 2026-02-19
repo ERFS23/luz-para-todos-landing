@@ -24,7 +24,7 @@ const faqs = [
   },
   {
     question: 'Quais formas de pagamento são aceitas?',
-    answer: 'Aceitamos cartão de crédito (com opção de recorrência automática), PIX, boleto bancário e transferência bancária. Escolha a forma que for mais conveniente para você.',
+    answer: 'Aceitamos cartão de crédito (com opção de recorrência automática) e PIX. Escolha a forma que for mais conveniente para você.',
   },
 ];
 

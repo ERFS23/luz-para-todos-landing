@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { z } from "zod";
-import { Check, CreditCard, QrCode, FileText, ChevronRight, ChevronLeft, Heart, Sparkles } from "lucide-react";
+import { Check, CreditCard, QrCode, ChevronRight, ChevronLeft, Heart, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 // Validation schemas
@@ -17,7 +17,7 @@ const preferencesSchema = z.object({
 });
 
 const paymentSchema = z.object({
-  metodo: z.enum(["cartao", "pix", "boleto"]),
+  metodo: z.enum(["cartao", "pix"]),
   valor: z.number().min(1),
 });
 
@@ -30,8 +30,15 @@ type FormData = {
   idade: string;
   metodo: string;
   valor: number;
-  valorCustom: string;
+  quantidadeCriancas: number;
 };
+
+const amountOptions = [
+  { value: 21.65, label: "12x de R$ 21,65", description: "1 criança", children: 1, total: "R$ 259,75" },
+  { value: 43.29, label: "12x de R$ 43,29", description: "2 crianças", children: 2, total: "R$ 519,50" },
+  { value: 108.23, label: "12x de R$ 108,23", description: "5 crianças", children: 5, total: "R$ 1.298,75" },
+  { value: 151.52, label: "12x de R$ 151,52", description: "7 crianças", children: 7, total: "R$ 1.818,25" },
+];
 
 const DonationForm = () => {
   const [step, setStep] = useState(1);
@@ -48,8 +55,8 @@ const DonationForm = () => {
     genero: "sem_preferencia",
     idade: "sem_preferencia",
     metodo: "",
-    valor: 42.30,
-    valorCustom: "",
+    valor: 21.65,
+    quantidadeCriancas: 1,
   });
 
   useEffect(() => {
@@ -67,6 +74,18 @@ const DonationForm = () => {
     }
 
     return () => observer.disconnect();
+  }, []);
+
+  // Listen for pre-selection from PricingSection
+  useEffect(() => {
+    const handler = (e: CustomEvent<{ children: number; value: number }>) => {
+      const option = amountOptions.find(o => o.children === e.detail.children);
+      if (option) {
+        setFormData(prev => ({ ...prev, valor: option.value, quantidadeCriancas: option.children }));
+      }
+    };
+    window.addEventListener("selectDonationOption", handler as EventListener);
+    return () => window.removeEventListener("selectDonationOption", handler as EventListener);
   }, []);
 
   // Input masks
@@ -87,7 +106,7 @@ const DonationForm = () => {
 
   const handleInputChange = (field: keyof FormData, value: string | number) => {
     let formattedValue = value;
-    
+
     if (field === "whatsapp" && typeof value === "string") {
       formattedValue = formatWhatsApp(value);
     } else if (field === "cpf" && typeof value === "string") {
@@ -148,17 +167,16 @@ const DonationForm = () => {
   const handleSubmit = () => {
     if (validateStep(3)) {
       setShowConfetti(true);
-      // Here you would typically send the data to your backend
-      console.log("Form submitted:", formData);
       setTimeout(() => setShowConfetti(false), 3000);
+
+      const pagamento = formData.metodo === "cartao" ? "cartão" : "PIX";
+      const quantidade = formData.quantidadeCriancas;
+      const message = encodeURIComponent(
+        `Oii, quero abençoar ${quantidade} ${quantidade === 1 ? "criança" : "crianças"} e vou fazer no ${pagamento}`
+      );
+      window.open(`https://wa.me/5519981481280?text=${message}`, "_blank");
     }
   };
-
-  const amountOptions = [
-    { value: 42.30, label: "R$ 42,30", description: "1 criança" },
-    { value: 84.60, label: "R$ 84,60", description: "2 crianças" },
-    { value: 127.00, label: "R$ 127,00", description: "3 crianças" },
-  ];
 
   return (
     <section id="donation-form" className="py-10 sm:py-20 bg-card relative overflow-hidden">
@@ -353,11 +371,10 @@ const DonationForm = () => {
                   <h3 className="font-serif text-lg sm:text-xl text-foreground mb-3 sm:mb-4">
                     Método de pagamento
                   </h3>
-                  <div className="grid grid-cols-3 gap-2 sm:gap-3">
+                  <div className="grid grid-cols-2 gap-2 sm:gap-3">
                     {[
-                      { value: "cartao", label: "Cartão", icon: CreditCard },
+                      { value: "cartao", label: "Cartão de Crédito", icon: CreditCard },
                       { value: "pix", label: "PIX", icon: QrCode },
-                      { value: "boleto", label: "Boleto", icon: FileText },
                     ].map((option) => (
                       <div
                         key={option.value}
@@ -382,52 +399,27 @@ const DonationForm = () => {
 
                 <div>
                   <h3 className="font-serif text-lg sm:text-xl text-foreground mb-3 sm:mb-4">
-                    Valor mensal
+                    Quantas crianças deseja abençoar?
                   </h3>
-                  <div className="grid grid-cols-2 gap-2 sm:grid-cols-4 sm:gap-3">
+                  <div className="grid grid-cols-2 gap-2 sm:gap-3">
                     {amountOptions.map((option) => (
                       <div
                         key={option.value}
                         onClick={() => {
                           handleInputChange("valor", option.value);
-                          handleInputChange("valorCustom", "");
+                          setFormData(prev => ({ ...prev, valor: option.value, quantidadeCriancas: option.children }));
                         }}
                         className={cn(
-                          "amount-card min-h-[60px] sm:min-h-[auto]",
-                          formData.valor === option.value && !formData.valorCustom && "selected"
+                          "amount-card min-h-[80px] sm:min-h-[auto] flex flex-col items-center justify-center gap-1 cursor-pointer",
+                          formData.valor === option.value && "selected"
                         )}
                       >
+                        <span className="text-[10px] sm:text-xs text-muted-foreground font-medium">🎁 {option.description}</span>
                         <span className="font-bold text-sm sm:text-lg text-foreground">{option.label}</span>
-                        <span className="text-[10px] sm:text-xs text-muted-foreground">{option.description}</span>
+                        <span className="text-[10px] sm:text-xs text-muted-foreground">Total: {option.total}</span>
                       </div>
                     ))}
-                    <div
-                      onClick={() => {
-                        handleInputChange("valor", 0);
-                        handleInputChange("valorCustom", "1");
-                      }}
-                      className={cn(
-                        "amount-card min-h-[60px] sm:min-h-[auto]",
-                        formData.valorCustom && "selected"
-                      )}
-                    >
-                      <span className="font-bold text-sm sm:text-base text-foreground">Outro</span>
-                      <span className="text-[10px] sm:text-xs text-muted-foreground">valor</span>
-                    </div>
                   </div>
-                  
-                  {formData.valorCustom && (
-                    <div className="mt-3 sm:mt-4">
-                      <input
-                        type="number"
-                        value={formData.valor || ""}
-                        onChange={(e) => handleInputChange("valor", parseFloat(e.target.value) || 0)}
-                        className="input-luminis text-base"
-                        placeholder="Digite o valor desejado"
-                        min="1"
-                      />
-                    </div>
-                  )}
                 </div>
               </div>
             )}
@@ -443,7 +435,7 @@ const DonationForm = () => {
                   Voltar
                 </button>
               )}
-              
+
               {step < 3 ? (
                 <button
                   onClick={nextStep}
@@ -458,7 +450,7 @@ const DonationForm = () => {
                   className="flex-1 btn-luminis py-3 sm:py-4 group text-sm sm:text-base min-h-[52px]"
                 >
                   <Heart className="w-4 h-4 sm:w-5 sm:h-5 mr-2 transition-transform group-hover:scale-110" />
-                  Confirmar
+                  Confirmar via WhatsApp
                 </button>
               )}
             </div>
@@ -466,7 +458,7 @@ const DonationForm = () => {
 
           {/* Security note */}
           <p className="text-center text-xs sm:text-sm text-muted-foreground mt-4 sm:mt-6">
-            🔒 Seus dados estão protegidos e nunca serão compartilhados
+            🔒 Os dados serão compartilhados para fins estritamente relacionados à compra e não serão publicados em hipótese alguma para outros fins
           </p>
         </div>
       </div>

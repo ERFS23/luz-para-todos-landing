@@ -34,11 +34,11 @@ const notifications = [{
   time: '25 min'
 }];
 const UrgencySection = () => {
-  const [sponsoredCount, setSponsoredCount] = useState(48);
+  const [sponsoredCount, setSponsoredCount] = useState(6);
   const [currentNotification, setCurrentNotification] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
-  const maxChildren = 100;
+  const maxChildren = 58;
 
   // Intersection observer for animation trigger
   useEffect(() => {
@@ -119,7 +119,7 @@ const UrgencySection = () => {
           <p className={`text-[13px] sm:text-lg md:text-xl max-w-2xl mx-auto mb-6 sm:mb-12 leading-relaxed transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`} style={{
           color: 'hsl(36 40% 70%)'
         }}>
-            48 crianças em Curitiba já foram alcançadas este mês. Não deixe as outras esperando.
+            6 crianças em Curitiba já foram alcançadas este mês. Não deixe as outras esperando.
           </p>
         </div>
 

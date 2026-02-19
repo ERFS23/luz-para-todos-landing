@@ -134,10 +134,9 @@ const AlissaSection = () => {
             <span className="text-[10px] sm:text-sm text-amber font-medium">Parceiros na missão</span>
           </div>
           <p className="font-serif text-sm sm:text-lg md:text-xl text-foreground/90 leading-relaxed max-w-2xl mx-auto px-2">
-            <span className="font-semibold text-gradient-gold">Elias e Alissa</span> são universitários de{" "}
-            <span className="font-semibold text-foreground">Teologia e Medicina</span> que pausaram a faculdade para se dedicar ao Projeto FÊNIX.
-            Sua doação ajuda esses voluntários a continuarem na faculdade{" "}
-            <span className="italic">enquanto transformam vidas</span> em Curitiba.
+          <span className="font-semibold text-gradient-gold">Elias e Alissa</span> são universitários de{" "}
+            <span className="font-semibold text-foreground">Teologia e Medicina</span> que trabalham nas férias com este projeto solidário para arrecadar fundos, continuar seus estudos e{" "}
+            <span className="italic">ajudar crianças a terem esperança</span> em Curitiba.
           </p>
         </div>
 
