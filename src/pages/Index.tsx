@@ -10,6 +10,8 @@ import FAQSection from "@/components/FAQSection";
 import FinalCTASection from "@/components/FinalCTASection";
 import DonationForm from "@/components/DonationForm";
 import AdminPanel from "@/components/AdminPanel";
+import PricingSection from "@/components/PricingSection";
+import FloatingCTAButton from "@/components/FloatingCTAButton";
 
 const Index = () => {
   return (
@@ -25,9 +27,11 @@ const Index = () => {
         <UrgencySection />
         <FAQSection />
         <FinalCTASection />
+        <PricingSection />
         <DonationForm />
       </main>
       <AdminPanel />
+      <FloatingCTAButton />
     </div>
   );
 };

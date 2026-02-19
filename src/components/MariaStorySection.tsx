@@ -105,10 +105,11 @@ const MariaStorySection = () => {
             <div className="relative aspect-video rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl bg-gradient-to-br from-deep-brown via-warm-brown to-deep-brown">
               <video
                 className="w-full h-full object-cover"
-                controls
+                autoPlay
+                muted
+                loop
                 playsInline
                 preload="metadata"
-                poster=""
               >
                 <source src="/videos/hero-video.mp4" type="video/mp4" />
               </video>
