@@ -1,108 +1,139 @@
 
-# Plano de Otimização da Landing Page — Projeto FÊNIX
+# Plano de Implementação — Otimização Completa do Site Projeto FÊNIX
 
-## Resumo das Mudanças
+## Visão Geral
 
-São 8 componentes a serem modificados, agrupados por tema:
-
----
-
-## 1. Localização Geográfica (HeroSection + UrgencySection + FinalCTASection)
-
-**HeroSection.tsx**
-- Alterar "em todo o Brasil" → "em Curitiba"
-- Inserir gatilho de urgência "decida fazer a diferença HOJE" no subtítulo ou abaixo do headline principal
-
-**UrgencySection.tsx**
-- Substituir badge "Vagas limitadas este mês" → "TEMPO LIMITADO"
-- Alterar CTA "Garantir Minha Vaga Agora" → "Garantir Minha Participação"
-- Ajustar contagem da barra de progresso para refletir 52 crianças aguardando (de 100 total, 48 apadrinhadas)
-- Remover "Cancele quando quiser" do rodapé do botão
-
-**FinalCTASection.tsx**
-- Atualizar "23 crianças esperam por você" → "52 crianças esperam por você"
+Com base na análise completa do código, identificamos exatamente o que precisa ser feito em cada arquivo. Muitas mudanças do plano anterior já foram implementadas (52 crianças, TEMPO LIMITADO, QUERO FAZER PARTE, etc.). O foco agora é nas modificações ainda pendentes.
 
 ---
 
-## 2. Botões e Call-to-Actions (CTABox + UrgencySection + FinalCTASection)
+## Estado Atual vs. Pendências
 
-**CTABox.tsx**
-- Alterar badge de urgência para mostrar "52 crianças aguardando"
-- Alterar botão principal "QUERO SER LUZ" → "QUERO FAZER PARTE"
-- Remover "Cancele quando quiser" dos trust indicators
+### Já implementado (não precisa mudar):
+- "52 crianças aguardando" no CTABox e UrgencySection
+- "TEMPO LIMITADO" na UrgencySection e CTABox
+- "QUERO FAZER PARTE" no CTABox
+- "APOIE NOSSO TRABALHO" no FinalCTASection
+- "Curitiba" em vários locais
+- FAQ reformulado com objeções reais
+- Bíblia, Nosso Amiguinho e carta na MathSection
+- "alcançadas" na AlissaSection
 
-**FinalCTASection.tsx**
-- Alterar botão "SIM, QUERO SER LUZ" → "APOIE NOSSO TRABALHO"
-
----
-
-## 3. Seção da História (MariaStorySection.tsx)
-
-Substituir toda a narrativa fictícia da Maria por uma história real do abrigo:
-- Remover slider antes/depois com imagens (maria-before.jpg / maria-after.jpg)
-- Substituir por seção de narrativa com link para vídeo externo do abrigo
-- Manter o layout geral, mas usando um embed/link de vídeo e texto real sobre o trabalho no abrigo em Curitiba
-- Manter o badge "História Real"
+### Pendente — o que este plano implementa:
 
 ---
 
-## 4. Seção de "Matemática" (MathSection.tsx)
+## 1. Correção Global de Números (58 total, 6 apadrinhadas, 52 aguardando)
 
-- Renomear "Matemática do Coração" → "Decisões que Fazem a Diferença"
-- Na lista de itens do card de doação (lado direito), atualizar:
-  - Remover "1 Cesta Básica completa" e "Brinquedos para alegrar"
-  - Incluir: "1 Bíblia Ilustrada", "Revista Nosso Amiguinho", "Carta personalizada" como brindes
-- Manter a lógica de animação do contador em R$ 0,70/dia
+**UrgencySection.tsx** (linha 37 e 41-42)
+- `sponsoredCount` inicial: `48` → `6`
+- `maxChildren`: `100` → `58`
+- Texto: "48 crianças em Curitiba já foram alcançadas" → "6 crianças em Curitiba já foram alcançadas"
 
----
-
-## 5. Seção dos Voluntários (AlissaSection.tsx)
-
-- Alterar descrição para explicitar que são "universitários de Teologia e Medicina"
-- Deixar claro que as doações ajudam os voluntários a voltarem para a faculdade
-- Atualizar o stat "Teologia / iniciando em 2025" para refletir o curso atual
-- Atualizar a quote final para mencionar o retorno à faculdade
-- Atualizar "abençoadas" → "alcançadas" (caso exista no texto)
+**HeroSection.tsx** — Verificar e atualizar stats abaixo do vídeo:
+- "58 Crianças atendidas" (já correto)
+- "8 casas de apoio parceiras" (manter)
 
 ---
 
-## 6. FAQ (FAQSection.tsx)
+## 2. Remoção do Boleto e Integração WhatsApp no Checkout
 
-Reformular 3–4 perguntas focando em antecipação de objeções reais:
+**DonationForm.tsx** — 4 mudanças:
 
-| Pergunta Atual | Nova Abordagem |
-|---|---|
-| "Como funciona o apadrinhamento?" | Mantida, mas atualizada com brindes (Bíblia, Nosso Amiguinho, carta) |
-| "Posso cancelar a qualquer momento?" | Transformada em objeção: "E se eu não puder continuar doando?" |
-| "A doação é dedutível do IR?" | Mantida |
-| Nova | "Minha doação realmente chega às crianças?" — reforça transparência |
-| Nova | "Por que devo confiar em dois universitários?" — humaniza e antecipa desconfiança |
+a) **Remover Boleto** do schema Zod e da lista de opções de pagamento (linha 20 e 358-361)
+
+b) **Atualizar valores/opções** para refletir os preços corretos de R$ 259,75/criança em 12x:
+```
+1 criança → 12x de R$ 21,65 (total R$ 259,75)
+2 crianças → 12x de R$ 43,29 (total R$ 519,50)
+5 crianças → 12x de R$ 108,23 (total R$ 1.298,75)
+7 crianças → 12x de R$ 151,52 (total R$ 1.818,25)
+```
+
+c) **Integração WhatsApp** — substituir `handleSubmit` para redirecionar ao WhatsApp:
+```
+https://wa.me/5519981481280?text=Oii, quero abençoar [X] crianças e vou fazer no [cartão/PIX]
+```
+
+d) **Atualizar nota de privacidade** (linha 469):
+- Remover: "nunca serão compartilhados"
+- Adicionar: "Os dados serão compartilhados para fins estritamente relacionados à compra e não serão publicados em hipótese alguma para outros fins"
 
 ---
 
-## 7. Tipografia Pós-FAQ (FinalCTASection.tsx)
+## 3. Criar Seção de Preços com Parcelamento
 
-- Melhorar hierarquia visual da seção final
-- Aumentar o peso e tamanho da citação principal
-- Refinar os trust badges para incluir menção a Curitiba/local
+**Novo componente: `PricingSection.tsx`** — inserido em `Index.tsx` antes do `DonationForm`
+
+Cards clicáveis com:
+- 🎁 1 Criança — **12x de R$ 21,65** — (Total: R$ 259,75)
+- 🎁 2 Crianças — **12x de R$ 43,29** — (Total: R$ 519,50)
+- 🎁 5 Crianças — **12x de R$ 108,23** — (Total: R$ 1.298,75)
+- 🎁 7 Crianças — **12x de R$ 151,52** — (Total R$ 1.818,25)
+
+Ao clicar em um card, redireciona para `#donation-form` e pré-seleciona o valor correspondente.
 
 ---
 
-## Arquivos a Modificar
+## 4. Autoplay do Vídeo
+
+**VideoPlayer.tsx** — adicionar atributos `autoPlay muted` (autoplay requer muted para funcionar em todos os browsers)
+
+**MariaStorySection.tsx** — mesmo ajuste na tag `<video>` da seção de história
+
+---
+
+## 5. Atualização de Texto dos Voluntários
+
+**AlissaSection.tsx** (linha 138) — remover "pausaram a faculdade":
+- Atual: "...que pausaram a faculdade para se dedicar ao Projeto FÊNIX."
+- Novo: "...que trabalham nas férias com este projeto solidário para arrecadar fundos, continuar seus estudos e ajudar crianças a terem esperança."
+
+---
+
+## 6. FAQ — Remover Boleto da Resposta
+
+**FAQSection.tsx** (linha 27) — na resposta sobre formas de pagamento:
+- Remover "boleto bancário" da lista
+- Manter apenas "cartão de crédito" e "PIX"
+
+---
+
+## 7. Botão Flutuante com Contador de 52 Crianças
+
+Criar componente `FloatingCTAButton.tsx` — botão fixo no canto inferior direito mostrando "52 crianças aguardando" que leva ao `#donation-form`. Registrado em `Index.tsx`.
+
+---
+
+## Arquivos a Modificar/Criar
 
 ```text
-src/components/HeroSection.tsx        — Curitiba + urgência "HOJE"
-src/components/MariaStorySection.tsx  — Substituir por história real + vídeo
-src/components/MathSection.tsx        — Renomear seção + atualizar brindes
-src/components/AlissaSection.tsx      — Universitários + faculdade + "alcançadas"
-src/components/CTABox.tsx             — "QUERO FAZER PARTE" + 52 crianças + remover cancelamento
-src/components/UrgencySection.tsx     — "TEMPO LIMITADO" + barra 52/100 + remover cancelamento
-src/components/FAQSection.tsx         — Reformular com foco em objeções
-src/components/FinalCTASection.tsx    — "APOIE NOSSO TRABALHO" + 52 crianças + tipografia
+src/components/DonationForm.tsx      — Remover boleto, WhatsApp, valores, privacidade
+src/components/UrgencySection.tsx    — Corrigir números (6/58 em vez de 48/100)
+src/components/AlissaSection.tsx     — Remover "pausaram a faculdade"
+src/components/FAQSection.tsx        — Remover boleto da resposta
+src/components/VideoPlayer.tsx       — Adicionar autoplay + muted
+src/components/MariaStorySection.tsx — Adicionar autoplay + muted no vídeo
+src/components/PricingSection.tsx    — NOVO: tabela de preços com parcelamento
+src/components/FloatingCTAButton.tsx — NOVO: botão flutuante com contador
+src/pages/Index.tsx                  — Adicionar PricingSection e FloatingCTAButton
 ```
 
 ---
 
-## Nota sobre o Vídeo do Abrigo
+## Ordem de Implementação
 
-Para a seção da história real, será inserido um player de vídeo com link/URL a ser fornecido. Por enquanto, será adicionado um placeholder com campo de URL configurável, ou pode ser vinculado diretamente ao vídeo existente (`public/videos/hero-video.mp4`), caso seja o vídeo correto do abrigo.
+1. Corrigir números em UrgencySection (6 apadrinhadas, 58 total)
+2. Remover boleto do DonationForm + integração WhatsApp + novos valores + privacidade
+3. Remover "pausaram a faculdade" do AlissaSection
+4. Remover boleto do FAQ
+5. Adicionar autoplay+muted nos vídeos
+6. Criar PricingSection com cards de parcelamento
+7. Criar FloatingCTAButton
+8. Atualizar Index.tsx
+
+---
+
+## Nota Técnica — Autoplay
+
+Browsers modernos bloqueiam autoplay com som. A solução padrão é usar `autoPlay muted` juntos — o vídeo toca automaticamente sem som, e o usuário pode ativar o áudio manualmente. Isso garante compatibilidade com Chrome, Safari, Firefox e mobile.
