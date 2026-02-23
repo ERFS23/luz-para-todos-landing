@@ -1,10 +1,11 @@
-import { useState } from "react";
-import { Plus, Users, Check, X, ChevronDown, ChevronUp } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Plus, Users, Check, X, ChevronDown, ChevronUp, LogIn, LogOut } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useProjectStats } from "@/hooks/useProjectStats";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
+import type { User } from "@supabase/supabase-js";
 
 interface BlessedChild {
   id: string;
@@ -16,18 +17,143 @@ interface BlessedChild {
 
 const AdminPanel = () => {
   const { stats, refetch } = useProjectStats();
+  const [user, setUser] = useState<User | null>(null);
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [authLoading, setAuthLoading] = useState(true);
   const [isExpanded, setIsExpanded] = useState(false);
+  const [showLogin, setShowLogin] = useState(false);
+  const [loginEmail, setLoginEmail] = useState("");
+  const [loginPassword, setLoginPassword] = useState("");
+  const [loginLoading, setLoginLoading] = useState(false);
+
   const [isAdding, setIsAdding] = useState(false);
   const [blessedChildren, setBlessedChildren] = useState<BlessedChild[]>([]);
   const [loadingChildren, setLoadingChildren] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
   const [deletingId, setDeletingId] = useState<string | null>(null);
-  
+
   const [newChild, setNewChild] = useState({
     name: "",
     age: "",
     shelter_name: "",
   });
+
+  // Check admin role
+  const checkAdminRole = async (userId: string) => {
+    const { data } = await supabase
+      .from("user_roles")
+      .select("role")
+      .eq("user_id", userId)
+      .eq("role", "admin")
+      .maybeSingle();
+    return !!data;
+  };
+
+  // Auth state listener
+  useEffect(() => {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(
+      async (_event, session) => {
+        const currentUser = session?.user ?? null;
+        setUser(currentUser);
+        if (currentUser) {
+          const admin = await checkAdminRole(currentUser.id);
+          setIsAdmin(admin);
+        } else {
+          setIsAdmin(false);
+        }
+        setAuthLoading(false);
+      }
+    );
+
+    supabase.auth.getSession().then(async ({ data: { session } }) => {
+      const currentUser = session?.user ?? null;
+      setUser(currentUser);
+      if (currentUser) {
+        const admin = await checkAdminRole(currentUser.id);
+        setIsAdmin(admin);
+      }
+      setAuthLoading(false);
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
+
+  const handleLogin = async () => {
+    if (!loginEmail || !loginPassword) return;
+    setLoginLoading(true);
+    const { error } = await supabase.auth.signInWithPassword({
+      email: loginEmail,
+      password: loginPassword,
+    });
+    if (error) {
+      toast.error("Erro ao fazer login: " + error.message);
+    } else {
+      toast.success("Login realizado com sucesso!");
+      setShowLogin(false);
+      setLoginEmail("");
+      setLoginPassword("");
+    }
+    setLoginLoading(false);
+  };
+
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
+    setIsExpanded(false);
+    toast.success("Logout realizado");
+  };
+
+  // Don't render anything if not authenticated or not admin
+  if (authLoading) return null;
+
+  // Show login button for unauthenticated users (hidden, accessible via URL hash)
+  if (!user || !isAdmin) {
+    // Only show login if user navigates to #admin
+    if (typeof window !== "undefined" && window.location.hash !== "#admin") {
+      return null;
+    }
+
+    return (
+      <div className="fixed bottom-4 right-4 z-50">
+        {showLogin ? (
+          <div className="w-[320px] bg-card border border-border rounded-xl shadow-2xl p-4 space-y-3">
+            <h3 className="font-serif text-lg font-semibold text-foreground">Admin Login</h3>
+            <Input
+              type="email"
+              placeholder="Email"
+              value={loginEmail}
+              onChange={(e) => setLoginEmail(e.target.value)}
+            />
+            <Input
+              type="password"
+              placeholder="Senha"
+              value={loginPassword}
+              onChange={(e) => setLoginPassword(e.target.value)}
+              onKeyDown={(e) => e.key === "Enter" && handleLogin()}
+            />
+            <div className="flex gap-2">
+              <Button onClick={handleLogin} disabled={loginLoading} className="flex-1">
+                {loginLoading ? "Entrando..." : "Entrar"}
+              </Button>
+              <Button variant="outline" onClick={() => setShowLogin(false)}>
+                <X className="w-4 h-4" />
+              </Button>
+            </div>
+            {user && !isAdmin && (
+              <p className="text-xs text-destructive">Usuário não tem permissão de administrador.</p>
+            )}
+          </div>
+        ) : (
+          <button
+            onClick={() => setShowLogin(true)}
+            className="flex items-center gap-2 px-4 py-3 rounded-full bg-muted text-muted-foreground font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+          >
+            <LogIn className="w-5 h-5" />
+            <span className="text-sm">Admin</span>
+          </button>
+        )}
+      </div>
+    );
+  }
 
   const fetchBlessedChildren = async () => {
     setLoadingChildren(true);
@@ -35,7 +161,7 @@ const AdminPanel = () => {
       .from("blessed_children")
       .select("*")
       .order("blessed_at", { ascending: false });
-    
+
     if (error) {
       toast.error("Erro ao carregar crianças");
     } else {
@@ -53,7 +179,7 @@ const AdminPanel = () => {
 
   const handleAddChild = async () => {
     if (!newChild.name.trim() || isSaving) return;
-    
+
     setIsSaving(true);
     const { error } = await supabase.from("blessed_children").insert({
       name: newChild.name.trim(),
@@ -75,11 +201,10 @@ const AdminPanel = () => {
 
   const handleDeleteChild = async (id: string, name: string) => {
     if (deletingId) return;
-    
+
     setDeletingId(id);
-    // Optimistic update
     setBlessedChildren(prev => prev.filter(c => c.id !== id));
-    
+
     const { error } = await supabase
       .from("blessed_children")
       .delete()
@@ -97,14 +222,13 @@ const AdminPanel = () => {
 
   return (
     <div className="fixed bottom-4 right-4 z-50">
-      {/* Floating button with stats */}
       <button
         onClick={handleExpand}
         className="flex items-center gap-2 px-4 py-3 rounded-full bg-gradient-to-r from-gold to-amber text-deep-brown font-semibold shadow-lg hover:shadow-xl transition-all duration-300 min-h-[48px]"
       >
         <Users className="w-5 h-5" />
         <span className="text-sm">
-          <span className="font-bold">{stats.blessedChildrenCount}</span> abençoadas | 
+          <span className="font-bold">{stats.blessedChildrenCount}</span> abençoadas |
           <span className="font-bold ml-1">{stats.childrenRemaining}</span> aguardando
         </span>
         {isExpanded ? (
@@ -114,14 +238,17 @@ const AdminPanel = () => {
         )}
       </button>
 
-      {/* Expanded panel */}
       {isExpanded && (
         <div className="absolute bottom-16 right-0 w-[320px] sm:w-[380px] bg-card border border-border rounded-xl shadow-2xl overflow-hidden animate-fade-in">
-          {/* Header */}
           <div className="bg-gradient-to-r from-gold/20 to-amber/20 p-4 border-b border-border">
-            <h3 className="font-serif text-lg font-semibold text-foreground">
-              Painel de Crianças
-            </h3>
+            <div className="flex items-center justify-between">
+              <h3 className="font-serif text-lg font-semibold text-foreground">
+                Painel de Crianças
+              </h3>
+              <button onClick={handleLogout} className="p-1.5 rounded-full hover:bg-muted transition-colors" title="Sair">
+                <LogOut className="w-4 h-4 text-muted-foreground" />
+              </button>
+            </div>
             <div className="flex gap-4 mt-2 text-sm">
               <div className="flex items-center gap-1">
                 <Check className="w-4 h-4 text-green-500" />
@@ -134,7 +261,6 @@ const AdminPanel = () => {
             </div>
           </div>
 
-          {/* Add new child form */}
           <div className="p-4 border-b border-border">
             {isAdding ? (
               <div className="space-y-3">
@@ -188,7 +314,6 @@ const AdminPanel = () => {
             )}
           </div>
 
-          {/* List of blessed children */}
           <div className="max-h-[300px] overflow-y-auto p-4">
             {loadingChildren ? (
               <p className="text-center text-muted-foreground text-sm">Carregando...</p>
